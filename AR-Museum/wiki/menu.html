@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top theme-default">
+  <div class="container">
+
+    <!-- TEAM NAME -->
+    <a class="navbar-brand" href="#">
+      XJTLU
+    </a>
+
+    <!-- SMALL SCREEN MENU ICON -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto left-aligned">
+
+        <!-- HOME -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i><span class="nav-label">Home</span></a>
+        </li>
+
+        <!-- TEAM -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-users"></i><span class="nav-label">Team</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-team">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='members') }}"><i class="fas fa-user-friends"></i> Members</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='personas') }}"><i class="fas fa-tasks"></i> Personas</a></li>
+          </ul>
+        </li>
+
+        <!-- USER RESEARCH -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-user-research" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-search"></i><span class="nav-label">User Research</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-user-research">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='target-users') }}"><i class="fas fa-bullseye"></i> Target Users</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='user-requirements') }}"><i class="fas fa-clipboard-list"></i> User Requirements</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='user-journey-map') }}"><i class="fas fa-route"></i> User Journey Map</a></li>
+          </ul>
+        </li>
+
+        <!-- IDEATION -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-ideation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-project-diagram"></i><span class="nav-label">Ideation</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-ideation">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='early-concepts') }}"><i class="fas fa-seedling"></i> Early Concepts</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='design-alternatives') }}"><i class="fas fa-random"></i> Design Alternatives</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='final-concept') }}"><i class="fas fa-check-circle"></i> Final Concept</a></li>
+          </ul>
+        </li>
+
+        <!-- TECHNICAL IMPLEMENTATION -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-technical" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-cogs"></i><span class="nav-label">Technical Implementation</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-technical">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='system-architecture') }}"><i class="fas fa-sitemap"></i> System Architecture</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='development-process') }}"><i class="fas fa-tools"></i> Development Process</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='contributions') }}"><i class="fas fa-code-branch"></i> Contributions</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='results') }}"><i class="fas fa-chart-line"></i> Results</a></li>
+          </ul>
+        </li>
+
+        <!-- REFLECTION -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-reflection" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-chart-line"></i><span class="nav-label">Reflection</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-reflection">
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='testing') }}"><i class="fas fa-vial"></i> Testing</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='iterations') }}"><i class="fas fa-sync-alt"></i> Iterations</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='lessons-learned') }}"><i class="fas fa-book-open"></i> Lessons Learned</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='future-work') }}"><i class="fas fa-forward"></i> Future Work</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

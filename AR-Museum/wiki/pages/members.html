@@ -1,0 +1,471 @@
+{% extends "layout.html" %}
+
+{% block title %}Meet Our Team{% endblock %}
+{% block page_title %}Meet Our Team{% endblock %}
+{% block lead %}This page is dedicated to introducing the individuals who made our museum project possible. Here, you'll find information about our team members, instructors, and advisors.{% endblock %}
+
+{% block hide_header %}
+<!-- Members page hides the header -->
+{% endblock %}
+
+{% block page_css %}
+<style>
+/* 学生卡片样式优化 - 确保照片占据卡片75%高度 */
+.flip-card {
+  height: 400px; /* 固定卡片高度 */
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background: white;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* 关键样式：确保照片占据卡片75%高度 */
+.flip-card-front .member-image {
+  height: 75%; /* 照片区域占据75%高度 */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.flip-card-front .member-image .image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.flip-card-front .member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 确保图片填满容器且保持比例 */
+  object-position: center -40px; /* 所有学生照片向上移动40px */
+}
+
+.flip-card-front .member-info {
+  height: 25%; /* 信息区域占据25%高度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  background: white;
+}
+
+.flip-card-front .member-info .member-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.flip-card-front .member-info .member-role {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-bottom: 3px;
+}
+
+.flip-card-front .member-info .member-description {
+  font-size: 0.8rem;
+  color: #95a5a6;
+  margin: 0;
+}
+
+/* 卡片背面样式 */
+.flip-card-back .member-info-back {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.flip-card-back .member-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.flip-card-back .member-role {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.flip-card-back .member-description {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.flip-card-back .member-details {
+  font-size: 0.75rem;
+  margin-top: 10px;
+}
+
+.flip-card-back .member-contribution {
+  margin-top: 10px;
+}
+
+.flip-card-back .badge {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+}
+
+/* Persona 卡片布局优化 - 更适合长文本 */
+.persona-grid {
+  align-items: stretch;
+}
+
+.persona-grid > [class*="col-"] {
+  display: flex;
+}
+
+.advisor-card {
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  border-radius: 18px;
+  background: #fffaf5;
+  box-shadow: 0 10px 28px rgba(90, 62, 43, 0.12);
+  border: 1px solid rgba(140, 90, 60, 0.12);
+  text-align: left !important;
+}
+
+.advisor-card .advisor-image-wrapper {
+  text-align: center;
+}
+
+.advisor-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.advisor-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.advisor-description,
+.advisor-quote {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.advisor-quote {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .flip-card {
+    height: 350px; /* 移动设备上稍微减小高度 */
+  }
+  
+  .flip-card-front .member-info .member-name {
+    font-size: 1rem;
+  }
+  
+  .flip-card-front .member-info .member-role {
+    font-size: 0.8rem;
+  }
+  
+  .flip-card-front .member-info .member-description {
+    font-size: 0.75rem;
+  }
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="container members-page">
+  <!-- Team Banner Section -->
+  <div class="team-banner mb-5" data-aos="fade-up">
+    <div class="banner-content text-center">
+      <h1 class="display-4">Meet Our Team</h1>
+      <p class="lead">A3-6</p>
+    </div>
+  </div>
+  
+  <!-- Team Overview Section -->
+  <div class="team-overview mb-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="team-photo-wrapper">
+          <div class="image-placeholder" style="min-height: 360px; border-radius: 0.5rem;">
+            <div class="image-placeholder__inner">
+              <span class="image-placeholder__icon">◫</span>
+              <span class="image-placeholder__label">Museum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="team-description p-4">
+          <h2>Our Team</h2>
+          <p>Our team is a multidisciplinary group of four members collaborating on the project “My Stories in Museums.” We aim to design an immersive AR-based role-playing experience that transforms traditional museum visits into interactive storytelling journeys.</p>
+          <p>By integrating technologies such as AR interaction, QR/NFC scanning, and real-time user collaboration, our system allows visitors to step into the roles of historical figures. Users can unlock narrative fragments by scanning exhibits, interact with other players, and collectively advance through the storyline.</p>
+          <p>Each team member contributes specialized skills across research, design, development, and evaluation, ensuring both the creative depth and technical feasibility of the project.</p>
+          <div class="team-stats d-flex justify-content-around text-center mt-4">
+            <div class="stat-item">
+              <h3 class="stat-number">4</h3>
+              <p class="stat-label">Members</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Student Members Section -->
+  <section id="student-members" class="mb-5">
+    <div class="section-header text-center mb-4" data-aos="fade-up">
+      <h2 class="display-5">Student Members</h2>
+      <div class="divider my-3"></div>
+      <p class="section-description">Meet the ambitious students driving our museum project forward</p>
+    </div>
+    
+   <div class="row g-4">
+      <!-- Row 1: Students 1-4 -->
+      <!-- Student 1 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front Side -->
+            <div class="flip-card-front">
+              <div class="member-image">
+                <div class="image-placeholder" style="min-height: 100%;">
+                  <div class="image-placeholder__inner">
+                    <span class="image-placeholder__icon">◌</span>
+                    <span class="image-placeholder__label">Student 1</span>
+                  </div>
+                </div>
+              </div>
+              <div class="member-info p-3">
+                <h3 class="member-name">Member 1</h3>
+                <p class="member-role">Chang.Liu</p>
+                <p class="member-description">UI/UX Design & Frontend Development</p>
+              </div>
+            </div>
+            <!-- Back Side -->
+            <div class="flip-card-back">
+              <div class="member-info-back p-3">
+                <h3 class="member-name">Member 1</h3>
+                <p class="member-role">Chang.Liu</p>
+                <p class="member-description">Member 1 focuses on the visual and interactive design of the system. They are responsible for creating Figma prototypes, including layout, color schemes, buttons, and user interaction flows.</p>
+                <div class="member-details mt-3">
+                  <p>They also implement the frontend of the website using HTML, CSS, and JavaScript, ensuring that the interface is both aesthetically pleasing and user-friendly. Additionally, Member 2 works closely with Member 3 to connect interface elements with backend logic and interactive features.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Student 2 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front Side -->
+            <div class="flip-card-front">
+              <div class="member-image">
+                <div class="image-placeholder" style="min-height: 100%;">
+                  <div class="image-placeholder__inner">
+                    <span class="image-placeholder__icon">◌</span>
+                    <span class="image-placeholder__label">Student 2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="member-info p-3">
+                <h3 class="member-name">Member 2</h3>
+                <p class="member-role">Leyi.Zhu</p>
+                <p class="member-description">Research & Storytelling Design</p>
+              </div>
+            </div>
+            <!-- Back Side -->
+            <div class="flip-card-back">
+              <div class="member-info-back p-3">
+                <h3 class="member-name">Member 2</h3>
+                <p class="member-role">Leyi.Zhu</p>
+                <p class="member-description">Member 2 is responsible for the foundational research and storytelling of the project. This includes conducting field research in museums to understand user behavior and exhibit characteristics, collecting relevant data, and identifying user needs.</p>
+                <div class="member-details mt-3">
+                  <p>Based on this research, they design the narrative structure of the experience, including character roles, storylines, and interaction flows. In addition, Member 1 collaborates with Member 4 to produce visual materials such as posters and demo videos, ensuring that the project is clearly communicated.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Student 3 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front Side -->
+            <div class="flip-card-front">
+              <div class="member-image">
+                <div class="image-placeholder" style="min-height: 100%;">
+                  <div class="image-placeholder__inner">
+                    <span class="image-placeholder__icon">◌</span>
+                    <span class="image-placeholder__label">Student 3</span>
+                  </div>
+                </div>
+              </div>
+              <div class="member-info p-3">
+                <h3 class="member-name">Member 3</h3>
+                <p class="member-role">Chunyi.Pu</p>
+                <p class="member-description">AR Interaction & Technical Realization</p>
+              </div>
+            </div>
+            <!-- Back Side -->
+            <div class="flip-card-back">
+              <div class="member-info-back p-3">
+                <h3 class="member-name">Member 3</h3>
+                <p class="member-role">Chunyi.Pu</p>
+                <p class="member-description">Member 3 is responsible for the core interactive system and technical realization of the AR experience. This includes designing and implementing scanning logic (e.g., exhibit QR codes, NFC, or device interaction) and enabling user-to-user interactions.</p>
+                <div class="member-details mt-3">
+                  <p>They also develop the AR components using technologies such as Three.js or AR.js, allowing users to visualize characters or content in an augmented environment. Furthermore, they handle task progression logic and condition triggers within the game.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Student 4 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front Side -->
+            <div class="flip-card-front">
+              <div class="member-image">
+                <div class="image-placeholder" style="min-height: 100%;">
+                  <div class="image-placeholder__inner">
+                    <span class="image-placeholder__icon">◌</span>
+                    <span class="image-placeholder__label">Student 4</span>
+                  </div>
+                </div>
+              </div>
+              <div class="member-info p-3">
+                <h3 class="member-name">Member 4</h3>
+                <p class="member-role">Xinyi.Shen</p>
+                <p class="member-description">Data Management & Evaluation</p>
+              </div>
+            </div>
+            <!-- Back Side -->
+            <div class="flip-card-back">
+              <div class="member-info-back p-3">
+                <h3 class="member-name">Member 4</h3>
+                <p class="member-role">Xinyi.Shen</p>
+                <p class="member-description">Member 4 manages the data and evaluation aspects of the project. They are responsible for backend data storage and management, including user progress, task states, and interaction data.</p>
+                <div class="member-details mt-3">
+                  <p>They also conduct user testing, collect feedback, and iterate on the system to improve usability and effectiveness. In addition, Member 4 collaborates with Member 1 on producing presentation materials such as posters and demo videos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Advisors Section -->
+  <section id="faculty-advisors" class="mb-5">
+    <div class="section-header text-center mb-4" data-aos="fade-up">
+      <h2 class="display-5">Personas</h2>
+      <div class="divider my-3"></div>
+      <p class="section-description">These personas were generated with the help of AI to represent typical users of our museum interaction project. They help our team better understand visitor needs, improve interaction design, and make the museum experience more engaging and accessible.</p>
+    </div>
+    
+    <div class="row g-4 persona-grid">
+      <!-- Advisor 1 -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="advisor-card text-center mb-4">
+          <div class="advisor-image-wrapper mb-3">
+            <div class="image-placeholder advisor-image rounded-circle" style="width: 180px; height: 180px; min-height: 180px; margin: 0 auto;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">◍</span>
+                <span class="image-placeholder__label">Emily Zhang</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="advisor-name">Emily Zhang</h3>
+          <p class="advisor-title">Primary Persona</p>
+          <p class="advisor-description"><strong>Age:</strong> 21</p>
+          <p class="advisor-description"><strong>Role:</strong> University student and frequent museum visitor</p>
+          <p class="advisor-description"><strong>Background:</strong> Emily often visits museums, galleries, and cultural exhibitions with friends. She is comfortable using mobile apps, scanning QR codes, and trying digital interactive features during a visit. She enjoys learning through visual and immersive experiences rather than reading long blocks of text.</p>
+          <p class="advisor-quote"><strong>Characteristics:</strong></p>
+          <p class="advisor-description">Confident with smartphones and digital tools<br>Curious and willing to explore interactive exhibits<br>Prefers engaging and visually rich experiences<br>Likes sharing interesting experiences on social media</p>
+          <p class="advisor-quote"><strong>Goals:</strong></p>
+          <p class="advisor-description">Understand exhibits in a more interesting way<br>Enjoy a personalised and interactive museum visit<br>Access information quickly without reading too much text</p>
+          <p class="advisor-quote"><strong>Pain Points:</strong></p>
+          <p class="advisor-description">Traditional exhibit labels can feel too long or boring<br>Some museum information is difficult to understand quickly<br>Interactive features are sometimes hidden or unclear</p>
+          <p class="advisor-quote"><strong>Needs:</strong> A museum interaction system that is intuitive, visually appealing, and easy to use on mobile devices, with clear guidance and engaging content.</p>
+        </div>
+      </div>
+      
+      <!-- Advisor 2 -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="advisor-card text-center mb-4">
+          <div class="advisor-image-wrapper mb-3">
+            <div class="image-placeholder advisor-image rounded-circle" style="width: 180px; height: 180px; min-height: 180px; margin: 0 auto;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">◍</span>
+                <span class="image-placeholder__label">Mr. David Lee</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="advisor-name">Mr. David Lee</h3>
+          <p class="advisor-title">Secondary Persona</p>
+          <p class="advisor-description"><strong>Age:</strong> 52</p>
+          <p class="advisor-description"><strong>Role:</strong> Parent and occasional museum visitor</p>
+          <p class="advisor-description"><strong>Background:</strong> David visits museums with his family a few times a year. He is interested in history and culture, but he is not very confident with new digital systems. He appreciates clear explanations and simple interactions that help him and his family enjoy the museum without confusion.</p>
+          <p class="advisor-quote"><strong>Characteristics:</strong></p>
+          <p class="advisor-description">Basic digital skills<br>Values clarity, simplicity, and practicality<br>Prefers step-by-step guidance<br>More interested in meaningful learning than complex technology</p>
+          <p class="advisor-quote"><strong>Goals:</strong></p>
+          <p class="advisor-description">Understand exhibition content easily<br>Use interactive functions without frustration<br>Have a pleasant and educational museum experience with family</p>
+          <p class="advisor-quote"><strong>Pain Points:</strong></p>
+          <p class="advisor-description">Complicated interfaces make him hesitant to interact<br>Too many buttons or options feel overwhelming<br>Lack of clear instructions reduces confidence in using digital features</p>
+          <p class="advisor-quote"><strong>Needs:</strong> A museum interaction system with simple navigation, large clear text, obvious instructions, and accessible content for visitors with lower confidence in technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}

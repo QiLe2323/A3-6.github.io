@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block title %}Personas{% endblock %}
+{% block page_title %}Personas{% endblock %}
+{% block lead %}These personas were generated with the help of AI to represent typical users of our museum interaction project. They help our team better understand visitor needs, improve interaction design, and make the museum experience more engaging and accessible.{% endblock %}
+
+{% block page_css %}
+<style>
+.personas-page {
+  padding: 40px 0 80px;
+}
+
+.persona-grid {
+  align-items: stretch;
+}
+
+.persona-grid > [class*="col-"] {
+  display: flex;
+}
+
+.persona-card {
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  border-radius: 18px;
+  background: #fffaf5;
+  box-shadow: 0 10px 28px rgba(90, 62, 43, 0.12);
+  border: 1px solid rgba(140, 90, 60, 0.12);
+}
+
+.persona-image-wrapper {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.persona-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.persona-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.persona-text,
+.persona-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.persona-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container personas-page">
+  <section id="personas" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Personas</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">These personas were generated with the help of AI to represent typical users of our museum interaction project. They help our team better understand visitor needs, improve interaction design, and make the museum experience more engaging and accessible.</p>
+    </div>
+
+    <div class="row g-4 persona-grid">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="persona-card">
+          <div class="persona-image-wrapper">
+            <div class="image-placeholder rounded-circle" style="width: 180px; height: 180px; min-height: 180px; margin: 0 auto;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">◍</span>
+                <span class="image-placeholder__label">Emily Zhang</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="persona-name">Emily Zhang</h3>
+          <p class="persona-title">Primary Persona</p>
+          <p class="persona-text"><strong>Age:</strong> 21</p>
+          <p class="persona-text"><strong>Role:</strong> University student and frequent museum visitor</p>
+          <p class="persona-text"><strong>Background:</strong> Emily often visits museums, galleries, and cultural exhibitions with friends. She is comfortable using mobile apps, scanning QR codes, and trying digital interactive features during a visit. She enjoys learning through visual and immersive experiences rather than reading long blocks of text.</p>
+          <p class="persona-label">Characteristics:</p>
+          <p class="persona-text">Confident with smartphones and digital tools<br>Curious and willing to explore interactive exhibits<br>Prefers engaging and visually rich experiences<br>Likes sharing interesting experiences on social media</p>
+          <p class="persona-label">Goals:</p>
+          <p class="persona-text">Understand exhibits in a more interesting way<br>Enjoy a personalised and interactive museum visit<br>Access information quickly without reading too much text</p>
+          <p class="persona-label">Pain Points:</p>
+          <p class="persona-text">Traditional exhibit labels can feel too long or boring<br>Some museum information is difficult to understand quickly<br>Interactive features are sometimes hidden or unclear</p>
+          <p class="persona-label">Needs:</p>
+          <p class="persona-text">A museum interaction system that is intuitive, visually appealing, and easy to use on mobile devices, with clear guidance and engaging content.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="persona-card">
+          <div class="persona-image-wrapper">
+            <div class="image-placeholder rounded-circle" style="width: 180px; height: 180px; min-height: 180px; margin: 0 auto;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">◍</span>
+                <span class="image-placeholder__label">Mr. David Lee</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="persona-name">Mr. David Lee</h3>
+          <p class="persona-title">Secondary Persona</p>
+          <p class="persona-text"><strong>Age:</strong> 52</p>
+          <p class="persona-text"><strong>Role:</strong> Parent and occasional museum visitor</p>
+          <p class="persona-text"><strong>Background:</strong> David visits museums with his family a few times a year. He is interested in history and culture, but he is not very confident with new digital systems. He appreciates clear explanations and simple interactions that help him and his family enjoy the museum without confusion.</p>
+          <p class="persona-label">Characteristics:</p>
+          <p class="persona-text">Basic digital skills<br>Values clarity, simplicity, and practicality<br>Prefers step-by-step guidance<br>More interested in meaningful learning than complex technology</p>
+          <p class="persona-label">Goals:</p>
+          <p class="persona-text">Understand exhibition content easily<br>Use interactive functions without frustration<br>Have a pleasant and educational museum experience with family</p>
+          <p class="persona-label">Pain Points:</p>
+          <p class="persona-text">Complicated interfaces make him hesitant to interact<br>Too many buttons or options feel overwhelming<br>Lack of clear instructions reduces confidence in using digital features</p>
+          <p class="persona-label">Needs:</p>
+          <p class="persona-text">A museum interaction system with simple navigation, large clear text, obvious instructions, and accessible content for visitors with lower confidence in technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

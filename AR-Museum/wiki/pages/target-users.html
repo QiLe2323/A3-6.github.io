@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}Target Users{% endblock %}
+{% block page_title %}Target Users{% endblock %}
+{% block lead %}This page introduces the main target users of our museum interaction project and the challenges they face in current museum experiences.{% endblock %}
+
+{% block page_css %}
+<style>
+.target-users-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container target-users-page">
+  <section id="target-users" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Target Users</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">Our target users are museum visitors who seek a more engaging and interactive experience.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">Target Users</h3>
+        <p class="user-title">Museum Visitors Seeking Interactive Experiences</p>
+
+        <p class="user-description">Our target users are museum visitors who seek a more engaging and interactive experience, including:</p>
+        <p class="user-description">General visitors who are interested in cultural and historical content but lack deeper understanding<br>Visitors who tend to lose attention during traditional exhibition viewing<br>Users who prefer immersive experiences rather than passive information reading<br>Individuals or groups visiting together who expect shared or social interaction</p>
+
+        <p class="user-label">Current Problems</p>
+        <p class="user-description">These users commonly face the following problems in current museum experiences:</p>
+        <p class="user-description">Low engagement: Exhibits are primarily static and text-based, leading to passive information consumption<br>Lack of immersion: Users find it difficult to enter historical contexts or feel “present” in the narrative<br>Limited interactivity: There are few opportunities for hands-on exploration or meaningful interaction<br>Fragmented experience: The visit lacks a coherent storyline or goal-driven progression<br>Weak social interaction: There are limited mechanisms for collaboration or interaction between visitors</p>
+
+        <p class="user-label">System Needs</p>
+        <p class="user-description">Therefore, the system needs to support:</p>
+        <p class="user-description">Transforming users from passive viewers into active participants<br>Providing immersive and context-rich experiences<br>Creating a coherent narrative or task-driven progression<br>Enabling interaction and collaboration between users<br>Delivering information in a more intuitive and engaging way</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+    <meta name="msapplication-TileImage" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename = 'bootstrap.min.css') }}" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="{{ url_for('static', filename = 'font-awesome.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet">
+    
+    <!-- 下拉导航栏样式 -->
+    <link href="{{ url_for('static', filename = 'dropdown-nav.css') }}" rel="stylesheet">
+
+    <!-- 页面特定的CSS -->
+    {% block page_css %}{% endblock %}
+
+    <title>{% block title %}{% endblock %} | XJTLU Museum Project</title>
+
+</head>
+<body>
+  <!-- 全局装饰元素已移至home页面 -->
+
+  <!-- 滚动提示箭头 -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="progress-ring"></div>
+    <div class="arrow bounce"></div>
+  </div>
+
+  <!-- Navigation -->
+  {% include 'menu.html' %}
+
+  <!-- Header -->
+  {% block hide_header %}
+  {% endblock %}
+
+  <!-- Page Content -->
+  {% block page_content %}{% endblock %}
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="{{ url_for('static', filename = 'bootstrap.bundle.min.js') }}"></script>
+  
+  <!-- 下拉导航栏增强脚本 -->
+  <script src="{{ url_for('static', filename = 'dropdown-nav.js') }}"></script>
+  
+  <!-- GSAP 动画库 -->
+  <script src="{{ url_for('static', filename = 'gsap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'ScrollTrigger.min.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'ScrollToPlugin.min.js') }}"></script>
+  
+
+  
+  <!-- 页面特定的脚本 -->
+  {% block scripts %}{% endblock %}
+  
+  <!-- GSAP统一动效管理脚本 -->
+  <script>
+    // 注册GSAP插件
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    
+    class GSAPAnimationManager {
+      constructor() {
+        this.navbar = document.querySelector('.navbar');
+        this.scrollIndicator = document.getElementById('scrollIndicator');
+        this.sections = [];
+        this.currentTheme = 'default';
+        this.animations = {};
+        
+        this.init();
+      }
+      
+      init() {
+        this.detectPageSections();
+        this.setupNavbarAnimations();
+        this.setupScrollIndicator();
+        this.setupSectionAnimations();
+        this.setupHoverAnimations();
+      }
+      
+      detectPageSections() {
+        this.sections = [];
+        
+        // 检测所有有效的sections
+        const commonSelectors = [
+          'section',
+          '.hero-section',
+          '#hero', 
+          '.content-section',
+          '.section-dark',
+          '.team-banner',
+          'header:not(.navbar)',
+          '[data-navbar-theme]'
+        ];
+        
+        let allSections = [];
+        
+        commonSelectors.forEach(selector => {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => {
+            if (!allSections.includes(el) && this.isValidSection(el)) {
+              const theme = el.getAttribute('data-navbar-theme') || this.detectThemeFromElement(el);
+              allSections.push({
+                element: el,
+                theme: theme,
+                selector: selector
+              });
+            }
+          });
+        });
+        
+        // 按DOM顺序排序
+        this.sections = allSections.sort((a, b) => {
+          return a.element.compareDocumentPosition(b.element) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+        });
+      }
+      
+      isValidSection(element) {
+        const rect = element.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(element);
+        
+        return (
+          rect.height > 100 &&
+          computedStyle.display !== 'none' &&
+          computedStyle.visibility !== 'hidden' &&
+          !element.classList.contains('navbar') &&
+          !element.classList.contains('floating-cube') &&
+          !element.classList.contains('molecule')
+        );
+      }
+      
+      detectThemeFromElement(element) {
+        if (element.classList.contains('hero-section') || element.id === 'hero') {
+          return 'transparent';
+        }
+        if (element.classList.contains('section-dark') || element.classList.contains('bg-dark')) {
+          return 'dark';
+        }
+        if (element.classList.contains('bg-light') || element.classList.contains('content-section')) {
+          return 'light';
+        }
+        const style = element.getAttribute('style') || '';
+        if (style.includes('#2A9D8F') || style.includes('rgba(42, 157, 143')) {
+          return 'accent';
+        }
+        return 'default';
+      }
+      
+      setupNavbarAnimations() {
+        // 导航栏滚动紧凑效果
+        ScrollTrigger.create({
+          trigger: "body",
+          start: "top -50",
+          end: "bottom bottom",
+          onUpdate: self => {
+            if (self.direction === 1 && self.progress > 0.05) {
+              // 向下滚动，紧凑导航栏
+              gsap.to(this.navbar, {
+                paddingTop: "0.5rem",
+                paddingBottom: "0.5rem",
+                duration: 0.1,
+                ease: "power2.out"
+              });
+              gsap.to(".navbar-brand", {
+                fontSize: "2rem",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+              gsap.to(".logo-o", {
+                width: "2rem",
+                height: "2rem", 
+                duration: 0.3,
+                ease: "power2.out"
+              });
+            } else if (self.progress <= 0.05) {
+              // 回到顶部，恢复正常大小
+              gsap.to(this.navbar, {
+                paddingTop: "",
+                paddingBottom: "",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+              gsap.to(".navbar-brand", {
+                fontSize: "2.5rem",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+              gsap.to(".logo-o", {
+                width: "2.5rem",
+                height: "2.5rem",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+            }
+          }
+        });
+
+        // 为每个section创建导航栏主题切换
+        this.sections.forEach((section, index) => {
+          ScrollTrigger.create({
+            trigger: section.element,
+            start: "top 80px",
+            end: "bottom 80px",
+            onEnter: () => this.animateNavbarTheme(section.theme),
+            onEnterBack: () => this.animateNavbarTheme(section.theme),
+          });
+        });
+      }
+      
+      animateNavbarTheme(theme) {
+        if (this.currentTheme === theme) return;
+        
+        // 移除所有主题类
+        this.navbar.classList.remove(
+          'theme-default', 
+          'theme-transparent', 
+          'theme-light', 
+          'theme-dark', 
+          'theme-accent'
+        );
+        
+        // 添加新主题类
+        this.navbar.classList.add(`theme-${theme}`);
+        
+        // GSAP动画切换背景和文字颜色
+        const themeConfig = this.getThemeConfig(theme);
+        
+        gsap.to(this.navbar, {
+          backgroundColor: themeConfig.background,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+        
+        gsap.to(".navbar-brand, .nav-link", {
+          color: themeConfig.textColor,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+        
+        this.currentTheme = theme;
+      }
+      
+      getThemeConfig(theme) {
+        const configs = {
+          'default': {
+            background: 'rgba(5, 38, 89, 0.95)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          },
+          'transparent': {
+            background: 'rgba(0, 0, 0, 0.1)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          },
+          'light': {
+            background: 'rgba(255, 255, 255, 0.95)',
+            textColor: '#2c3e50'
+          },
+          'dark': {
+            background: 'rgba(45, 55, 72, 0.95)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          },
+          'accent': {
+            background: 'rgba(42, 157, 143, 0.9)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          }
+        };
+        return configs[theme] || configs['default'];
+      }
+      
+      setupScrollIndicator() {
+        if (!this.scrollIndicator) return;
+        
+        const arrow = this.scrollIndicator.querySelector('.arrow');
+        const progressRing = this.scrollIndicator.querySelector('.progress-ring');
+        
+        // 初始状态：隐藏
+        gsap.set(this.scrollIndicator, { 
+          opacity: 0, 
+          y: 20, 
+          pointerEvents: 'none' 
+        });
+        
+        // 滚动显示/隐藏逻辑
+        ScrollTrigger.create({
+          trigger: "body",
+          start: "top -100",
+          end: "bottom bottom",
+          onUpdate: self => {
+            if (self.progress > 0.1) {
+              // 显示指示器
+              gsap.to(this.scrollIndicator, {
+                opacity: 1,
+                y: 0,
+                pointerEvents: 'auto',
+                duration: 0.3,
+                ease: "back.out(1.7)"
+              });
+            } else {
+              // 隐藏指示器
+              gsap.to(this.scrollIndicator, {
+                opacity: 0,
+                y: 20,
+                pointerEvents: 'none',
+                duration: 0.3,
+                ease: "power2.in"
+              });
+            }
+            
+            // 更新进度环
+            const degrees = self.progress * 360;
+            progressRing.style.setProperty('--progress', `${degrees}deg`);
+            
+            // 判断是否到达底部
+            const isNearBottom = self.progress > 0.9;
+            this.updateScrollIndicatorMode(isNearBottom);
+          }
+        });
+        
+        // 箭头弹跳动画
+        this.arrowBounceAnimation = gsap.to(arrow, {
+          y: 4,
+          duration: 1,
+          ease: "power2.inOut",
+          yoyo: true,
+          repeat: -1
+        });
+        
+        // 点击事件
+        this.scrollIndicator.addEventListener('click', () => {
+          this.handleScrollIndicatorClick();
+        });
+      }
+      
+      updateScrollIndicatorMode(isBackToTop) {
+        const arrow = this.scrollIndicator.querySelector('.arrow');
+        
+        if (isBackToTop && !this.scrollIndicator.classList.contains('back-to-top')) {
+          // 切换到回到顶部模式
+          this.scrollIndicator.classList.add('back-to-top');
+          this.arrowBounceAnimation.pause();
+          
+          gsap.to(this.scrollIndicator, {
+            backgroundColor: 'rgba(45, 55, 72, 0.9)',
+            duration: 0.3,
+            ease: "power2.out"
+          });
+          
+        } else if (!isBackToTop && this.scrollIndicator.classList.contains('back-to-top')) {
+          // 切换到下一节模式
+          this.scrollIndicator.classList.remove('back-to-top');
+          this.arrowBounceAnimation.play();
+          
+          gsap.to(this.scrollIndicator, {
+            backgroundColor: 'rgba(74, 144, 226, 0.9)',
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
+      }
+      
+      handleScrollIndicatorClick() {
+        if (this.scrollIndicator.classList.contains('back-to-top')) {
+          // 回到顶部
+          gsap.to(window, {
+            duration: 0.1,
+            scrollTo: { y: 0 },
+            ease: "power2.inOut"
+          });
+        } else {
+          // 滚动到下一个section
+          const currentSection = this.getCurrentSection();
+          const nextSection = this.getNextSection(currentSection);
+          
+          if (nextSection) {
+            const offsetTop = nextSection.offsetTop - 80;
+            gsap.to(window, {
+              duration: 0.1,
+              scrollTo: { y: offsetTop },
+              ease: "power2.inOut"
+            });
+          }
+        }
+      }
+      
+      getCurrentSection() {
+        const scrollY = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        let currentSection = null;
+        let maxVisibleArea = 0;
+        
+        this.sections.forEach(section => {
+          const rect = section.element.getBoundingClientRect();
+          const visibleTop = Math.max(0, -rect.top);
+          const visibleBottom = Math.min(rect.height, windowHeight - rect.top);
+          const visibleArea = Math.max(0, visibleBottom - visibleTop);
+          
+          if (visibleArea > maxVisibleArea) {
+            maxVisibleArea = visibleArea;
+            currentSection = section.element;
+          }
+        });
+        
+        return currentSection;
+      }
+      
+      getNextSection(currentSection) {
+        const currentIndex = this.sections.findIndex(s => s.element === currentSection);
+        if (currentIndex >= 0 && currentIndex < this.sections.length - 1) {
+          return this.sections[currentIndex + 1].element;
+        }
+        return null;
+      }
+      
+      setupHoverAnimations() {
+        // 滚动指示器hover效果
+        if (this.scrollIndicator) {
+          this.scrollIndicator.addEventListener('mouseenter', () => {
+            gsap.to(this.scrollIndicator, {
+              scale: 1.1,
+              duration: 0.3,
+              ease: "back.out(1.7)"
+            });
+            
+            gsap.to(this.scrollIndicator.querySelector('.progress-ring'), {
+              opacity: 1,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          });
+          
+          this.scrollIndicator.addEventListener('mouseleave', () => {
+            gsap.to(this.scrollIndicator, {
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+            
+            gsap.to(this.scrollIndicator.querySelector('.progress-ring'), {
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          });
+        }
+        
+        // 导航链接hover效果
+        const navLinks = document.querySelectorAll('.nav-link, .navbar-brand');
+        navLinks.forEach(link => {
+          link.addEventListener('mouseenter', () => {
+            gsap.to(link, {
+              scale: 1.05,
+              duration: 0.2,
+              ease: "power2.out"
+            });
+          });
+          
+          link.addEventListener('mouseleave', () => {
+            gsap.to(link, {
+              scale: 1,
+              duration: 0.2,
+              ease: "power2.out"
+            });
+          });
+        });
+      }
+      
+      setupSectionAnimations() {
+        // 为页面元素添加滚动触发动画
+        const animateElements = document.querySelectorAll(
+          '.card, .flip-card, .feature-card, .team-banner, .advisor-card'
+        );
+        
+        animateElements.forEach((element, index) => {
+          gsap.fromTo(element, 
+            {
+              opacity: 0,
+              y: 50,
+              scale: 0.95
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.6,
+              ease: "power2.out",
+              delay: index * 0.1,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse"
+              }
+            }
+          );
+        });
+        
+        // 分子和立方体动画优化
+        const molecules = document.querySelectorAll('.molecule');
+        molecules.forEach(molecule => {
+          gsap.set(molecule, { opacity: 0.3 });
+          
+          ScrollTrigger.create({
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            onUpdate: self => {
+              gsap.to(molecule, {
+                opacity: 0.3 * (1 - self.progress * 0.5),
+                duration: 0.1,
+                ease: "none"
+              });
+            }
+          });
+        });
+      }
+      
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      // 初始化GSAP动画管理器
+      new GSAPAnimationManager();
+      
+      // 平滑滚动支持
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            gsap.to(window, {
+              duration: 0.1,
+              scrollTo: { y: target, offsetY: 80 },
+              ease: "power2.inOut"
+            });
+          }
+        });
+      });
+      
+      // 页面加载动画
+      gsap.from("body", {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    });
+    
+  </script>
+</body>
+</html>

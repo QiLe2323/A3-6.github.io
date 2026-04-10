@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}User Requirements{% endblock %}
+{% block page_title %}User Requirements{% endblock %}
+{% block lead %}This page outlines the essential system requirements needed to create a truly playful and engaging museum interaction experience.{% endblock %}
+
+{% block page_css %}
+<style>
+.user-requirements-page {
+  padding: 40px 0 80px;
+}
+
+.requirement-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.requirement-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.requirement-description,
+.requirement-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.requirement-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container user-requirements-page">
+  <section id="user-requirements" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">User Requirements</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">To ensure the system is truly playful, it must include a set of essential interactive and narrative features.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="requirement-name">User Requirements</h3>
+        <p class="requirement-title">Essential Features for a Playful Museum System</p>
+
+        <p class="requirement-description">To ensure the system is truly “playful”, it must include the following essential features:</p>
+
+        <p class="requirement-label">1. Role-playing Interaction (Must-have)</p>
+        <p class="requirement-description">Users must be able to take on the role of a historical character and experience the museum from that perspective.<br>→ This transforms passive viewing into active participation.</p>
+
+        <p class="requirement-label">2. AR-based Exploration (Must-have)</p>
+        <p class="requirement-description">The system must support AR interactions with real exhibits, such as:<br>Scanning artifacts to unlock story fragments<br>Triggering virtual characters or scenes<br><br>→ This creates a bridge between physical objects and digital narratives.</p>
+
+        <p class="requirement-label">3. Game Progression Mechanism (Must-have)</p>
+        <p class="requirement-description">The experience must include clear progression, such as:<br>Tasks or missions<br>Unlocking new stages<br>Story advancement<br><br>→ This maintains engagement and gives users a sense of achievement.</p>
+
+        <p class="requirement-label">4. Social Interaction (Must-have)</p>
+        <p class="requirement-description">Users must be able to interact with other players, for example:<br>Scanning each other<br>Device collision interaction<br>Collaborative tasks<br><br>→ This makes the museum experience more dynamic and shared.</p>
+
+        <p class="requirement-label">5. Immediate Feedback (Must-have)</p>
+        <p class="requirement-description">The system must provide instant feedback (visual/audio/story updates) after user actions.<br>→ This reinforces engagement and keeps the experience responsive.</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
