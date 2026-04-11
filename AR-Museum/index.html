@@ -1,0 +1,2269 @@
+{% extends "layout.html" %}
+
+{% block page_content %}
+
+<!-- 已移除背景漂浮粒子/分子/方块装饰 -->
+
+<style>
+/* 已移除全局 *:before, *:after 影响导航栏的CSS */
+
+/* 恢复下拉菜单箭头 */
+.dropdown-toggle::after {
+    content: "" !important;
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+/* 加载页面样式 */
+#loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FAF7F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+#loading-page.fade-out {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+}
+
+/* 新的加载容器 */
+.loading-container {
+    text-align: center;
+    color: #8C5A3C;
+    max-width: 800px;
+    width: 90%;
+}
+
+/* Logo容器 */
+.logo-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
+    50% { 
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+    }
+}
+
+/* 主标题 */
+.loading-title {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    to {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.3);
+    }
+}
+
+/* 说明文字 */
+.loading-subtitle {
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.loading-subtitle p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* 进度条容器 */
+.progress-container {
+    width: 300px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7B2FF7, #3A1C71);
+    width: 0%;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* 进度文本 */
+.progress-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* 缩放提示 */
+.zoom-instruction {
+    margin-bottom: 30px;
+    opacity: 1;
+    background: rgba(255, 248, 240, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(140, 90, 60, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.zoom-instruction p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #8C5A3C;
+    font-weight: 600;
+}
+
+.zoom-hint {
+    font-size: 0.9rem;
+    color: #8C5A3C;
+    font-weight: 500;
+}
+
+/* 高亮缩放比例数字 */
+.zoom-hint .zoom-highlight {
+    color: #ffd700;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+    font-size: 1.1em;
+    position: relative;
+}
+
+.zoom-hint .zoom-highlight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 237, 78, 0.2));
+    border-radius: 3px;
+    z-index: -1;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* 快捷键高亮样式 */
+.zoom-hint .shortcut-highlight {
+    color: #6A3DE8;
+    font-weight: 600;
+    background: linear-gradient(45deg, #7B2FF7, #3A1C71);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(193, 232, 255, 0.6);
+    filter: drop-shadow(0 0 4px rgba(193, 232, 255, 0.4));
+    position: relative;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+/* Start按钮 */
+.start-button {
+    background: linear-gradient(45deg, #7B2FF7, #3A1C71);
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    color: #2F2F2F;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(193, 232, 255, 0.3);
+    margin-bottom: 30px;
+    /* 初始状态：隐藏且不可点击 */
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 移除禁用状态样式，按钮始终可用 */
+
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(193, 232, 255, 0.5);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.start-button:hover .button-glow {
+    left: 100%;
+}
+
+/* 移除状态指示器样式 */
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .loading-container {
+        max-width: 95%;
+        padding: 0 20px;
+    }
+    
+    .logo-image {
+        max-width: 150px;
+        max-height: 150px;
+    }
+    
+    .loading-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+        margin-bottom: 25px;
+    }
+    
+    .loading-subtitle p {
+        font-size: 1rem;
+    }
+    
+    .progress-container {
+        width: 250px;
+        margin-bottom: 25px;
+    }
+    
+    .zoom-instruction {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .zoom-instruction p {
+        font-size: 0.9rem;
+    }
+    
+    .zoom-hint {
+        font-size: 0.75rem;
+    }
+    
+    .zoom-hint .zoom-highlight {
+        font-size: 1.05em;
+    }
+    
+    .start-button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .loading-title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    .loading-subtitle p {
+        font-size: 0.9rem;
+    }
+    
+    .progress-container {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .zoom-instruction {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .zoom-instruction p {
+        font-size: 0.8rem;
+    }
+    
+    .zoom-hint {
+        font-size: 0.7rem;
+    }
+    
+    .zoom-hint .zoom-highlight {
+        font-size: 1.1em;
+    }
+    
+    .start-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Hero section无浮入动画，直接显示 */
+.hero-section {
+    opacity: 1;
+}
+
+/* （已移除）粒子背景视频/iframe相关样式 */
+
+/* 内容视频容器响应式样式 */
+.video-container-responsive {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.video-container-responsive::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 默认16:9比例 */
+}
+
+.video-container-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 0;
+}
+
+/* 21:9宽屏适配 - 让iframe填满容器宽度 */
+@media (min-aspect-ratio: 21/9) {
+    .video-container-responsive::before {
+        padding-top: 40%; /* 在超宽屏上减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的缩放比例来完全填满容器 */
+        width: 100%;
+        height: 100%;
+        transform: scale(1.5);
+        transform-origin: center;
+    }
+}
+
+/* 超宽屏适配 - 进一步限制高度并确保填满 */
+@media (min-aspect-ratio: 32/9) {
+    .video-container-responsive::before {
+        padding-top: 30%; /* 在极宽屏上进一步减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        width: 100%;
+        height: 100%;
+        transform: scale(2.0);
+        transform-origin: center;
+    }
+}
+
+/* 标准宽屏适配 */
+@media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+    .video-container-responsive::before {
+        padding-top: 50%; /* 标准宽屏稍微减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.3);
+        transform-origin: center;
+    }
+}
+
+/* 通用宽屏适配 - 针对所有宽屏比例 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive iframe {
+        /* 确保在所有宽屏上都填满容器 */
+        width: 100%;
+        height: 100%;
+        transform: scale(1.6);
+        transform-origin: center;
+    }
+}
+
+/* 强制消除黑边的通用方法 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive {
+        overflow: hidden;
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的缩放和负边距来确保完全填满 */
+        width: 120%;
+        height: 120%;
+        left: -10%;
+        top: -10%;
+        transform: scale(1.0);
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .video-container-responsive::before {
+        padding-top: 56.25%; /* 移动端保持标准比例 */
+    }
+}
+
+/* 平板适配 */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .video-container-responsive::before {
+        padding-top: 50%; /* 平板稍微减少高度 */
+    }
+}
+
+/* 修复page1-2和page6视频的黑线问题 */
+.video-container-responsive {
+    /* 消除可能的黑线 */
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.video-container-responsive iframe {
+    /* 消除iframe的黑线 */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    /* 确保完全填满容器 */
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* 21:9宽屏特殊处理 - 缩小视频并上移，防止遮挡 */
+@media (min-aspect-ratio: 21/9) {
+    .video-container-responsive {
+        /* 缩小容器尺寸 */
+        max-width: 80%;
+        margin: 0 auto;
+        /* 大幅上移容器 */
+        margin-top: -15%;
+    }
+    
+    .video-container-responsive::before {
+        padding-top: 30%; /* 进一步减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        /* 确保iframe填满缩小后的容器，消除左右黑边 */
+        transform: scale(1.3);
+        transform-origin: center;
+    }
+}
+
+/* 超宽屏特殊处理 */
+@media (min-aspect-ratio: 32/9) {
+    .video-container-responsive {
+        max-width: 70%;
+        margin: 0 auto;
+        margin-top: -20%;
+    }
+    
+    .video-container-responsive::before {
+        padding-top: 20%;
+    }
+    
+    .video-container-responsive iframe {
+        transform: scale(1.5);
+        transform-origin: center;
+    }
+}
+
+/* 通用宽屏黑边消除 - 针对所有宽屏比例 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive {
+        /* 通用上移，防止遮挡下一个页面 */
+        margin-top: -10%;
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的缩放来消除左右黑边 */
+        transform: scale(1.4);
+        transform-origin: center;
+    }
+}
+
+/* 强制消除黑边的通用方法 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive {
+        overflow: hidden;
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的尺寸和负边距来确保完全填满 */
+        width: 120% !important;
+        height: 120% !important;
+        left: -10% !important;
+        top: -10% !important;
+        transform: scale(1.0);
+    }
+}
+
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .loading-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+    
+    .loading-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .progress-container {
+        width: 250px;
+    }
+    
+    /* （已移除）分子加载动效相关样式 */
+    
+    /* 移动端缩放提醒文字 */
+    .browser-zoom-notice {
+        font-size: 0.85rem;
+        margin-top: 25px;
+        max-width: 320px;
+        padding: 0 20px;
+        line-height: 1.4;
+    }
+    
+    .zoom-highlight {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+<!-- 加载页面 -->
+<div id="loading-page">
+    <!-- 新的加载界面 -->
+    <div class="loading-container">
+        <!-- Logo图片 -->
+        <div class="logo-container">
+            <div class="image-placeholder logo-image" aria-label="Museum placeholder">
+                <div class="image-placeholder__inner">
+                    <span class="image-placeholder__icon">◌</span>
+                    <span class="image-placeholder__label">Museum</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 标题 -->
+        <div class="loading-title">My Stories in Museums</div>
+        
+        <!-- 说明文字 -->
+        <div class="loading-subtitle">
+            <p>My Stories in Museums</p>
+        </div>
+        
+        <!-- 进度条容器 -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Loading...</div>
+        </div>
+        
+        <!-- 缩放提示 -->
+        <div class="zoom-instruction">
+            <p>Please adjust your browser zoom level for the best browsing experience</p>
+            <p class="zoom-hint">Recommended zoom: <span class="zoom-highlight">75%-100%</span> (ideal: <span class="zoom-highlight">80%</span>)</p>
+            <p class="zoom-hint">Use <span class="shortcut-highlight">Ctrl+scroll or Ctrl+/-</span> to adjust</p>
+        </div>
+        
+        <!-- Start按钮 -->
+        <button class="start-button" id="startButton" disabled>
+            <span class="button-text">Start</span>
+            <div class="button-glow"></div>
+        </button>
+    </div>
+</div>
+
+<!-- Hero Section - 第一页封面（占满全屏） -->
+<section id="hero" class="hero-section" style="position: relative; width: 100vw; height: 100vh; margin-top: -80px; padding-top: 80px; overflow: hidden; background: #FAF7F2;">
+  <div style="position: absolute; inset: 0; z-index: 0;">
+    <img src="{{ url_for('static', filename='images/Museum1.jpg') }}" alt="Museum cover" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+  </div>
+  <div style="position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(28, 18, 10, 0.68) 0%, rgba(79, 49, 27, 0.44) 38%, rgba(140, 90, 60, 0.12) 100%);"></div>
+
+  <div id="hero-content" class="container" style="position: absolute; top: 60%; left: 10%; transform: translateY(-50%); z-index: 2; text-align: left; transition: opacity 0.5s ease; max-width: 720px;">
+    <h1 style="font-size: 4.5rem; font-weight: bold; letter-spacing: 8px; color: #fff6ea; text-shadow: 0 8px 30px rgba(0,0,0,0.35); margin-bottom: 0.75rem;">My Stories in Museums</h1>
+    <h2 style="font-size: 1.5rem; font-weight: 400; letter-spacing: 1px; color: #f2dcc5; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin-bottom: 2rem;">An immersive AR storytelling journey layered over the museum experience.</h2>
+    <a href="#content-section" class="btn btn-primary btn-lg smooth-scroll" style="padding: 12px 35px; font-weight: bold; border-radius: 30px; border: 2px solid #8C5A3C; color: white; background: #8C5A3C; transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(40,24,12,0.28);">Explore ↓</a>
+  </div>
+</section>
+
+
+
+<!-- Content Section - 第二页 -->
+<section id="content-section" class="content-section" data-navbar-theme="light" style="height: 100vh; padding: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上半部分：左文字右图片 -->
+  <div class="upper-half" style="flex: 1; display: flex; align-items: center; padding: 60px 80px; background: #FAF7F2;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-6 text-content-upper" style="opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; padding-right: 40px;">
+          <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0;">
+            Museums are often designed as spaces for observation rather than participation. Visitors typically move from one exhibit to another, reading labels and passively receiving information. However, this traditional model overlooks a crucial aspect of museums: they are not only repositories of objects, but also carriers of human stories, emotions, and cultural exchanges.
+          </p>
+        </div>
+        <div class="col-lg-6 image-content-upper" style="opacity: 0; transform: translateX(50px); transition: all 0.8s ease; text-align: center;">
+          <div class="image-placeholder" style="max-width: 60%; margin: 0 auto; min-height: 320px;">
+            <div class="image-placeholder__inner">
+              <span class="image-placeholder__icon">▣</span>
+              <span class="image-placeholder__label">Museum</span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <!-- 下半部分：左图片右文字 -->
+  <div class="lower-half" style="flex: 1; display: flex; align-items: center; padding: 60px 80px; background:#FAF7F2;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-6 image-content-lower" style="opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; text-align: center;">
+          <div style="max-width: 90%; margin: 0 auto;">
+            <div class="image-placeholder" style="min-height: 320px;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">▤</span>
+                <span class="image-placeholder__label">Museum</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 text-content-lower" style="opacity: 0; transform: translateX(50px); transition: all 0.8s ease; padding-left: 40px;">
+          <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0;">
+            Our project, My Stories in Museums, aims to transform museum experiences from passive viewing into active storytelling. Inspired by the exhibition narrative structure in our script , we noticed that each artifact is embedded in multiple perspectives—archivists, exchange students, guards, and visitors all interpret the same object differently. This multiplicity of voices suggests that meaning in museums is not fixed, but co-constructed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 第三页 -->
+<section id="third-page" class="third-page" data-navbar-theme="light" style="height: 100vh; padding: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上部60%：box和文字内容 -->
+  <div class="upper-content-third" style="height: 60%; display: flex; align-items: center; padding: 40px 80px;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+        <!-- 左侧：box.gif动画 -->
+        <div class="col-lg-6 gif-content-left" style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease; text-align: left; padding-left: 0; margin-left: -60px;">
+          <div class="image-placeholder box-animation" style="max-width: 120%; min-height: 360px; margin-right: auto;">
+            <div class="image-placeholder__inner">
+              <span class="image-placeholder__icon">◫</span>
+              <span class="image-placeholder__label">Museum</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 右侧：文字内容 -->
+        <div class="col-lg-6 text-content-right" style="opacity: 0; transform: translateY(50px); transition: all 0.8s ease; padding-left: 60px;">
+          <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0;">
+            We chose to explore this theme through a role-playing and interactive system because it allows users to “enter” the museum narrative rather than just observe it. By combining AR interaction, identity-based gameplay, and fragment collection mechanics, users are encouraged to engage with exhibits, converse with virtual characters, and ultimately curate their own micro-exhibition.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 下部40%：SPADE标语 -->
+  <div class="spade-slogan-section" style="height: 40%; display: flex; align-items: center; justify-content: center; position: relative;">
+    <div class="spade-slogan" style="opacity: 0; transform: translateY(30px); transition: all 1.2s ease;">
+      <h2 class="spade-text" style="font-size: 4.2rem; font-weight: 500; color: #8C5A3C; text-align: center; margin: 0; letter-spacing: 4px; font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;">
+        This project reflects our belief that museums should not only display history, but also invite visitors to become storytellers themselves. <span style="position: relative; display: inline-block;"><a href="{{ url_for('pages', page='description') }}" class="spade-highlight" style="font-size: 5.5rem; font-weight: 700; text-decoration: none;">Project</a><span class="click-hint" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); font-size: 1.0rem; color: rgba(255, 255, 255, 0.7); white-space: nowrap; font-weight: 300; letter-spacing: 1px; font-style: italic; margin-top: 5px;">（click it）</span></span>
+      </h2>
+    </div>
+  </div>
+  
+  <!-- 已移除背景漂浮粒子 -->
+  
+</section>
+
+<!-- 第四页 -->
+<section id="fourth-page" class="fourth-page" data-navbar-theme="light" style="height: 100vh; padding: 0; background:  #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
+  
+  <!-- 打字机文字 -->
+  <div class="typewriter-container" style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); z-index: 3; opacity: 0; transition: opacity 0.5s ease; width: 600px; text-align: center;">
+    <div class="typewriter-text" style="font-family: 'Courier New', monospace; font-size: 1.8rem; color: #6A3DE8; text-shadow: none; white-space: nowrap; border-right: 3px solid #6A3DE8; padding-right: 5px; text-align: left; display: inline-block; font-weight: bold;">
+      <span class="typed-content"></span>
+        </div>
+      </div>
+  
+  <!-- Computer图片容器 -->
+  <div class="computer-container" style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+    <div class="image-placeholder computer-image" aria-label="Museum" style="max-width: 90%; max-height: 90%; min-height: 460px; width: min(90%, 1100px);">
+      <div class="image-placeholder__inner">
+        <span class="image-placeholder__icon">⌘</span>
+        <span class="image-placeholder__label">Museum</span>
+      </div>
+    </div>
+    
+    </div>
+  
+  <!-- 页面中央正文 -->
+  <div class="center-text-overlay" style="position: absolute; top: 43%; left: 50%; transform: translate(-50%, -50%); z-index: 3; max-width: 60%; text-align: center; opacity: 0; transition: opacity 0.8s ease;">
+    <p class="center-text" style="font-size: 1.6rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;">
+
+          </p>
+  </div>
+  
+  <!-- Computer图片容器（移到正文下方） -->
+  <div class="computer-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: flex; align-items: center; justify-content: center;">
+    <div class="image-placeholder computer-image" aria-label="Museum" style="max-width: 90%; max-height: 90%; min-height: 460px; width: min(90%, 1100px); opacity: 1;">
+      <div class="image-placeholder__inner">
+        <span class="image-placeholder__icon">⌘</span>
+        <span class="image-placeholder__label">Museum</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 已移除背景漂浮粒子 -->
+  
+</section>
+
+<!-- 第五页 -->
+<section id="fifth-page" class="fifth-page" data-navbar-theme="light" style="height: 100vh; padding: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上半部分：左图片右文字 -->
+  <div class="upper-half-fifth" style="flex: 1; display: flex; align-items: center; padding: 60px 80px; background: #FAF7F2;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-6 image-content-upper-fifth" style="opacity: 1; transform: translateX(0); text-align: center;">
+          <div style="position: relative; width: 90%; height: 0; padding-bottom: 60%; margin: 0 auto; background: transparent; overflow: hidden;">
+            <div class="image-placeholder" style="position: absolute; inset: 0; min-height: 100%;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">◍</span>
+                <span class="image-placeholder__label">museum</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 text-content-upper-fifth" style="opacity: 0; transform: translateX(50px); transition: all 0.8s ease; padding-left: 40px;">
+          <p class="lead" style="font-size: 1.6rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;">
+            The website is also equipped with a machine learning-based regression model, which can predict antibacterial efficacy, half-life and cytotoxicity, providing strong assistance for design.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 下半部分：左文字右图片 -->
+  <div class="lower-half-fifth" style="flex: 1; display: flex; align-items: flex-start; padding: 35px 80px 60px 80px; background: #FAF7F2;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-12 text-content-lower-fifth" style="opacity: 0; transform: translateX(-50px); transition: all 0.8s ease;">
+          <p class="lead" style="font-size: 1.6rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; text-align: center;">
+            The innovative scoring mechanism quantifies the multi-dimensional characteristics of generated peptide sequences through a reinforcement learning reward function, guiding the model to explore towards high activity and low toxicity.
+          </p>
+        </div>
+  </div>
+  </div>
+  </div>
+  
+</section>
+
+<!-- 第六页 -->
+<section id="sixth-page" class="sixth-page" data-navbar-theme="light" style="height: 100vh; padding: 0; margin-bottom: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上部25%：图片和文字内容（移动到距离顶端2%） -->
+  <div class="upper-content-sixth" style="height: 25%; display: flex; align-items: flex-start; padding: 2vh 80px 20px 80px;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+
+        <div class="col-lg-6 image-content-left-sixth" style="opacity: 1; transform: translateX(0); text-align: center; padding-right: 40px;">
+          <div style="width: 90%; margin: 0 auto; background: transparent;">
+            <div class="image-placeholder" style="min-height: 300px;">
+              <div class="image-placeholder__inner">
+                <span class="image-placeholder__icon">◎</span>
+                <span class="image-placeholder__label">museum</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 右侧：文字内容 -->
+        <div class="col-lg-6 text-content-right-sixth" style="opacity: 0; transform: translateX(50px); transition: all 0.8s ease; padding-left: 60px;">
+          <p class="lead" style="font-size: 1.6rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;">
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 中部15%：空白区域（推荐文字上方的空白空间） -->
+  <div style="height: 15%;"></div>
+  
+  <!-- 推荐文字区域8%：推荐文字（紧贴卡片上方） -->
+  <div class="recommend-text-section" style="height: 8%; display: flex; align-items: flex-end; justify-content: flex-start; padding: 0 80px 10px 80px;">
+    <h3 class="recommend-text" style="opacity: 1; transform: translateY(0); font-size: 2.6rem; font-weight: 700; color: #8C5A3C; text-align: left; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Recommend visiting the following content:
+    </h3>
+  </div>
+  
+  <!-- 下部52%：卡片区域（放大卡片） -->
+  <div class="lower-content-sixth" style="height: 52%; display: flex; align-items: flex-start; justify-content: center; padding-top: 0;">
+    <div class="cards-shell" style="position: relative; min-width: 1000px; display: flex; justify-content: center; flex-wrap: wrap; transform-style: preserve-3d; perspective: 900px; gap: 10px;">
+      
+      <!-- User Research 卡片 -->
+      <div class="card-box project-card" data-link="{{ url_for('pages', page='target-users') }}">
+        <div class="card-images image-placeholder" style="min-height: 220px;">
+          <div class="image-placeholder__inner">
+            <span class="image-placeholder__icon">▥</span>
+            <span class="image-placeholder__label">User Research</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2>User Research</h2>
+        </div>
+      </div>
+          
+      <!-- Ideation 卡片 -->
+      <div class="card-box engineering-card" data-link="{{ url_for('pages', page='early-concepts') }}">
+        <div class="card-images image-placeholder" style="min-height: 220px;">
+          <div class="image-placeholder__inner">
+            <span class="image-placeholder__icon">⚙</span>
+            <span class="image-placeholder__label">Ideation</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2>Ideation</h2>
+        </div>
+      </div>
+
+      <!-- Technical Implementation 卡片 -->
+      <div class="card-box software-card" data-link="{{ url_for('pages', page='system-architecture') }}">
+        <div class="card-images image-placeholder" style="min-height: 220px;">
+          <div class="image-placeholder__inner">
+            <span class="image-placeholder__icon">⌬</span>
+            <span class="image-placeholder__label">Technical Implementation</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2>Technical Implementation</h2>
+        </div>
+      </div>
+
+      <!-- reflection 卡片 -->
+      <div class="card-box human-practices-card" data-link="{{ url_for('pages', page='testing') }}">
+        <div class="card-images image-placeholder" style="min-height: 220px;">
+          <div class="image-placeholder__inner">
+            <span class="image-placeholder__icon">✦</span>
+            <span class="image-placeholder__label">Reflection</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2>Reflection</h2>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</section>
+
+
+<!-- Google Fonts -->
+<style>
+/* 300 字重（对应上传的 font-light.woff2） */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://static.igem.wiki/teams/5579/font/font-light.woff2') format('woff2');
+  font-weight: 300; /* 单个字重值 */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 400 字重（常规，对应 font-regular.woff2） */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://static.igem.wiki/teams/5579/font/font-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 500 字重（对应 font-medium.woff2） */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://static.igem.wiki/teams/5579/font/font-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 600 字重（对应 font-semibold.woff2） */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://static.igem.wiki/teams/5579/font/font-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 700 字重（粗体，对应 font-bold.woff2） */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://static.igem.wiki/teams/5579/font/font-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 800 字重（对应 font-extrabold.woff2） */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://static.igem.wiki/teams/5579/font/font-extrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+    </style>
+
+<style>
+/* START NOW按钮悬停效果 */
+.smooth-scroll:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(255,255,255,0.5) !important;
+    background: rgba(255,255,255,0.95) !important;
+}
+
+.smooth-scroll:active {
+    transform: translateY(0) scale(1.02) !important;
+    transition: all 0.1s ease !important;
+}
+
+/* 中文字体设置 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* 中文标题字体 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* 英文标题保持原有样式 */
+.hero-section h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.content-section {
+    opacity: 1;
+    transform: none;
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* 波浪过渡样式 */
+.wave-transition {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    height: 150px;
+    overflow: hidden;
+}
+
+.wave-transition svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* 深色区域样式 */
+.section-dark {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+}
+
+.feature-card {
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.15) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* 浮动动画 */
+@keyframes floatSlow {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg); 
+        opacity: 0.6;
+    }
+}
+
+/* 立即滚动样式 */
+html {
+    scroll-behavior: auto;
+}
+
+/* 页面动画已移除，所有元素直接显示 */
+.second-page, .third-page, .fourth-page, .fifth-page, .sixth-page {
+    opacity: 1;
+    transform: none;
+}
+
+.second-page h2, .third-page h2, .fourth-page h2, .fifth-page h2, .sixth-page h2 {
+    opacity: 1;
+    transform: none;
+}
+
+/* 波浪分割已删除，页面无缝连接 */
+
+/* 已删除科技感粒子背景样式 */
+
+/* 渐变背景增强 */
+.content-section {
+    background: linear-gradient(135deg, 
+        rgba(255,255,255,0.95) 0%, 
+        rgba(240,248,255,0.9) 50%, 
+        rgba(230,240,250,0.85) 100%) !important;
+}
+
+.section-dark {
+    background: linear-gradient(135deg, 
+        rgba(74,85,104,0.95) 0%, 
+        rgba(45,55,72,0.9) 50%, 
+        rgba(26,32,44,0.85) 100%) !important;
+}
+
+/* 第二页专用样式 */
+.upper-half, .lower-half {
+    min-height: 50vh;
+}
+
+/* 第三页专用样式 */
+.third-page {
+    min-height: 100vh;
+}
+
+/* Project 高亮样式 */
+.spade-highlight {
+    background: linear-gradient(45deg, #4ade80, #3b82f6, #8b5cf6, #f59e0b);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    font-weight: 700;
+    position: relative;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.4)) drop-shadow(0 0 25px rgba(255,255,255,0.2));
+}
+
+.spade-text {
+    cursor: default;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+.spade-highlight {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+.spade-highlight:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.8)) drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 35px rgba(255,255,255,0.3));
+    animation: gradientShift 2s ease-in-out infinite;
+}
+
+.spade-highlight:hover::before {
+    filter: blur(3px) drop-shadow(0 0 15px rgba(255,255,255,0.5));
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Box动画发光效果 */
+.box-animation {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 15px rgba(255,255,255,0.3)) drop-shadow(0 0 25px rgba(255,255,255,0.2));
+}
+
+/* Computer图片发光效果 */
+.computer-image {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 15px rgba(255,255,255,0.3)) drop-shadow(0 0 25px rgba(255,255,255,0.2));
+    object-position: center;
+}
+
+/* 第四页专用样式 */
+.fourth-page {
+    min-height: 100vh;
+}
+
+/* 第五页专用样式 */
+.fifth-page {
+    min-height: 100vh;
+}
+
+.upper-half-fifth, .lower-half-fifth {
+    min-height: 50vh;
+}
+
+/* 第六页专用样式 */
+.sixth-page {
+    min-height: 100vh;
+    margin-bottom: 0 !important;
+}
+
+/* 确保第六页与footer无缝衔接 */
+#sixth-page + * {
+    margin-top: 0 !important;
+}
+
+/* 防止任何全局margin影响footer */
+footer {
+    margin-top: 0 !important;
+}
+
+/* 第七页专用样式 */
+.seventh-page {
+    min-height: 100vh;
+}
+
+/* 卡片3D效果样式 */
+.cards-shell .card-box {
+    position: relative;
+    width: 260px;
+    height: 350px;
+    transition: 0.3s;
+    overflow: hidden;
+    margin: 25px;
+    transform: rotateY(0deg);
+    transition-delay: .1s;
+    border-radius: 10px;
+    border: #fff 3px solid;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* 当鼠标悬停在容器上时，所有卡片向Y轴翻转20度 */
+.cards-shell:hover .card-box {
+    transform: rotateY(20deg);
+}
+
+/* 当鼠标悬停在当前卡片上时，当前卡片翻转角度为0，放大1.25倍，加阴影和发光 */
+.cards-shell .card-box:hover {
+    transform: rotateY(0deg) scale(1.25);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.4);
+    z-index: 10;
+}
+
+/* 当鼠标悬停在卡片上时，后面的所有卡片反向翻转-20度 */
+.cards-shell .card-box:hover ~ .card-box {
+    transform: rotateY(-20deg);
+}
+
+.cards-shell .card-box .card-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cards-shell .card-box .card-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.cards-shell .card-box .card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.cards-shell .card-box .card-content h2 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9);
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: rgba(0,0,0,0.3);
+    padding: 15px 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+
+/* 打字机效果动画 */
+.typewriter-text {
+    animation: blink-cursor 1s infinite;
+}
+
+.typed-content {
+    display: inline;
+}
+
+@keyframes blink-cursor {
+    0%, 50% {
+        border-color: #6A3DE8;
+    }
+    51%, 100% {
+        border-color: transparent;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    /* 第二页移动端适配 */
+    .upper-half, .lower-half {
+        padding: 40px 20px !important;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .text-content-upper, .text-content-lower {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        margin-bottom: 30px;
+    }
+    
+    .image-content-upper, .image-content-lower {
+        margin-bottom: 30px;
+    }
+    
+    .upper-half .lead, .lower-half .lead {
+        font-size: 1.4rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* 移动端图片大小调整 */
+    .image-content-upper img, .image-content-lower img {
+        max-width: 100% !important;
+    }
+    
+    /* 第三页移动端适配 */
+    .third-page .row {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .gif-content-left, .text-content-right {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .third-page .lead {
+        font-size: 1.4rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* SPADE标语移动端适配 */
+    .spade-text {
+        font-size: 2.8rem !important;
+        letter-spacing: 2px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .spade-highlight {
+        font-size: 3.5rem !important;
+    }
+    
+    .upper-content-third {
+        padding: 30px 20px !important;
+    }
+    
+    /* 第四页移动端适配 */
+    .computer-image {
+        max-width: 95% !important;
+        max-height: 85% !important;
+        object-fit: contain !important;
+    }
+    
+    .typewriter-container {
+        top: 5% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+    }
+    
+    .typewriter-text {
+        font-size: 1.2rem !important;
+        font-weight: bold !important;
+        color: #6A3DE8 !important;
+        border-right-color: #6A3DE8 !important;
+    }
+    
+    .center-text-overlay {
+        max-width: 85% !important;
+    }
+    
+    .center-text {
+        font-size: 1.2rem !important;
+    }
+    
+    /* 第五页移动端适配 */
+    .upper-half-fifth {
+        padding: 40px 20px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .lower-half-fifth {
+        padding: 20px 20px 40px 20px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: flex-start !important;
+    }
+    
+    .text-content-upper-fifth, .text-content-lower-fifth {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .image-content-upper-fifth, .image-content-lower-fifth {
+        margin-bottom: 30px !important;
+    }
+    
+    .upper-half-fifth .lead, .lower-half-fifth .lead {
+        font-size: 1.3rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* 第六页移动端适配 */
+    .upper-content-sixth {
+        padding: 2vh 20px 20px 20px !important;
+        height: 30% !important;
+    }
+    
+    .sixth-page .row {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .image-content-left-sixth, .text-content-right-sixth {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .text-content-right-sixth .lead {
+        font-size: 1.3rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* 第六页推荐文字移动端适配 */
+    .recommend-text-section {
+        height: 20% !important;
+        padding: 0 20px 10px 20px !important;
+        justify-content: flex-start !important;
+        align-items: flex-end !important;
+    }
+    
+    .recommend-text {
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.8px !important;
+        text-align: left !important;
+    }
+    
+    /* 第六页卡片区域移动端适配 */
+    .sixth-page .cards-shell {
+        min-width: auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        height: 50% !important;
+    }
+    
+    .sixth-page .card-box {
+        width: 280px !important;
+        height: 200px !important;
+        margin: 5px !important;
+    }
+    
+    /* 第七页移动端适配 */
+    .cards-shell {
+        min-width: auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    
+    .card-box {
+        width: 300px !important;
+        height: 220px !important;
+        margin: 10px !important;
+    }
+    
+    .card-content h2 {
+        font-size: 1.3rem !important;
+        padding: 10px 15px !important;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    /* 平板端适配 */
+    .upper-half, .lower-half {
+        padding: 50px 40px !important;
+    }
+    
+    .text-content-upper, .text-content-lower {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+    }
+    
+    .upper-half .lead, .lower-half .lead {
+        font-size: 1.6rem !important;
+    }
+    
+    /* 第三页平板端适配 */
+    .text-content-right {
+        padding-left: 40px !important;
+    }
+    
+    .third-page .lead {
+        font-size: 1.6rem !important;
+    }
+    
+    /* SPADE标语平板端适配 */
+    .spade-text {
+        font-size: 3.8rem !important;
+        letter-spacing: 3px !important;
+    }
+    
+    .spade-highlight {
+        font-size: 4.8rem !important;
+    }
+    
+    /* 第五页平板端适配 */
+    .upper-half-fifth {
+        padding: 50px 40px !important;
+    }
+    
+    .lower-half-fifth {
+        padding: 30px 40px 50px 40px !important;
+        align-items: flex-start !important;
+    }
+    
+    .text-content-upper-fifth, .text-content-lower-fifth {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+    
+    .upper-half-fifth .lead, .lower-half-fifth .lead {
+        font-size: 1.5rem !important;
+    }
+    
+    /* 第六页平板端适配 */
+    .text-content-right-sixth {
+        padding-left: 40px !important;
+    }
+    
+    .text-content-right-sixth .lead {
+        font-size: 1.5rem !important;
+    }
+    
+    .upper-content-sixth {
+        padding: 2vh 50px 20px 50px !important;
+        height: 30% !important;
+    }
+    
+    /* 第六页推荐文字平板端适配 */
+    .recommend-text-section {
+        height: 18% !important;
+        padding: 0 50px 10px 50px !important;
+        justify-content: flex-start !important;
+        align-items: flex-end !important;
+    }
+    
+    .recommend-text {
+        font-size: 2.2rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.2px !important;
+        text-align: left !important;
+    }
+    
+    /* 第六页卡片区域平板端适配 */
+    .sixth-page .cards-shell {
+        min-width: 800px !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+        height: 49% !important;
+    }
+    
+    .sixth-page .card-box {
+        width: 200px !important;
+        height: 280px !important;
+        margin: 10px !important;
+    }
+    
+    /* 第七页平板端适配 */
+    .cards-shell {
+        min-width: 1000px !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+    
+    .card-box {
+        width: 180px !important;
+        height: 260px !important;
+        margin: 15px !important;
+    }
+}
+
+/* 优化视觉效果 */
+.section-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.1)  0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.1)  0%, transparent 50%),
+        radial-gradient(circle at 40% 80%,  rgba(142, 68, 173, 0.1)  0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* GSAP ScrollTrigger 动画样式 */
+.animated-text {
+    perspective: 1000px;
+}
+
+.animated-text h2 {
+    transform-style: preserve-3d;
+    transform-origin: center bottom;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    font-weight: 300;
+    letter-spacing: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+}
+
+/* 卡片文字优化 */
+.feature-card h5 {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.feature-card p {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   首页整体响应式修正（手机 / 平板）
+   ========================================================= */
+
+@media (max-width: 768px) {
+    /* 彻底消除横向滚动 */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* 全屏分屏 section 在小屏上改为自适应高度 */
+    #hero,
+    #content-section,
+    #third-page,
+    #fourth-page,
+    #fifth-page,
+    #sixth-page {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    /* Hero 内容改为居中堆叠，不再固定在左下角 */
+    #hero {
+        padding-top: 80px !important;
+        padding-bottom: 40px !important;
+    }
+
+    /* （已移除）粒子背景视频/iframe适配 */
+
+    #hero-content {
+        position: relative !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translate(-50%, 0) !important;
+        text-align: center !important;
+        padding: 40px 20px !important;
+    }
+
+    #hero-content h1 {
+        font-size: 2.6rem !important;
+        letter-spacing: 3px !important;
+    }
+
+    #hero-content h2 {
+        font-size: 1.1rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .smooth-scroll {
+        margin-top: 10px;
+    }
+
+    /* 第二页上/下半部分改为纵向排列，已在上方做基础处理，这里再压缩整体高度 */
+    .upper-half,
+    .lower-half {
+        min-height: auto !important;
+    }
+
+    /* 第三页左右结构在小屏上纵向排列，gif 不再超出左侧 */
+    .upper-content-third {
+        padding: 30px 20px !important;
+        height: auto !important;
+    }
+
+    .spade-slogan-section {
+        height: auto !important;
+    }
+
+    .gif-content-left {
+        margin-left: 0 !important;
+        text-align: center !important;
+    }
+
+    .gif-content-left img {
+        max-width: 100% !important;
+    }
+
+    .spade-slogan {
+        padding: 0 15px;
+    }
+
+    .spade-text {
+        font-size: 2.2rem !important;
+    }
+
+    .spade-highlight {
+        font-size: 2.8rem !important;
+    }
+
+    /* 第四页：打字机 + 文本 居中并允许换行 */
+    .typewriter-container {
+        width: 90% !important;
+        max-width: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .typewriter-text {
+        white-space: normal !important;
+        font-size: 1.1rem !important;
+    }
+
+    .center-text-overlay {
+        max-width: 90% !important;
+        top: 50% !important;
+    }
+
+    .center-text {
+        font-size: 1.2rem !important;
+    }
+
+    .computer-image {
+        max-width: 95% !important;
+        max-height: 80% !important;
+    }
+
+    /* 第五页：上下结构纵向排列，图表区高度减小 */
+    .score-viz-container {
+        height: 260px !important;
+    }
+
+    .viz-card {
+        padding: 20px !important;
+        width: 100% !important;
+    }
+
+    .chart-container {
+        height: 160px !important;
+    }
+
+    .total-score-display {
+        font-size: 2.4em !important;
+    }
+
+    /* 第六页推荐卡片区域：单列卡片，保证不超出屏幕 */
+    .upper-content-sixth,
+    .recommend-text-section,
+    .lower-content-sixth {
+        height: auto !important;
+    }
+
+    .lower-content-sixth {
+        padding: 10px 0 40px 0 !important;
+    }
+
+    .sixth-page .cards-shell {
+        padding: 0 10px;
+        height: auto !important;
+    }
+
+    .sixth-page .card-box {
+        width: 90% !important;
+        max-width: 320px !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-content h1 {
+        font-size: 2.2rem !important;
+    }
+
+    #hero-content h2 {
+        font-size: 1rem !important;
+    }
+
+    .spade-text {
+        font-size: 2rem !important;
+    }
+
+    .spade-highlight {
+        font-size: 2.4rem !important;
+    }
+
+    .recommend-text {
+        font-size: 1.5rem !important;
+    }
+}
+
+</style>
+
+<!-- 添加GSAP和ScrollTrigger库 -->
+<script src="{{ url_for('static', filename = 'gsap.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'ScrollTrigger.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'ScrollToPlugin.min.js') }}"></script>
+
+<!-- Chart.js库用于环状评分动画 -->
+<script src="{{ url_for('static', filename = 'chart.js') }}"></script>
+<!-- 添加平滑滚动脚本 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 注册GSAP插件
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    
+    // 动画参数设置
+    const fadeInDuration = 1;
+    const fadeOutDuration = 1;
+    const delayBetween = 2;
+    
+    // Hero section现在作为正常页面流的第一页，不需要滚动隐藏逻辑
+    
+    // 快速丝滑滚动功能
+    document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // 立即跳转，无动画延迟
+                gsap.to(window, {
+                    duration: 0.1,
+                    scrollTo: {
+                        y: targetSection,
+                        offsetY: 0
+                    },
+                    ease: "power2.out"
+                });
+            }
+        });
+    });
+    
+    // 滚动动画效果
+    function checkScrollAnimation() {
+        const textContentUpper = document.querySelector('.text-content-upper');
+        const imageContentUpper = document.querySelector('.image-content-upper');
+        const imageContentLower = document.querySelector('.image-content-lower');
+        const textContentLower = document.querySelector('.text-content-lower');
+        const contentSection = document.getElementById('content-section');
+        
+        // 第三页元素
+        const gifContentLeft = document.querySelector('.gif-content-left');
+        const textContentRight = document.querySelector('.text-content-right');
+        const spadeSlogan = document.querySelector('.spade-slogan');
+        const thirdPageSection = document.getElementById('third-page');
+        
+        // 第四页元素
+        const computerImage = document.querySelector('.computer-image');
+        const typewriterContainer = document.querySelector('.typewriter-container');
+        const centerTextOverlay = document.querySelector('.center-text-overlay');
+        const fourthPageSection = document.getElementById('fourth-page');
+        
+        // 第五页元素
+        const imageContentUpperFifth = document.querySelector('.image-content-upper-fifth');
+        const textContentUpperFifth = document.querySelector('.text-content-upper-fifth');
+        const textContentLowerFifth = document.querySelector('.text-content-lower-fifth');
+        const imageContentLowerFifth = document.querySelector('.image-content-lower-fifth');
+        const fifthPageSection = document.getElementById('fifth-page');
+        
+        // 第六页元素
+        const imageContentLeftSixth = document.querySelector('.image-content-left-sixth');
+        const textContentRightSixth = document.querySelector('.text-content-right-sixth');
+        const sixthPageSection = document.getElementById('sixth-page');
+        
+        const scrolled = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // 第二页动画
+        if (contentSection) {
+            const sectionTop = contentSection.offsetTop;
+            
+            if (scrolled + windowHeight > sectionTop + 200) {
+                // 上半部分动画
+                if (textContentUpper && imageContentUpper) {
+                    textContentUpper.style.opacity = '1';
+                    textContentUpper.style.transform = 'translateX(0)';
+                    
+                    setTimeout(() => {
+                        imageContentUpper.style.opacity = '1';
+                        imageContentUpper.style.transform = 'translateX(0)';
+                    }, 200);
+                }
+                
+                // 下半部分动画（稍微延迟）
+                setTimeout(() => {
+                    if (imageContentLower && textContentLower) {
+                        imageContentLower.style.opacity = '1';
+                        imageContentLower.style.transform = 'translateX(0)';
+                        
+                        setTimeout(() => {
+                            textContentLower.style.opacity = '1';
+                            textContentLower.style.transform = 'translateX(0)';
+                        }, 200);
+                    }
+                }, 400);
+            }
+        }
+        
+        // 第三页动画 - 自下而上浮入
+        if (thirdPageSection && gifContentLeft && textContentRight && spadeSlogan) {
+            const thirdPageTop = thirdPageSection.offsetTop;
+            
+            if (scrolled + windowHeight > thirdPageTop + 300) {
+                if (!gifContentLeft.classList.contains('animated')) {
+                    gifContentLeft.style.opacity = '1';
+                    gifContentLeft.style.transform = 'translateY(0)';
+                    gifContentLeft.classList.add('animated');
+                    
+                    setTimeout(() => {
+                        textContentRight.style.opacity = '1';
+                        textContentRight.style.transform = 'translateY(0)';
+                        textContentRight.classList.add('animated');
+                    }, 300);
+                    
+                    // SPADE标语延迟更久出现，创造戏剧性效果
+                    setTimeout(() => {
+                        spadeSlogan.style.opacity = '1';
+                        spadeSlogan.style.transform = 'translateY(0)';
+                        spadeSlogan.classList.add('animated');
+                        
+                        // SPADE标语动画完成后，标记第三页完成
+                        setTimeout(() => {
+                            thirdPageSection.classList.add('animation-complete');
+                        }, 1200); // 等待Project标语的1.2s transition完成
+                    }, 1000);
+                }
+            }
+        }
+        
+        // 第四页动画 - 只在第三页动画完成后才开始
+        if (fourthPageSection && typewriterContainer && centerTextOverlay) {
+            const fourthPageTop = fourthPageSection.offsetTop;
+            const thirdPageComplete = thirdPageSection && thirdPageSection.classList.contains('animation-complete');
+            
+            // 如果用户快速滚动跳过第三页，自动完成第三页动画
+            if (scrolled + windowHeight > fourthPageTop + 200 && !thirdPageComplete) {
+                if (thirdPageSection && gifContentLeft && textContentRight && spadeSlogan) {
+                    // 立即完成第三页所有动画
+                    gifContentLeft.style.opacity = '1';
+                    gifContentLeft.style.transform = 'translateY(0)';
+                    gifContentLeft.classList.add('animated');
+                    
+                    textContentRight.style.opacity = '1';
+                    textContentRight.style.transform = 'translateY(0)';
+                    textContentRight.classList.add('animated');
+                    
+                    spadeSlogan.style.opacity = '1';
+                    spadeSlogan.style.transform = 'translateY(0)';
+                    spadeSlogan.classList.add('animated');
+                    
+                    thirdPageSection.classList.add('animation-complete');
+                }
+            }
+            
+            if (scrolled + windowHeight > fourthPageTop + 200 && (thirdPageComplete || thirdPageSection.classList.contains('animation-complete'))) {
+                // 同时显示打字机文字容器和中央文字
+                if (typewriterContainer.style.opacity !== '1') {
+                    typewriterContainer.style.opacity = '1';
+                    centerTextOverlay.style.opacity = '1';
+                    startTypewriter();
+                }
+            }
+        }
+        
+        // 第五页动画 - 上下两部分分别动画（视频无动画）
+        if (fifthPageSection && textContentUpperFifth && textContentLowerFifth && imageContentLowerFifth) {
+            const fifthPageTop = fifthPageSection.offsetTop;
+            
+            if (scrolled + windowHeight > fifthPageTop + 200) {
+                // 上半部分文字动画
+                textContentUpperFifth.style.opacity = '1';
+                textContentUpperFifth.style.transform = 'translateX(0)';
+                
+                // 下半部分动画（稍微延迟）
+                setTimeout(() => {
+                    textContentLowerFifth.style.opacity = '1';
+                    textContentLowerFifth.style.transform = 'translateX(0)';
+                    
+                    setTimeout(() => {
+                        if (imageContentLowerFifth) {
+                            imageContentLowerFifth.style.opacity = '1';
+                            imageContentLowerFifth.style.transform = 'translateX(0)';
+                            // 触发图表动画
+                            setTimeout(() => {
+                                animateScoreChart();
+                            }, 300);
+                        }
+                    }, 200);
+                }, 400);
+            }
+        }
+        
+        // 第六页动画 - 右侧文字（视频无动画）
+        if (sixthPageSection && textContentRightSixth) {
+            const sixthPageTop = sixthPageSection.offsetTop;
+            
+            if (scrolled + windowHeight > sixthPageTop + 200) {
+                textContentRightSixth.style.opacity = '1';
+                textContentRightSixth.style.transform = 'translateX(0)';
+            }
+        }
+    }
+    
+    // 滚动时检查动画
+    window.addEventListener('scroll', checkScrollAnimation);
+    
+    // 页面加载时也检查一次
+    checkScrollAnimation();
+    
+    // 第七页卡片点击跳转功能
+    document.querySelectorAll('.card-box').forEach(card => {
+        card.addEventListener('click', function() {
+            const link = this.getAttribute('data-link');
+            if (link) {
+                window.location.href = link;
+            }
+            });
+        });
+    
+    // 打字机效果函数
+    function startTypewriter() {
+        const text = "http12345";
+        const typedContent = document.querySelector('.typed-content');
+        let index = 0;
+        
+        if (!typedContent) return;
+        
+        // 清空内容
+        typedContent.textContent = '';
+        
+        function typeCharacter() {
+            if (index < text.length) {
+                typedContent.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeCharacter, 100); // 每个字符间隔100ms
+            }
+        }
+        
+        // 开始打字
+        typeCharacter();
+    }
+    
+    // 清理不再需要的动画代码
+    
+    // 初始化环状评分图表
+    let scoreChart = null;
+    let chartAnimated = false;
+    
+    function initScoreChart() {
+        const canvas = document.getElementById('gaugeChart');
+        if (!canvas) return;
+        
+        const score = 0; // 初始为0，滚动时才动画到8.88
+        const maxScore = 10;
+        const data = {
+            datasets: [{
+                data: [score, maxScore - score],
+                backgroundColor: [
+                    '#64DD17',
+                    'rgba(200, 200, 200, 0.2)'
+                ],
+                borderWidth: 0,
+                hoverBackgroundColor: [
+                    '#64DD17',
+                    'rgba(200, 200, 200, 0.2)'
+                ]
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '80%',
+                rotation: -90,
+                circumference: 180,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                animation: {
+                    animateRotate: false, // 初始化时不动画
+                    animateScale: false,
+                    duration: 0
+                }
+            }
+        };
+
+        scoreChart = new Chart(canvas, config);
+    }
+    
+    // 动画到目标分数
+    function animateScoreChart() {
+        if (!scoreChart || chartAnimated) return;
+        
+        const targetScore = 8.88;
+        const maxScore = 10;
+        
+        // 更新数据并启用动画
+        scoreChart.data.datasets[0].data = [targetScore, maxScore - targetScore];
+        scoreChart.options.animation = {
+            animateRotate: true,
+            animateScale: false,
+            duration: 2500,
+            easing: 'easeOutQuart'
+        };
+        
+        scoreChart.update();
+        chartAnimated = true;
+    }
+    
+    // 延迟初始化图表，确保页面元素已加载
+    setTimeout(initScoreChart, 1000);
+});
+</script>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 加载页面控制
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingPage = document.getElementById('loading-page');
+    const startButton = document.getElementById('startButton');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    
+    // 记录开始时间，确保最小加载时间
+    const startTime = Date.now();
+    const minLoadingTime = 2000; // 最少显示2秒
+    
+    let progressComplete = false;
+    
+    // 检查所有资源是否加载完成
+    function checkAllLoaded() {
+        if (progressComplete) {
+            // 确保最小加载时间
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
+            
+            setTimeout(() => {
+                // 显示Start按钮，不自动跳转
+                startButton.style.opacity = '1';
+                startButton.style.pointerEvents = 'auto';
+                startButton.disabled = false;
+                
+                // 添加按钮激活动画
+                startButton.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    startButton.style.transform = 'scale(1)';
+                }, 200);
+            }, remainingTime + 500);
+        }
+    }
+    
+    // 模拟加载进度
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+        progress += Math.random() * 8 + 3; // 随机增加3-11%
+        
+        if (progress >= 100) {
+            progress = 100;
+            progressComplete = true;
+            clearInterval(loadingInterval);
+            
+            // 加载完成
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Done!';
+            
+            checkAllLoaded();
+        } else {
+            progressFill.style.width = progress + '%';
+            progressText.textContent = 'Loading... ' + Math.round(progress) + '%';
+        }
+    }, 200);
+    
+    // Start按钮点击事件
+    startButton.addEventListener('click', function() {
+        // 检查按钮是否已激活
+        if (startButton.disabled) {
+            return;
+        }
+
+        // 添加按钮点击动画
+        startButton.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            startButton.style.transform = 'scale(1)';
+        }, 150);
+        
+        // 延迟一点时间后隐藏加载页面
+        setTimeout(() => {
+            loadingPage.classList.add('fade-out');
+            
+            // 完全移除加载页面
+            setTimeout(() => {
+                loadingPage.style.display = 'none';
+            }, 800);
+        }, 300);
+    });
+});
+</script>
+{% endblock %}
