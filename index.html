@@ -1,0 +1,2788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+    <meta name="msapplication-TileImage" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23052659'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='32' fill='white' font-family='Arial, sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+
+    <!-- Bootstrap CSS -->
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="static/font-awesome.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="static/style.css" rel="stylesheet">
+    
+    <!-- 下拉导航栏样式 -->
+    <link href="static/dropdown-nav.css" rel="stylesheet">
+
+    <!-- 页面特定的CSS -->
+    
+
+    <title>Home | XJTLU Museum Project</title>
+
+</head>
+<body>
+  <!-- 全局装饰元素已移至home页面 -->
+
+  <!-- 滚动提示箭头 -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <div class="progress-ring"></div>
+    <div class="arrow bounce"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top theme-default">
+  <div class="container">
+
+    <!-- TEAM NAME -->
+    <a class="navbar-brand" href="index.html">
+      XJTLU
+    </a>
+
+    <!-- SMALL SCREEN MENU ICON -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto left-aligned">
+
+        <!-- HOME -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="fas fa-home"></i><span class="nav-label">Home</span></a>
+        </li>
+
+        <!-- TEAM -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-team" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-users"></i><span class="nav-label">Team</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-team">
+            <li><a class="dropdown-item" href="members.html"><i class="fas fa-user-friends"></i> Members</a></li>
+          </ul>
+        </li>
+
+        <!-- USER RESEARCH -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-user-research" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-search"></i><span class="nav-label">User Research</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-user-research">
+            <li><a class="dropdown-item" href="target-users.html"><i class="fas fa-bullseye"></i> Target Users</a></li>
+            <li><a class="dropdown-item" href="user-requirements.html"><i class="fas fa-clipboard-list"></i> User Requirements</a></li>
+            <li><a class="dropdown-item" href="user-journey-map.html"><i class="fas fa-route"></i> User Journey Map</a></li>
+          </ul>
+        </li>
+
+        <!-- IDEATION -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-ideation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-project-diagram"></i><span class="nav-label">Ideation</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-ideation">
+            <li><a class="dropdown-item" href="early-concepts.html"><i class="fas fa-seedling"></i> Early Concepts</a></li>
+            <li><a class="dropdown-item" href="design-alternatives.html"><i class="fas fa-random"></i> Design Alternatives</a></li>
+            <li><a class="dropdown-item" href="final-concept.html"><i class="fas fa-check-circle"></i> Final Concept</a></li>
+          </ul>
+        </li>
+
+        <!-- TECHNICAL IMPLEMENTATION -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-technical" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-cogs"></i><span class="nav-label">Technical Implementation</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-technical">
+            <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
+            <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
+            <li><a class="dropdown-item" href="contributions.html"><i class="fas fa-code-branch"></i> Contributions</a></li>
+            <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
+          </ul>
+        </li>
+
+        <!-- REFLECTION -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-reflection" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-chart-line"></i><span class="nav-label">Reflection</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbar-reflection">
+            <li><a class="dropdown-item" href="testing.html"><i class="fas fa-vial"></i> Testing</a></li>
+            <li><a class="dropdown-item" href="iterations.html"><i class="fas fa-sync-alt"></i> Iterations</a></li>
+            <li><a class="dropdown-item" href="lessons-learned.html"><i class="fas fa-book-open"></i> Lessons Learned</a></li>
+            <li><a class="dropdown-item" href="future-work.html"><i class="fas fa-forward"></i> Future Work</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Header -->
+  
+
+  <!-- Page Content -->
+  <style>
+
+/* 恢复下拉菜单箭头 */
+.dropdown-toggle::after {
+    content: "" !important;
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+/* 加载页面样式 */
+#loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FAF7F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+#loading-page.fade-out {
+    opacity: 0;
+    transform: scale(1.1);
+    pointer-events: none;
+}
+
+/* 新的加载容器 */
+.loading-container {
+    text-align: center;
+    color: #8C5A3C;
+    max-width: 800px;
+    width: 90%;
+}
+
+/* Logo容器 */
+.logo-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    }
+    50% { 
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+    }
+}
+
+/* 主标题 */
+.loading-title {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    to {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.3);
+    }
+}
+
+/* 说明文字 */
+.loading-subtitle {
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.loading-subtitle p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* 进度条容器 */
+.progress-container {
+    width: 300px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7B2FF7, #3A1C71);
+    width: 0%;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* 进度文本 */
+.progress-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* 缩放提示 */
+.zoom-instruction {
+    margin-bottom: 30px;
+    opacity: 1;
+    background: rgba(255, 248, 240, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(140, 90, 60, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.zoom-instruction p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #8C5A3C;
+    font-weight: 600;
+}
+
+.zoom-hint {
+    font-size: 0.9rem;
+    color: #8C5A3C;
+    font-weight: 500;
+}
+
+/* 高亮缩放比例数字 */
+.zoom-hint .zoom-highlight {
+    color: #ffd700;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+    font-size: 1.1em;
+    position: relative;
+}
+
+.zoom-hint .zoom-highlight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 237, 78, 0.2));
+    border-radius: 3px;
+    z-index: -1;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* 快捷键高亮样式 */
+.zoom-hint .shortcut-highlight {
+    color: #6A3DE8;
+    font-weight: 600;
+    background: #C66B4B;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(193, 232, 255, 0.6);
+    filter: drop-shadow(0 0 4px rgba(193, 232, 255, 0.4));
+    position: relative;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+/* Start按钮 */
+.start-button {
+    background: #C66B4B;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    color: #2F2F2F;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(198, 107, 75, 0.35);
+    margin-bottom: 30px;
+    /* 初始状态：隐藏且不可点击 */
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 移除禁用状态样式，按钮始终可用 */
+
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(198, 107, 75, 0.45);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.start-button:hover .button-glow {
+    left: 100%;
+}
+
+/* 移除状态指示器样式 */
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .loading-container {
+        max-width: 95%;
+        padding: 0 20px;
+    }
+    
+    .logo-image {
+        max-width: 150px;
+        max-height: 150px;
+    }
+    
+    .loading-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+        margin-bottom: 25px;
+    }
+    
+    .loading-subtitle p {
+        font-size: 1rem;
+    }
+    
+    .progress-container {
+        width: 250px;
+        margin-bottom: 25px;
+    }
+    
+    .zoom-instruction {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .zoom-instruction p {
+        font-size: 0.9rem;
+    }
+    
+    .zoom-hint {
+        font-size: 0.75rem;
+    }
+    
+    .zoom-hint .zoom-highlight {
+        font-size: 1.05em;
+    }
+    
+    .start-button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .loading-title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    
+    .loading-subtitle p {
+        font-size: 0.9rem;
+    }
+    
+    .progress-container {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .zoom-instruction {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .zoom-instruction p {
+        font-size: 0.8rem;
+    }
+    
+    .zoom-hint {
+        font-size: 0.7rem;
+    }
+    
+    .zoom-hint .zoom-highlight {
+        font-size: 1.1em;
+    }
+    
+    .start-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Hero section无浮入动画，直接显示 */
+.hero-section {
+    opacity: 1;
+}
+
+/* （已移除）粒子背景视频/iframe相关样式 */
+
+/* 内容视频容器响应式样式 */
+.video-container-responsive {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.video-container-responsive::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 默认16:9比例 */
+}
+
+.video-container-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 0;
+}
+
+/* 21:9宽屏适配 - 让iframe填满容器宽度 */
+@media (min-aspect-ratio: 21/9) {
+    .video-container-responsive::before {
+        padding-top: 40%; /* 在超宽屏上减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的缩放比例来完全填满容器 */
+        width: 100%;
+        height: 100%;
+        transform: scale(1.5);
+        transform-origin: center;
+    }
+}
+
+/* 超宽屏适配 - 进一步限制高度并确保填满 */
+@media (min-aspect-ratio: 32/9) {
+    .video-container-responsive::before {
+        padding-top: 30%; /* 在极宽屏上进一步减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        width: 100%;
+        height: 100%;
+        transform: scale(2.0);
+        transform-origin: center;
+    }
+}
+
+/* 标准宽屏适配 */
+@media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+    .video-container-responsive::before {
+        padding-top: 50%; /* 标准宽屏稍微减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.3);
+        transform-origin: center;
+    }
+}
+
+/* 通用宽屏适配 - 针对所有宽屏比例 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive iframe {
+        /* 确保在所有宽屏上都填满容器 */
+        width: 100%;
+        height: 100%;
+        transform: scale(1.6);
+        transform-origin: center;
+    }
+}
+
+/* 强制消除黑边的通用方法 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive {
+        overflow: hidden;
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的缩放和负边距来确保完全填满 */
+        width: 120%;
+        height: 120%;
+        left: -10%;
+        top: -10%;
+        transform: scale(1.0);
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .video-container-responsive::before {
+        padding-top: 56.25%; /* 移动端保持标准比例 */
+    }
+}
+
+/* 平板适配 */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .video-container-responsive::before {
+        padding-top: 50%; /* 平板稍微减少高度 */
+    }
+}
+
+/* 修复page1-2和page6视频的黑线问题 */
+.video-container-responsive {
+    /* 消除可能的黑线 */
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.video-container-responsive iframe {
+    /* 消除iframe的黑线 */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    /* 确保完全填满容器 */
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* 21:9宽屏特殊处理 - 缩小视频并上移，防止遮挡 */
+@media (min-aspect-ratio: 21/9) {
+    .video-container-responsive {
+        /* 缩小容器尺寸 */
+        max-width: 80%;
+        margin: 0 auto;
+        /* 大幅上移容器 */
+        margin-top: -15%;
+    }
+    
+    .video-container-responsive::before {
+        padding-top: 30%; /* 进一步减少高度 */
+    }
+    
+    .video-container-responsive iframe {
+        /* 确保iframe填满缩小后的容器，消除左右黑边 */
+        transform: scale(1.3);
+        transform-origin: center;
+    }
+}
+
+/* 超宽屏特殊处理 */
+@media (min-aspect-ratio: 32/9) {
+    .video-container-responsive {
+        max-width: 70%;
+        margin: 0 auto;
+        margin-top: -20%;
+    }
+    
+    .video-container-responsive::before {
+        padding-top: 20%;
+    }
+    
+    .video-container-responsive iframe {
+        transform: scale(1.5);
+        transform-origin: center;
+    }
+}
+
+/* 通用宽屏黑边消除 - 针对所有宽屏比例 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive {
+        /* 通用上移，防止遮挡下一个页面 */
+        margin-top: -10%;
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的缩放来消除左右黑边 */
+        transform: scale(1.4);
+        transform-origin: center;
+    }
+}
+
+/* 强制消除黑边的通用方法 */
+@media (min-aspect-ratio: 16/9) {
+    .video-container-responsive {
+        overflow: hidden;
+    }
+    
+    .video-container-responsive iframe {
+        /* 使用更大的尺寸和负边距来确保完全填满 */
+        width: 120% !important;
+        height: 120% !important;
+        left: -10% !important;
+        top: -10% !important;
+        transform: scale(1.0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .loading-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+    }
+    
+    .loading-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .progress-container {
+        width: 250px;
+    }
+    
+    /* （已移除）分子加载动效相关样式 */
+    
+    /* 移动端缩放提醒文字 */
+    .browser-zoom-notice {
+        font-size: 0.85rem;
+        margin-top: 25px;
+        max-width: 320px;
+        padding: 0 20px;
+        line-height: 1.4;
+    }
+    
+    .zoom-highlight {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+<!-- 加载页面 -->
+<div id="loading-page">
+    <!-- 新的加载界面 -->
+    <div class="loading-container">
+        <!-- Logo图片 -->
+        <div class="logo-container"></div>
+        
+        <!-- 标题 -->
+        <div class="loading-title">Museum Tales</div>
+        
+        <!-- 进度条容器 -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Loading...</div>
+        </div>
+        
+        <!-- Start按钮 -->
+        <button class="start-button" id="startButton" disabled>
+            <span class="button-text">Start</span>
+            <div class="button-glow"></div>
+        </button>
+    </div>
+</div>
+
+<!-- Hero Section - 第一页封面（占满全屏） -->
+<section id="hero" class="hero-section" style="position: relative; width: 100vw; height: 100vh; margin-top: -80px; padding-top: 80px; overflow: hidden; background: #FAF7F2;">
+  <div style="position: absolute; inset: 0; z-index: 0;">
+    <img src="static/images/Museum1.jpg" alt="Museum cover" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+  </div>
+  <div style="position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(28, 18, 10, 0.68) 0%, rgba(79, 49, 27, 0.44) 38%, rgba(140, 90, 60, 0.12) 100%);"></div>
+
+  <div id="hero-content" class="container" style="position: absolute; top: 60%; left: 10%; transform: translateY(-50%); z-index: 2; text-align: left; transition: opacity 0.5s ease; max-width: 720px;">
+    <h1 style="font-size: 4.5rem; font-weight: bold; letter-spacing: 8px; color: #fff6ea; text-shadow: 0 8px 30px rgba(0,0,0,0.35); margin-bottom: 0.75rem;">Museum Tales</h1>
+    <h2 style="font-size: 1.5rem; font-weight: 400; letter-spacing: 1px; color: #f2dcc5; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin-bottom: 2rem;">An immersive AR storytelling journey layered over the museum experience.</h2>
+    <a href="#content-section" class="btn btn-primary btn-lg smooth-scroll" style="padding: 12px 35px; font-weight: bold; border-radius: 30px; border: 2px solid #8C5A3C; color: white; background: #8C5A3C; transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(40,24,12,0.28);">Explore ↓</a>
+  </div>
+</section>
+
+<!-- Content Section - 第二页 -->
+<section id="content-section" class="content-section" data-navbar-theme="light" style="padding: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上半部分：左文字右图片 -->
+  <div class="upper-half" style="flex: 1; display: flex; align-items: center; padding: 60px 80px; background: #FAF7F2;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center">
+        <div class="col-lg-7 text-content-upper" style="opacity: 1; transform: none; transition: all 0.8s ease;">
+          <h1 class="display-4" style="color: #8C5A3C; margin-bottom: 1.5rem;">Motivation</h1>
+          <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0;">
+            Museums are often designed as spaces for observation rather than participation. Visitors typically move from one exhibit to another, reading labels and passively receiving information. However, this traditional model overlooks a core characteristic of museums: they are not only repositories of artifacts but also carriers of human stories, emotions, and cultural exchange.
+          </p>
+        </div>
+        <div class="col-lg-5" style="padding-left: 40px;">
+          <img src="static/images/museumspace1.jpg" alt="Museum space 1" style="width: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 10px 28px rgba(90, 62, 43, 0.12); border: 1px solid rgba(140, 90, 60, 0.12);">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 下半部分：左图片右文字 -->
+  <div class="lower-half" style="flex: 1; display: flex; align-items: center; padding: 60px 80px; background:#FAF7F2;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center">
+        <div class="col-lg-5" style="padding-right: 40px;">
+          <img src="static/images/museumspace2.jpg" alt="Museum space 2" style="width: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 10px 28px rgba(90, 62, 43, 0.12); border: 1px solid rgba(140, 90, 60, 0.12);">
+        </div>
+        <div class="col-lg-7 text-content-lower" style="opacity: 1; transform: none; transition: all 0.8s ease;">
+          <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0;">
+            Our project—"Museum Tales"—specifically focuses on the Xi’an Jiaotong-Liverpool University Museum, aiming to transform the museum experience from passive viewing to active storytelling. Inspired by the narrative structure of our exhibition script, we found that each artifact carries multiple perspectives: the university archivist, the Chinese language assistant, the campus reporter, and the museum volunteer often interpret the same exhibit in completely different ways. These diverse voices show that the meaning of a museum is not fixed but co-constructed by its visitors.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 第三页 -->
+<section id="third-page" class="third-page" data-navbar-theme="light" style="padding: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上部60%：box和文字内容 -->
+  <div class="upper-content-third" style="height: 60%; display: flex; align-items: center; padding: 40px 80px;">
+    <div class="container-fluid" style="position: relative; z-index: 2; height: 100%;">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-12 text-content-right" style="opacity: 1; transform: none; transition: all 0.8s ease;">
+          <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0;">
+            We chose to explore this theme through role-playing and an interactive system because it allows users to truly step into the museum narrative rather than just observe. By combining AR-based scanning interactions, identity-driven gameplay, and fragment-collection mechanics, users can engage with exhibits, converse with virtual characters, and ultimately curate their own micro-exhibition.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 下部40% -->
+  <div class="spade-slogan-section" style="display: flex; justify-content: flex-start; position: relative; padding: 40px 80px 0 80px;">
+    <div class="spade-slogan" style="opacity: 1; transform: none; transition: all 1.2s ease; width: 100%; max-width: none;">
+      <div style="text-align: left;">
+        <h1 class="display-4" style="color: #8C5A3C; margin-bottom: 1.5rem;">The Gap</h1>
+        <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
+          The guiding philosophy of this project is that museums do more than display history—they invite every visitor to become a storyteller. Every interaction, every choice, allows users to find their own place within the cultural narratives of the museum.
+        </p>
+        <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
+          While immersive technologies like AR can enrich visitor experiences, existing research and products reveal significant gaps that limit their full potential. Understanding these gaps helps us design a system that truly engages visitors in meaningful, interactive storytelling.
+        </p>
+        <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
+          In recent years, both academia and industry have explored the application of augmented reality (AR) and immersive technologies in museums, yet several limitations remain. Damala et al. (2016) reviewed the state of AR in museums, highlighting its ability to enhance spatial learning, increase engagement through interactive overlays, and support multiple narratives. However, their study lacked evaluation of long-term knowledge retention, offered limited options for user personalization, and did not incorporate leaderboards or other gamification mechanisms. Vayanou et al. (2017) investigated story-based user engagement strategies in cultural heritage, finding that narrative-driven exploration effectively promotes visitor reflection and provides clear UX design guidelines. Nevertheless, their approach lacked real-time multiplayer interaction, offered limited support for diverse learning styles, and did not include cloud-based progress tracking. Bekele et al. (2018) combined AR with role-playing to propose an immersive learning framework, using branching scenarios to quantify user engagement. Yet their study had a small sample size, lacked leaderboards and competitive mechanisms, and provided limited support for repeat play. Sylaiou et al. (2010) assessed user experiences in virtual museums, analyzing narrative comprehension using both qualitative and quantitative metrics; however, NPC interaction was limited, cloud-based user profiles or leaderboards were absent, and device compatibility was constrained.
+        </p>
+        <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
+          In commercial practice, Smartify App offers convenient exhibit scanning and multilingual information coverage, but lacks role-playing mechanics and story reconstruction functionality. Museum AR by Zappar provides engaging AR animations and intuitive scanning, yet does not support persistent user profiles, branching narratives, or leaderboards. TimeLooper VR Experiences delivers immersive historical reenactments with strong narrative focus, but is limited to VR, lacking identity selection and interactivity. Google Arts &amp; Culture AR provides high-quality 3D displays and access to global collections, yet user agency is limited, gamification feedback is absent, and local museum content is insufficient.
+        </p>
+        <p class="lead" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
+          Overall, existing research and products reveal clear gaps in enhancing user immersion, supporting multiple role identities, providing personalized and repeatable play, and integrating leaderboards or cloud-based progress tracking. These gaps highlight specific directions for improvement in the present project.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第四页 -->
+
+<!-- 第六页 -->
+<section id="sixth-page" class="sixth-page" data-navbar-theme="light" style="padding: 0; margin-bottom: 0; background: #FAF7F2; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); position: relative; display: flex; flex-direction: column;">
+  
+  <!-- 上部25%：图片和文字内容（移动到距离顶端2%） -->
+  <div class="upper-content-sixth" style="padding: 10px 80px 0 80px; display: none;">
+    <div class="container-fluid" style="position: relative; z-index: 2;">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-10 text-content-right-sixth" style="opacity: 1; transform: none; transition: all 0.8s ease;">
+          <p class="lead" style="font-size: 1.6rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; text-align: center;">
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 中部15%：空白区域（推荐文字上方的空白空间） -->
+  <div style="height: 20px;"></div>
+  
+  <!-- 推荐文字区域8%：推荐文字（紧贴卡片上方） -->
+  <div class="recommend-text-section" style="height: 8%; display: flex; align-items: flex-end; justify-content: flex-start; padding: 0 80px 10px 80px;">
+    <h3 class="recommend-text" style="opacity: 1; transform: translateY(0); font-size: 2.6rem; font-weight: 700; color: #8C5A3C; text-align: left; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Recommend visiting the following content:
+    </h3>
+  </div>
+  
+  <!-- 下部52%：卡片区域（放大卡片） -->
+  <div class="lower-content-sixth" style="height: 52%; display: flex; align-items: flex-start; justify-content: center; padding-top: 0;">
+    <div class="cards-shell" style="position: relative; min-width: 1000px; display: flex; justify-content: center; flex-wrap: wrap; transform-style: preserve-3d; perspective: 900px; gap: 10px;">
+      
+      <!-- User Research 卡片 -->
+      <div class="card-box project-card" data-link="target-users.html">
+        <div class="card-content">
+          <h2>User Research</h2>
+        </div>
+      </div>
+          
+      <!-- Ideation 卡片 -->
+      <div class="card-box engineering-card" data-link="early-concepts.html">
+        <div class="card-content">
+          <h2>Ideation</h2>
+        </div>
+      </div>
+
+      <!-- Technical Implementation 卡片 -->
+      <div class="card-box software-card" data-link="system-architecture.html">
+        <div class="card-content">
+          <h2>Technical Implementation</h2>
+        </div>
+      </div>
+
+      <!-- reflection 卡片 -->
+      <div class="card-box human-practices-card" data-link="testing.html">
+        <div class="card-content">
+          <h2>Reflection</h2>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</section>
+
+<style>
+/* 使用系统字体，移除外部字体依赖 */
+/* START NOW按钮悬停效果 */
+.smooth-scroll:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(255,255,255,0.5) !important;
+    background: rgba(255,255,255,0.95) !important;
+}
+
+.smooth-scroll:active {
+    transform: translateY(0) scale(1.02) !important;
+    transition: all 0.1s ease !important;
+}
+
+/* 中文字体设置 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* 中文标题字体 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* 英文标题保持原有样式 */
+.hero-section h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.content-section {
+    opacity: 1;
+    transform: none;
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* 波浪过渡样式 */
+.wave-transition {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    height: 150px;
+    overflow: hidden;
+}
+
+.wave-transition svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* 深色区域样式 */
+.section-dark {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+}
+
+.feature-card {
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.15) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* 浮动动画 */
+@keyframes floatSlow {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg); 
+        opacity: 0.6;
+    }
+}
+
+/* 立即滚动样式 */
+html {
+    scroll-behavior: auto;
+}
+
+/* 页面动画已移除，所有元素直接显示 */
+.second-page, .third-page, .fourth-page, .fifth-page, .sixth-page {
+    opacity: 1;
+    transform: none;
+}
+
+.second-page h2, .third-page h2, .fourth-page h2, .fifth-page h2, .sixth-page h2 {
+    opacity: 1;
+    transform: none;
+}
+
+/* 波浪分割已删除，页面无缝连接 */
+
+/* 已删除科技感粒子背景样式 */
+
+/* 渐变背景增强 */
+.content-section {
+    background: #FAF7F2 !important;
+}
+
+.section-dark {
+    background: linear-gradient(135deg, 
+        rgba(74,85,104,0.95) 0%, 
+        rgba(45,55,72,0.9) 50%, 
+        rgba(26,32,44,0.85) 100%) !important;
+}
+
+/* 第二页专用样式 */
+.upper-half, .lower-half {
+    min-height: auto;
+}
+
+#content-section,
+#third-page,
+#fourth-page,
+#fifth-page,
+#sixth-page {
+    height: auto !important;
+    min-height: auto !important;
+}
+
+#content-section,
+#third-page,
+#fifth-page,
+#sixth-page {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+}
+
+#fourth-page {
+    padding: 120px 0 80px 0 !important;
+}
+
+.spade-slogan-section {
+    height: auto !important;
+    padding: 40px 0 0 0;
+}
+
+.upper-content-third {
+    height: auto !important;
+}
+
+.the-gap-paragraph + .the-gap-paragraph {
+    margin-top: 1rem !important;
+}
+
+/* Project 高亮样式 */
+.spade-highlight {
+    background: linear-gradient(45deg, #4ade80, #3b82f6, #8b5cf6, #f59e0b);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+    font-weight: 700;
+    position: relative;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.4)) drop-shadow(0 0 25px rgba(255,255,255,0.2));
+}
+
+.spade-text {
+    cursor: default;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+.spade-highlight {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+.spade-highlight:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.8)) drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 35px rgba(255,255,255,0.3));
+    animation: gradientShift 2s ease-in-out infinite;
+}
+
+.spade-highlight:hover::before {
+    filter: blur(3px) drop-shadow(0 0 15px rgba(255,255,255,0.5));
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Box动画发光效果 */
+.box-animation {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 15px rgba(255,255,255,0.3)) drop-shadow(0 0 25px rgba(255,255,255,0.2));
+}
+
+/* Computer图片发光效果 */
+.computer-image {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 15px rgba(255,255,255,0.3)) drop-shadow(0 0 25px rgba(255,255,255,0.2));
+    object-position: center;
+}
+
+.persona-grid {
+  align-items: stretch;
+}
+
+.persona-grid > [class*="col-"] {
+  display: flex;
+}
+
+.persona-card {
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  border-radius: 18px;
+  background: #fffaf5;
+  box-shadow: 0 10px 28px rgba(90, 62, 43, 0.12);
+  border: 1px solid rgba(140, 90, 60, 0.12);
+}
+
+.persona-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.persona-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.persona-text,
+.persona-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.persona-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+
+/* 第四页专用样式 */
+.fourth-page {
+    min-height: auto;
+}
+
+/* 第五页专用样式 */
+.fifth-page {
+    min-height: auto;
+}
+
+.upper-half-fifth, .lower-half-fifth {
+    min-height: auto;
+}
+
+/* 第六页专用样式 */
+.sixth-page {
+    min-height: auto;
+    margin-bottom: 0 !important;
+}
+
+/* 确保第六页与footer无缝衔接 */
+#sixth-page + * {
+    margin-top: 0 !important;
+}
+
+/* 防止任何全局margin影响footer */
+footer {
+    margin-top: 0 !important;
+}
+
+/* 第七页专用样式 */
+.seventh-page {
+    min-height: 100vh;
+}
+
+/* 卡片3D效果样式 */
+.cards-shell .card-box {
+    position: relative;
+    width: 260px;
+    height: 350px;
+    transition: 0.3s;
+    overflow: hidden;
+    margin: 25px;
+    transform: rotateY(0deg);
+    transition-delay: .1s;
+    border-radius: 10px;
+    border: #fff 3px solid;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* 当鼠标悬停在容器上时，所有卡片向Y轴翻转20度 */
+.cards-shell:hover .card-box {
+    transform: rotateY(20deg);
+}
+
+/* 当鼠标悬停在当前卡片上时，当前卡片翻转角度为0，放大1.25倍，加阴影和发光 */
+.cards-shell .card-box:hover {
+    transform: rotateY(0deg) scale(1.25);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.4);
+    z-index: 10;
+}
+
+/* 当鼠标悬停在卡片上时，后面的所有卡片反向翻转-20度 */
+.cards-shell .card-box:hover ~ .card-box {
+    transform: rotateY(-20deg);
+}
+
+.cards-shell .card-box .card-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cards-shell .card-box .card-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.cards-shell .card-box .card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.cards-shell .card-box .card-content h2 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9);
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: rgba(0,0,0,0.3);
+    padding: 15px 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 打字机效果动画 */
+.typewriter-text {
+    animation: blink-cursor 1s infinite;
+}
+
+.typed-content {
+    display: inline;
+}
+
+@keyframes blink-cursor {
+    0%, 50% {
+        border-color: #6A3DE8;
+    }
+    51%, 100% {
+        border-color: transparent;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    /* 第二页移动端适配 */
+    .upper-half, .lower-half {
+        padding: 40px 20px !important;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .text-content-upper, .text-content-lower {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        margin-bottom: 30px;
+    }
+    
+    .image-content-upper, .image-content-lower {
+        margin-bottom: 30px;
+    }
+    
+    .upper-half .lead, .lower-half .lead {
+        font-size: 1.4rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* 移动端图片大小调整 */
+    .image-content-upper img, .image-content-lower img {
+        max-width: 100% !important;
+    }
+    
+    /* 第三页移动端适配 */
+    .third-page .row {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .gif-content-left, .text-content-right {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .third-page .lead {
+        font-size: 1.4rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* SPADE标语移动端适配 */
+    .spade-text {
+        font-size: 2.8rem !important;
+        letter-spacing: 2px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .spade-highlight {
+        font-size: 3.5rem !important;
+    }
+    
+    .upper-content-third {
+        padding: 30px 20px !important;
+    }
+    
+    /* 第四页移动端适配 */
+    .computer-image {
+        max-width: 95% !important;
+        max-height: 85% !important;
+        object-fit: contain !important;
+    }
+    
+    .typewriter-container {
+        top: 5% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+    }
+    
+    .typewriter-text {
+        font-size: 1.2rem !important;
+        font-weight: bold !important;
+        color: #6A3DE8 !important;
+        border-right-color: #6A3DE8 !important;
+    }
+    
+    .center-text-overlay {
+        max-width: 85% !important;
+    }
+    
+    .center-text {
+        font-size: 1.2rem !important;
+    }
+    
+    /* 第五页移动端适配 */
+    .upper-half-fifth {
+        padding: 40px 20px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .lower-half-fifth {
+        padding: 20px 20px 40px 20px !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: flex-start !important;
+    }
+    
+    .text-content-upper-fifth, .text-content-lower-fifth {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .image-content-upper-fifth, .image-content-lower-fifth {
+        margin-bottom: 30px !important;
+    }
+    
+    .upper-half-fifth .lead, .lower-half-fifth .lead {
+        font-size: 1.3rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* 第六页移动端适配 */
+    .upper-content-sixth {
+        padding: 2vh 20px 20px 20px !important;
+        height: 30% !important;
+    }
+    
+    .sixth-page .row {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    .image-content-left-sixth, .text-content-right-sixth {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .text-content-right-sixth .lead {
+        font-size: 1.3rem !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* 第六页推荐文字移动端适配 */
+    .recommend-text-section {
+        height: 20% !important;
+        padding: 0 20px 10px 20px !important;
+        justify-content: flex-start !important;
+        align-items: flex-end !important;
+    }
+    
+    .recommend-text {
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.8px !important;
+        text-align: left !important;
+    }
+    
+    /* 第六页卡片区域移动端适配 */
+    .sixth-page .cards-shell {
+        min-width: auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        height: 50% !important;
+    }
+    
+    .sixth-page .card-box {
+        width: 280px !important;
+        height: 200px !important;
+        margin: 5px !important;
+    }
+    
+    /* 第七页移动端适配 */
+    .cards-shell {
+        min-width: auto !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    
+    .card-box {
+        width: 300px !important;
+        height: 220px !important;
+        margin: 10px !important;
+    }
+    
+    .card-content h2 {
+        font-size: 1.3rem !important;
+        padding: 10px 15px !important;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    /* 平板端适配 */
+    .upper-half, .lower-half {
+        padding: 50px 40px !important;
+    }
+    
+    .text-content-upper, .text-content-lower {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+    }
+    
+    .upper-half .lead, .lower-half .lead {
+        font-size: 1.6rem !important;
+    }
+    
+    /* 第三页平板端适配 */
+    .text-content-right {
+        padding-left: 40px !important;
+    }
+    
+    .third-page .lead {
+        font-size: 1.6rem !important;
+    }
+    
+    /* SPADE标语平板端适配 */
+    .spade-text {
+        font-size: 3.8rem !important;
+        letter-spacing: 3px !important;
+    }
+    
+    .spade-highlight {
+        font-size: 4.8rem !important;
+    }
+    
+    /* 第五页平板端适配 */
+    .upper-half-fifth {
+        padding: 50px 40px !important;
+    }
+    
+    .lower-half-fifth {
+        padding: 30px 40px 50px 40px !important;
+        align-items: flex-start !important;
+    }
+    
+    .text-content-upper-fifth, .text-content-lower-fifth {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+    
+    .upper-half-fifth .lead, .lower-half-fifth .lead {
+        font-size: 1.5rem !important;
+    }
+    
+    /* 第六页平板端适配 */
+    .text-content-right-sixth {
+        padding-left: 40px !important;
+    }
+    
+    .text-content-right-sixth .lead {
+        font-size: 1.5rem !important;
+    }
+    
+    .upper-content-sixth {
+        padding: 2vh 50px 20px 50px !important;
+        height: 30% !important;
+    }
+    
+    /* 第六页推荐文字平板端适配 */
+    .recommend-text-section {
+        height: 18% !important;
+        padding: 0 50px 10px 50px !important;
+        justify-content: flex-start !important;
+        align-items: flex-end !important;
+    }
+    
+    .recommend-text {
+        font-size: 2.2rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.2px !important;
+        text-align: left !important;
+    }
+    
+    /* 第六页卡片区域平板端适配 */
+    .sixth-page .cards-shell {
+        min-width: 800px !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+        height: 49% !important;
+    }
+    
+    .sixth-page .card-box {
+        width: 200px !important;
+        height: 280px !important;
+        margin: 10px !important;
+    }
+    
+    /* 第七页平板端适配 */
+    .cards-shell {
+        min-width: 1000px !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+    
+    .card-box {
+        width: 180px !important;
+        height: 260px !important;
+        margin: 15px !important;
+    }
+}
+
+/* 优化视觉效果 */
+.section-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.1)  0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.1)  0%, transparent 50%),
+        radial-gradient(circle at 40% 80%,  rgba(142, 68, 173, 0.1)  0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* GSAP ScrollTrigger 动画样式 */
+.animated-text {
+    perspective: 1000px;
+}
+
+.animated-text h2 {
+    transform-style: preserve-3d;
+    transform-origin: center bottom;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    font-weight: 300;
+    letter-spacing: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+}
+
+/* 卡片文字优化 */
+.feature-card h5 {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.feature-card p {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   首页整体响应式修正（手机 / 平板）
+   ========================================================= */
+
+@media (max-width: 768px) {
+    /* 彻底消除横向滚动 */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* 全屏分屏 section 在小屏上改为自适应高度 */
+    #hero,
+    #content-section,
+    #third-page,
+    #fourth-page,
+    #fifth-page,
+    #sixth-page {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    /* Hero 内容改为居中堆叠，不再固定在左下角 */
+    #hero {
+        padding-top: 80px !important;
+        padding-bottom: 40px !important;
+    }
+
+    /* （已移除）粒子背景视频/iframe适配 */
+
+    #hero-content {
+        position: relative !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translate(-50%, 0) !important;
+        text-align: center !important;
+        padding: 40px 20px !important;
+    }
+
+    #hero-content h1 {
+        font-size: 2.6rem !important;
+        letter-spacing: 3px !important;
+    }
+
+    #hero-content h2 {
+        font-size: 1.1rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .smooth-scroll {
+        margin-top: 10px;
+    }
+
+    /* 第二页上/下半部分改为纵向排列，已在上方做基础处理，这里再压缩整体高度 */
+    .upper-half,
+    .lower-half {
+        min-height: auto !important;
+    }
+
+    /* 第三页左右结构在小屏上纵向排列，gif 不再超出左侧 */
+    .upper-content-third {
+        padding: 30px 20px !important;
+        height: auto !important;
+    }
+
+    .spade-slogan-section {
+        height: auto !important;
+    }
+
+    .gif-content-left {
+        margin-left: 0 !important;
+        text-align: center !important;
+    }
+
+    .gif-content-left img {
+        max-width: 100% !important;
+    }
+
+    .spade-slogan {
+        padding: 0 15px;
+    }
+
+    .spade-text {
+        font-size: 2.2rem !important;
+    }
+
+    .spade-highlight {
+        font-size: 2.8rem !important;
+    }
+
+    /* 第四页：打字机 + 文本 居中并允许换行 */
+    .typewriter-container {
+        width: 90% !important;
+        max-width: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .typewriter-text {
+        white-space: normal !important;
+        font-size: 1.1rem !important;
+    }
+
+    .center-text-overlay {
+        max-width: 90% !important;
+        top: 50% !important;
+    }
+
+    .center-text {
+        font-size: 1.2rem !important;
+    }
+
+    .computer-image {
+        max-width: 95% !important;
+        max-height: 80% !important;
+    }
+
+    /* 第五页：上下结构纵向排列，图表区高度减小 */
+    .score-viz-container {
+        height: 260px !important;
+    }
+
+    .viz-card {
+        padding: 20px !important;
+        width: 100% !important;
+    }
+
+    .chart-container {
+        height: 160px !important;
+    }
+
+    .total-score-display {
+        font-size: 2.4em !important;
+    }
+
+    /* 第六页推荐卡片区域：单列卡片，保证不超出屏幕 */
+    .upper-content-sixth,
+    .recommend-text-section,
+    .lower-content-sixth {
+        height: auto !important;
+    }
+
+    .lower-content-sixth {
+        padding: 10px 0 40px 0 !important;
+    }
+
+    .sixth-page .cards-shell {
+        padding: 0 10px;
+        height: auto !important;
+    }
+
+    .sixth-page .card-box {
+        width: 90% !important;
+        max-width: 320px !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-content h1 {
+        font-size: 2.2rem !important;
+    }
+
+    #hero-content h2 {
+        font-size: 1rem !important;
+    }
+
+    .spade-text {
+        font-size: 2rem !important;
+    }
+
+    .spade-highlight {
+        font-size: 2.4rem !important;
+    }
+
+    .recommend-text {
+        font-size: 1.5rem !important;
+    }
+}
+
+</style>
+
+<!-- 添加GSAP和ScrollTrigger库 -->
+<script src="static/gsap.min.js"></script>
+<script src="static/ScrollTrigger.min.js"></script>
+<script src="static/ScrollToPlugin.min.js"></script>
+
+<!-- Chart.js库用于环状评分动画 -->
+<script src="static/chart.js"></script>
+<!-- 添加平滑滚动脚本 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 注册GSAP插件
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    
+    // 动画参数设置
+    const fadeInDuration = 1;
+    const fadeOutDuration = 1;
+    const delayBetween = 2;
+    
+    // Hero section现在作为正常页面流的第一页，不需要滚动隐藏逻辑
+    
+    // 快速丝滑滚动功能
+    document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                // 立即跳转，无动画延迟
+                gsap.to(window, {
+                    duration: 0.1,
+                    scrollTo: {
+                        y: targetSection,
+                        offsetY: 0
+                    },
+                    ease: "power2.out"
+                });
+            }
+        });
+    });
+    
+    // 滚动动画效果
+    function checkScrollAnimation() {
+        const textContentUpper = document.querySelector('.text-content-upper');
+        const imageContentUpper = document.querySelector('.image-content-upper');
+        const imageContentLower = document.querySelector('.image-content-lower');
+        const textContentLower = document.querySelector('.text-content-lower');
+        const contentSection = document.getElementById('content-section');
+        
+        // 第三页元素
+        const gifContentLeft = document.querySelector('.gif-content-left');
+        const textContentRight = document.querySelector('.text-content-right');
+        const spadeSlogan = document.querySelector('.spade-slogan');
+        const thirdPageSection = document.getElementById('third-page');
+        
+        // 第四页元素
+        const computerImage = document.querySelector('.computer-image');
+        const typewriterContainer = document.querySelector('.typewriter-container');
+        const centerTextOverlay = document.querySelector('.center-text-overlay');
+        const fourthPageSection = document.getElementById('fourth-page');
+        
+        // 第五页元素
+        const imageContentUpperFifth = document.querySelector('.image-content-upper-fifth');
+        const textContentUpperFifth = document.querySelector('.text-content-upper-fifth');
+        const textContentLowerFifth = document.querySelector('.text-content-lower-fifth');
+        const imageContentLowerFifth = document.querySelector('.image-content-lower-fifth');
+        const fifthPageSection = document.getElementById('fifth-page');
+        
+        // 第六页元素
+        const imageContentLeftSixth = document.querySelector('.image-content-left-sixth');
+        const textContentRightSixth = document.querySelector('.text-content-right-sixth');
+        const sixthPageSection = document.getElementById('sixth-page');
+        
+        const scrolled = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // 第二页动画
+        if (contentSection) {
+            const sectionTop = contentSection.offsetTop;
+            
+            if (scrolled + windowHeight > sectionTop + 200) {
+                // 上半部分动画
+                if (textContentUpper && imageContentUpper) {
+                    textContentUpper.style.opacity = '1';
+                    textContentUpper.style.transform = 'translateX(0)';
+                    
+                    setTimeout(() => {
+                        imageContentUpper.style.opacity = '1';
+                        imageContentUpper.style.transform = 'translateX(0)';
+                    }, 200);
+                }
+                
+                // 下半部分动画（稍微延迟）
+                setTimeout(() => {
+                    if (imageContentLower && textContentLower) {
+                        imageContentLower.style.opacity = '1';
+                        imageContentLower.style.transform = 'translateX(0)';
+                        
+                        setTimeout(() => {
+                            textContentLower.style.opacity = '1';
+                            textContentLower.style.transform = 'translateX(0)';
+                        }, 200);
+                    }
+                }, 400);
+            }
+        }
+        
+        // 第三页动画 - 自下而上浮入
+        if (thirdPageSection && gifContentLeft && textContentRight && spadeSlogan) {
+            const thirdPageTop = thirdPageSection.offsetTop;
+            
+            if (scrolled + windowHeight > thirdPageTop + 300) {
+                if (!gifContentLeft.classList.contains('animated')) {
+                    gifContentLeft.style.opacity = '1';
+                    gifContentLeft.style.transform = 'translateY(0)';
+                    gifContentLeft.classList.add('animated');
+                    
+                    setTimeout(() => {
+                        textContentRight.style.opacity = '1';
+                        textContentRight.style.transform = 'translateY(0)';
+                        textContentRight.classList.add('animated');
+                    }, 300);
+                    
+                    // SPADE标语延迟更久出现，创造戏剧性效果
+                    setTimeout(() => {
+                        spadeSlogan.style.opacity = '1';
+                        spadeSlogan.style.transform = 'translateY(0)';
+                        spadeSlogan.classList.add('animated');
+                        
+                        // SPADE标语动画完成后，标记第三页完成
+                        setTimeout(() => {
+                            thirdPageSection.classList.add('animation-complete');
+                        }, 1200); // 等待Project标语的1.2s transition完成
+                    }, 1000);
+                }
+            }
+        }
+        
+        // 第四页动画 - 只在第三页动画完成后才开始
+        if (fourthPageSection && typewriterContainer && centerTextOverlay) {
+            const fourthPageTop = fourthPageSection.offsetTop;
+            const thirdPageComplete = thirdPageSection && thirdPageSection.classList.contains('animation-complete');
+            
+            // 如果用户快速滚动跳过第三页，自动完成第三页动画
+            if (scrolled + windowHeight > fourthPageTop + 200 && !thirdPageComplete) {
+                if (thirdPageSection && gifContentLeft && textContentRight && spadeSlogan) {
+                    // 立即完成第三页所有动画
+                    gifContentLeft.style.opacity = '1';
+                    gifContentLeft.style.transform = 'translateY(0)';
+                    gifContentLeft.classList.add('animated');
+                    
+                    textContentRight.style.opacity = '1';
+                    textContentRight.style.transform = 'translateY(0)';
+                    textContentRight.classList.add('animated');
+                    
+                    spadeSlogan.style.opacity = '1';
+                    spadeSlogan.style.transform = 'translateY(0)';
+                    spadeSlogan.classList.add('animated');
+                    
+                    thirdPageSection.classList.add('animation-complete');
+                }
+            }
+            
+            if (scrolled + windowHeight > fourthPageTop + 200 && (thirdPageComplete || thirdPageSection.classList.contains('animation-complete'))) {
+                // 同时显示打字机文字容器和中央文字
+                if (typewriterContainer.style.opacity !== '1') {
+                    typewriterContainer.style.opacity = '1';
+                    centerTextOverlay.style.opacity = '1';
+                    startTypewriter();
+                }
+            }
+        }
+        
+        // 第五页动画 - 上下两部分分别动画（视频无动画）
+        if (fifthPageSection && textContentUpperFifth && textContentLowerFifth && imageContentLowerFifth) {
+            const fifthPageTop = fifthPageSection.offsetTop;
+            
+            if (scrolled + windowHeight > fifthPageTop + 200) {
+                // 上半部分文字动画
+                textContentUpperFifth.style.opacity = '1';
+                textContentUpperFifth.style.transform = 'translateX(0)';
+                
+                // 下半部分动画（稍微延迟）
+                setTimeout(() => {
+                    textContentLowerFifth.style.opacity = '1';
+                    textContentLowerFifth.style.transform = 'translateX(0)';
+                    
+                    setTimeout(() => {
+                        if (imageContentLowerFifth) {
+                            imageContentLowerFifth.style.opacity = '1';
+                            imageContentLowerFifth.style.transform = 'translateX(0)';
+                            // 触发图表动画
+                            setTimeout(() => {
+                                animateScoreChart();
+                            }, 300);
+                        }
+                    }, 200);
+                }, 400);
+            }
+        }
+        
+        // 第六页动画 - 右侧文字（视频无动画）
+        if (sixthPageSection && textContentRightSixth) {
+            const sixthPageTop = sixthPageSection.offsetTop;
+            
+            if (scrolled + windowHeight > sixthPageTop + 200) {
+                textContentRightSixth.style.opacity = '1';
+                textContentRightSixth.style.transform = 'translateX(0)';
+            }
+        }
+    }
+    
+    // 滚动时检查动画
+    window.addEventListener('scroll', checkScrollAnimation);
+    
+    // 页面加载时也检查一次
+    checkScrollAnimation();
+    
+    // 第七页卡片点击跳转功能
+    document.querySelectorAll('.card-box').forEach(card => {
+        card.addEventListener('click', function() {
+            const link = this.getAttribute('data-link');
+            if (link) {
+                window.location.href = link;
+            }
+            });
+        });
+    
+    // 打字机效果函数
+    function startTypewriter() {
+        const text = "http12345";
+        const typedContent = document.querySelector('.typed-content');
+        let index = 0;
+        
+        if (!typedContent) return;
+        
+        // 清空内容
+        typedContent.textContent = '';
+        
+        function typeCharacter() {
+            if (index < text.length) {
+                typedContent.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeCharacter, 100); // 每个字符间隔100ms
+            }
+        }
+        
+        // 开始打字
+        typeCharacter();
+    }
+    
+    // 清理不再需要的动画代码
+    
+    // 初始化环状评分图表
+    let scoreChart = null;
+    let chartAnimated = false;
+    
+    function initScoreChart() {
+        const canvas = document.getElementById('gaugeChart');
+        if (!canvas) return;
+        
+        const score = 0; // 初始为0，滚动时才动画到8.88
+        const maxScore = 10;
+        const data = {
+            datasets: [{
+                data: [score, maxScore - score],
+                backgroundColor: [
+                    '#64DD17',
+                    'rgba(200, 200, 200, 0.2)'
+                ],
+                borderWidth: 0,
+                hoverBackgroundColor: [
+                    '#64DD17',
+                    'rgba(200, 200, 200, 0.2)'
+                ]
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '80%',
+                rotation: -90,
+                circumference: 180,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                animation: {
+                    animateRotate: false, // 初始化时不动画
+                    animateScale: false,
+                    duration: 0
+                }
+            }
+        };
+
+        scoreChart = new Chart(canvas, config);
+    }
+    
+    // 动画到目标分数
+    function animateScoreChart() {
+        if (!scoreChart || chartAnimated) return;
+        
+        const targetScore = 8.88;
+        const maxScore = 10;
+        
+        // 更新数据并启用动画
+        scoreChart.data.datasets[0].data = [targetScore, maxScore - targetScore];
+        scoreChart.options.animation = {
+            animateRotate: true,
+            animateScale: false,
+            duration: 2500,
+            easing: 'easeOutQuart'
+        };
+        
+        scoreChart.update();
+        chartAnimated = true;
+    }
+    
+    // 延迟初始化图表，确保页面元素已加载
+    setTimeout(initScoreChart, 1000);
+});
+</script>
+
+  <!-- Footer -->
+  <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-6 col-xs-12">
+        <h4 class="mb-3" style="font-size:2.5rem;font-weight:bold;letter-spacing:2px;color:white;">XJTLU</h4>
+      </div>
+      <div class="col-lg-6 col-xs-12">
+        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+        <ul class="m-2 p-2">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="members.html">Team</a></li>
+          <li><a href="target-users.html">User Research</a></li>
+          <li><a href="early-concepts.html">Ideation</a></li>
+          <li><a href="system-architecture.html">Technical Implementation</a></li>
+          <li><a href="testing.html">Reflection</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+    <div class="row mt-4">
+      <div class="col">
+        <p class="mb-0"><small>© 2025 XJTLU Museum Project. All rights reserved.</small></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="static/bootstrap.bundle.min.js"></script>
+  
+  <!-- 下拉导航栏增强脚本 -->
+  <script src="static/dropdown-nav.js"></script>
+  
+  <!-- GSAP 动画库 -->
+  <script src="static/gsap.min.js"></script>
+  <script src="static/ScrollTrigger.min.js"></script>
+  <script src="static/ScrollToPlugin.min.js"></script>
+  
+
+  
+  <!-- 页面特定的脚本 -->
+  <script>
+// 加载页面控制
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingPage = document.getElementById('loading-page');
+    const startButton = document.getElementById('startButton');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    
+    // 记录开始时间，确保最小加载时间
+    const startTime = Date.now();
+    const minLoadingTime = 2000; // 最少显示2秒
+    
+    let progressComplete = false;
+    
+    // 检查所有资源是否加载完成
+    function checkAllLoaded() {
+        if (progressComplete) {
+            // 确保最小加载时间
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
+            
+            setTimeout(() => {
+                // 显示Start按钮，不自动跳转
+                startButton.style.opacity = '1';
+                startButton.style.pointerEvents = 'auto';
+                startButton.disabled = false;
+                
+                // 添加按钮激活动画
+                startButton.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    startButton.style.transform = 'scale(1)';
+                }, 200);
+            }, remainingTime + 500);
+        }
+    }
+    
+    // 模拟加载进度
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+        progress += Math.random() * 8 + 3; // 随机增加3-11%
+        
+        if (progress >= 100) {
+            progress = 100;
+            progressComplete = true;
+            clearInterval(loadingInterval);
+            
+            // 加载完成
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Done!';
+            
+            checkAllLoaded();
+        } else {
+            progressFill.style.width = progress + '%';
+            progressText.textContent = 'Loading... ' + Math.round(progress) + '%';
+        }
+    }, 200);
+    
+    // Start按钮点击事件
+    startButton.addEventListener('click', function() {
+        // 检查按钮是否已激活
+        if (startButton.disabled) {
+            return;
+        }
+
+        // 添加按钮点击动画
+        startButton.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            startButton.style.transform = 'scale(1)';
+        }, 150);
+        
+        // 延迟一点时间后隐藏加载页面
+        setTimeout(() => {
+            loadingPage.classList.add('fade-out');
+            
+            // 完全移除加载页面
+            setTimeout(() => {
+                loadingPage.style.display = 'none';
+            }, 800);
+        }, 300);
+    });
+});
+</script>
+  
+  <!-- GSAP统一动效管理脚本 -->
+  <script>
+    // 注册GSAP插件
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    
+    class GSAPAnimationManager {
+      constructor() {
+        this.navbar = document.querySelector('.navbar');
+        this.scrollIndicator = document.getElementById('scrollIndicator');
+        this.sections = [];
+        this.currentTheme = 'default';
+        this.animations = {};
+        
+        this.init();
+      }
+      
+      init() {
+        this.detectPageSections();
+        this.setupNavbarAnimations();
+        this.setupScrollIndicator();
+        this.setupSectionAnimations();
+        this.setupHoverAnimations();
+      }
+      
+      detectPageSections() {
+        this.sections = [];
+        
+        // 检测所有有效的sections
+        const commonSelectors = [
+          'section',
+          '.hero-section',
+          '#hero', 
+          '.content-section',
+          '.section-dark',
+          '.team-banner',
+          'header:not(.navbar)',
+          '[data-navbar-theme]'
+        ];
+        
+        let allSections = [];
+        
+        commonSelectors.forEach(selector => {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => {
+            if (!allSections.includes(el) && this.isValidSection(el)) {
+              const theme = el.getAttribute('data-navbar-theme') || this.detectThemeFromElement(el);
+              allSections.push({
+                element: el,
+                theme: theme,
+                selector: selector
+              });
+            }
+          });
+        });
+        
+        // 按DOM顺序排序
+        this.sections = allSections.sort((a, b) => {
+          return a.element.compareDocumentPosition(b.element) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+        });
+      }
+      
+      isValidSection(element) {
+        const rect = element.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(element);
+        
+        return (
+          rect.height > 100 &&
+          computedStyle.display !== 'none' &&
+          computedStyle.visibility !== 'hidden' &&
+          !element.classList.contains('navbar') &&
+          !element.classList.contains('floating-cube') &&
+          !element.classList.contains('molecule')
+        );
+      }
+      
+      detectThemeFromElement(element) {
+        if (element.classList.contains('hero-section') || element.id === 'hero') {
+          return 'transparent';
+        }
+        if (element.classList.contains('section-dark') || element.classList.contains('bg-dark')) {
+          return 'dark';
+        }
+        if (element.classList.contains('bg-light') || element.classList.contains('content-section')) {
+          return 'light';
+        }
+        const style = element.getAttribute('style') || '';
+        if (style.includes('#2A9D8F') || style.includes('rgba(42, 157, 143')) {
+          return 'accent';
+        }
+        return 'default';
+      }
+      
+      setupNavbarAnimations() {
+        // 导航栏滚动紧凑效果
+        ScrollTrigger.create({
+          trigger: "body",
+          start: "top -50",
+          end: "bottom bottom",
+          onUpdate: self => {
+            if (self.direction === 1 && self.progress > 0.05) {
+              // 向下滚动，紧凑导航栏
+              gsap.to(this.navbar, {
+                paddingTop: "0.5rem",
+                paddingBottom: "0.5rem",
+                duration: 0.1,
+                ease: "power2.out"
+              });
+              gsap.to(".navbar-brand", {
+                fontSize: "2rem",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+              gsap.to(".logo-o", {
+                width: "2rem",
+                height: "2rem", 
+                duration: 0.3,
+                ease: "power2.out"
+              });
+            } else if (self.progress <= 0.05) {
+              // 回到顶部，恢复正常大小
+              gsap.to(this.navbar, {
+                paddingTop: "",
+                paddingBottom: "",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+              gsap.to(".navbar-brand", {
+                fontSize: "2.5rem",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+              gsap.to(".logo-o", {
+                width: "2.5rem",
+                height: "2.5rem",
+                duration: 0.3,
+                ease: "power2.out"
+              });
+            }
+          }
+        });
+
+        // 为每个section创建导航栏主题切换
+        this.sections.forEach((section, index) => {
+          ScrollTrigger.create({
+            trigger: section.element,
+            start: "top 80px",
+            end: "bottom 80px",
+            onEnter: () => this.animateNavbarTheme(section.theme),
+            onEnterBack: () => this.animateNavbarTheme(section.theme),
+          });
+        });
+      }
+      
+      animateNavbarTheme(theme) {
+        if (this.currentTheme === theme) return;
+        
+        // 移除所有主题类
+        this.navbar.classList.remove(
+          'theme-default', 
+          'theme-transparent', 
+          'theme-light', 
+          'theme-dark', 
+          'theme-accent'
+        );
+        
+        // 添加新主题类
+        this.navbar.classList.add(`theme-${theme}`);
+        
+        // GSAP动画切换背景和文字颜色
+        const themeConfig = this.getThemeConfig(theme);
+        
+        gsap.to(this.navbar, {
+          backgroundColor: themeConfig.background,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+        
+        gsap.to(".navbar-brand, .nav-link", {
+          color: themeConfig.textColor,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+        
+        this.currentTheme = theme;
+      }
+      
+      getThemeConfig(theme) {
+        const configs = {
+          'default': {
+            background: 'rgba(5, 38, 89, 0.95)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          },
+          'transparent': {
+            background: 'rgba(0, 0, 0, 0.1)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          },
+          'light': {
+            background: 'rgba(255, 255, 255, 0.95)',
+            textColor: '#2c3e50'
+          },
+          'dark': {
+            background: 'rgba(45, 55, 72, 0.95)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          },
+          'accent': {
+            background: 'rgba(42, 157, 143, 0.9)',
+            textColor: 'rgba(255, 255, 255, 0.95)'
+          }
+        };
+        return configs[theme] || configs['default'];
+      }
+      
+      setupScrollIndicator() {
+        if (!this.scrollIndicator) return;
+        
+        const arrow = this.scrollIndicator.querySelector('.arrow');
+        const progressRing = this.scrollIndicator.querySelector('.progress-ring');
+        
+        // 初始状态：隐藏
+        gsap.set(this.scrollIndicator, { 
+          opacity: 0, 
+          y: 20, 
+          pointerEvents: 'none' 
+        });
+        
+        // 滚动显示/隐藏逻辑
+        ScrollTrigger.create({
+          trigger: "body",
+          start: "top -100",
+          end: "bottom bottom",
+          onUpdate: self => {
+            if (self.progress > 0.1) {
+              // 显示指示器
+              gsap.to(this.scrollIndicator, {
+                opacity: 1,
+                y: 0,
+                pointerEvents: 'auto',
+                duration: 0.3,
+                ease: "back.out(1.7)"
+              });
+            } else {
+              // 隐藏指示器
+              gsap.to(this.scrollIndicator, {
+                opacity: 0,
+                y: 20,
+                pointerEvents: 'none',
+                duration: 0.3,
+                ease: "power2.in"
+              });
+            }
+            
+            // 更新进度环
+            const degrees = self.progress * 360;
+            progressRing.style.setProperty('--progress', `${degrees}deg`);
+            
+            // 判断是否到达底部
+            const isNearBottom = self.progress > 0.9;
+            this.updateScrollIndicatorMode(isNearBottom);
+          }
+        });
+        
+        // 箭头弹跳动画
+        this.arrowBounceAnimation = gsap.to(arrow, {
+          y: 4,
+          duration: 1,
+          ease: "power2.inOut",
+          yoyo: true,
+          repeat: -1
+        });
+        
+        // 点击事件
+        this.scrollIndicator.addEventListener('click', () => {
+          this.handleScrollIndicatorClick();
+        });
+      }
+      
+      updateScrollIndicatorMode(isBackToTop) {
+        const arrow = this.scrollIndicator.querySelector('.arrow');
+        
+        if (isBackToTop && !this.scrollIndicator.classList.contains('back-to-top')) {
+          // 切换到回到顶部模式
+          this.scrollIndicator.classList.add('back-to-top');
+          this.arrowBounceAnimation.pause();
+          
+          gsap.to(this.scrollIndicator, {
+            backgroundColor: 'rgba(45, 55, 72, 0.9)',
+            duration: 0.3,
+            ease: "power2.out"
+          });
+          
+        } else if (!isBackToTop && this.scrollIndicator.classList.contains('back-to-top')) {
+          // 切换到下一节模式
+          this.scrollIndicator.classList.remove('back-to-top');
+          this.arrowBounceAnimation.play();
+          
+          gsap.to(this.scrollIndicator, {
+            backgroundColor: 'rgba(74, 144, 226, 0.9)',
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
+      }
+      
+      handleScrollIndicatorClick() {
+        if (this.scrollIndicator.classList.contains('back-to-top')) {
+          // 回到顶部
+          gsap.to(window, {
+            duration: 0.1,
+            scrollTo: { y: 0 },
+            ease: "power2.inOut"
+          });
+        } else {
+          // 滚动到下一个section
+          const currentSection = this.getCurrentSection();
+          const nextSection = this.getNextSection(currentSection);
+          
+          if (nextSection) {
+            const offsetTop = nextSection.offsetTop - 80;
+            gsap.to(window, {
+              duration: 0.1,
+              scrollTo: { y: offsetTop },
+              ease: "power2.inOut"
+            });
+          }
+        }
+      }
+      
+      getCurrentSection() {
+        const scrollY = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        let currentSection = null;
+        let maxVisibleArea = 0;
+        
+        this.sections.forEach(section => {
+          const rect = section.element.getBoundingClientRect();
+          const visibleTop = Math.max(0, -rect.top);
+          const visibleBottom = Math.min(rect.height, windowHeight - rect.top);
+          const visibleArea = Math.max(0, visibleBottom - visibleTop);
+          
+          if (visibleArea > maxVisibleArea) {
+            maxVisibleArea = visibleArea;
+            currentSection = section.element;
+          }
+        });
+        
+        return currentSection;
+      }
+      
+      getNextSection(currentSection) {
+        const currentIndex = this.sections.findIndex(s => s.element === currentSection);
+        if (currentIndex >= 0 && currentIndex < this.sections.length - 1) {
+          return this.sections[currentIndex + 1].element;
+        }
+        return null;
+      }
+      
+      setupHoverAnimations() {
+        // 滚动指示器hover效果
+        if (this.scrollIndicator) {
+          this.scrollIndicator.addEventListener('mouseenter', () => {
+            gsap.to(this.scrollIndicator, {
+              scale: 1.1,
+              duration: 0.3,
+              ease: "back.out(1.7)"
+            });
+            
+            gsap.to(this.scrollIndicator.querySelector('.progress-ring'), {
+              opacity: 1,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          });
+          
+          this.scrollIndicator.addEventListener('mouseleave', () => {
+            gsap.to(this.scrollIndicator, {
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+            
+            gsap.to(this.scrollIndicator.querySelector('.progress-ring'), {
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          });
+        }
+        
+        // 导航链接hover效果
+        const navLinks = document.querySelectorAll('.nav-link, .navbar-brand');
+        navLinks.forEach(link => {
+          link.addEventListener('mouseenter', () => {
+            gsap.to(link, {
+              scale: 1.05,
+              duration: 0.2,
+              ease: "power2.out"
+            });
+          });
+          
+          link.addEventListener('mouseleave', () => {
+            gsap.to(link, {
+              scale: 1,
+              duration: 0.2,
+              ease: "power2.out"
+            });
+          });
+        });
+      }
+      
+      setupSectionAnimations() {
+        // 为页面元素添加滚动触发动画
+        const animateElements = document.querySelectorAll(
+          '.card, .flip-card, .feature-card, .team-banner, .advisor-card'
+        );
+        
+        animateElements.forEach((element, index) => {
+          gsap.fromTo(element, 
+            {
+              opacity: 0,
+              y: 50,
+              scale: 0.95
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.6,
+              ease: "power2.out",
+              delay: index * 0.1,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse"
+              }
+            }
+          );
+        });
+        
+        // 分子和立方体动画优化
+        const molecules = document.querySelectorAll('.molecule');
+        molecules.forEach(molecule => {
+          gsap.set(molecule, { opacity: 0.3 });
+          
+          ScrollTrigger.create({
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            onUpdate: self => {
+              gsap.to(molecule, {
+                opacity: 0.3 * (1 - self.progress * 0.5),
+                duration: 0.1,
+                ease: "none"
+              });
+            }
+          });
+        });
+      }
+      
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      // 初始化GSAP动画管理器
+      new GSAPAnimationManager();
+      
+      // 平滑滚动支持
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            gsap.to(window, {
+              duration: 0.1,
+              scrollTo: { y: target, offsetY: 80 },
+              ease: "power2.inOut"
+            });
+          }
+        });
+      });
+      
+      // 页面加载动画
+      gsap.from("body", {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    });
+    
+  </script>
+</body>
+</html>
