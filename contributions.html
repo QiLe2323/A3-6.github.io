@@ -25,7 +25,36 @@
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
     <!-- 页面特定的CSS -->
-    
+    <style>
+.contributions-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
 
     <title>Contributions | XJTLU Museum Project</title>
 
@@ -130,7 +159,28 @@
   
 
   <!-- Page Content -->
-  
+  <div class="container contributions-page">
+  <section id="contributions" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Contributions</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">Key contributions of the interactive AR museum project.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">Contributions</h3>
+        <p class="user-title">Key Contributions to AR-Based Museum Experiences</p>
+
+        <p class="user-description">This project makes several key contributions to AR-based museum experiences. First, it demonstrates a <strong>fully web-based AR system</strong> that allows immersive, interactive storytelling without the need for specialized hardware, making it widely accessible to visitors.</p>
+        <p class="user-description">Second, the system implements a <strong>modular and scalable architecture</strong>, separating narrative logic, front-end rendering, AR recognition, game logic, and backend services. This design facilitates future expansion, content updates, and maintenance without disrupting the core system.</p>
+        <p class="user-description">Third, the development process emphasizes <strong>user-centered design</strong>, creating a branching narrative that responds to player choices, engages users with interactive storytelling, and increases replayability.</p>
+        <p class="user-description">Fourth, the integration of a <strong>real-time leaderboard</strong> encourages engagement and competition among players, enhancing motivation and visitor retention. The leaderboard also allows tracking of multiple sessions and supports repeated playthroughs with different roles or identities.</p>
+        <p class="user-description">Finally, the project demonstrates the <strong>educational and experiential benefits</strong> of combining digital assets, AR, and interactive storytelling. Participants reported improved immersion, better understanding of exhibits, and enhanced enjoyment compared to conventional museum visits, validating the system?s effectiveness in both learning and entertainment contexts.</p>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Footer -->
   <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
