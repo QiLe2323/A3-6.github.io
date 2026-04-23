@@ -25,7 +25,36 @@
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
     <!-- 页面特定的CSS -->
-    
+    <style>
+.development-process-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
 
     <title>Development Process | XJTLU Museum Project</title>
 
@@ -130,7 +159,28 @@
   
 
   <!-- Page Content -->
-  
+  <div class="container development-process-page">
+  <section id="development-process" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Development Process</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">An iterative process for building the interactive AR museum system.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">Development Process</h3>
+        <p class="user-title">Iterative Development of the Interactive AR Museum System</p>
+
+        <p class="user-description">The development of the system followed a structured, iterative approach. Initially, the <strong>exhibit assets and narrative rules</strong> were integrated to ensure that the content and storylines were consistent, historically accurate, and prepared for interactive branching paths. Dialogue scripts and conditional triggers were carefully validated to avoid logical inconsistencies during gameplay.</p>
+        <p class="user-description">The <strong>Next.js web application</strong> was developed in parallel to provide a stable and responsive front-end platform. It integrated routing, server-side rendering, and front-end state management with Zustand. Key UI features, such as a bilingual interface, progress tracking, and responsive layouts for mobile devices, were implemented to enhance accessibility and usability.</p>
+        <p class="user-description"><strong>AR functionality</strong> was then incorporated using MindAR, allowing exhibits to be scanned via browser-based recognition. The <strong>game logic engine</strong> was developed to manage branching storylines, handle real-time player decisions, and coordinate events across multiple modules.</p>
+        <p class="user-description">Backend services were designed to ensure <strong>persistent storage and real-time synchronization</strong>. Supabase was integrated to manage player accounts, store scores, and update the leaderboard instantly. API endpoints were tested for reliability and performance, ensuring seamless communication between the front-end and backend.</p>
+        <p class="user-description">Finally, <strong>testing and iterative refinement</strong> were conducted at multiple levels. Each module—exhibit recognition, game logic, front-end UI, and backend services—was tested individually and within the integrated system. User testing verified smooth interaction, consistent AR tracking, clear instructions, and appropriate challenge levels. Adjustments were made to improve performance, reduce latency, and optimize engagement for different device types.</p>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Footer -->
   <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
