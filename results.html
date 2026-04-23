@@ -27,6 +27,37 @@
     <!-- 页面特定的CSS -->
     
 
+    <style>
+.results-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
+
     <title>Results | XJTLU Museum Project</title>
 
 </head>
@@ -130,7 +161,61 @@
   
 
   <!-- Page Content -->
-  
+  <div class="container results-page">
+  <section id="results" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Results</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">Evaluation results of the interactive AR museum system.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">Results</h3>
+        <p class="user-title">Evaluation of the Interactive AR Museum Experience</p>
+
+        <p class="user-label">Experimental Design and Procedure</p>
+        <p class="user-description">To evaluate the effectiveness of our interactive AR system, we conducted a controlled experiment with 24 participants, divided into two groups of 12. A crossover design was employed to eliminate individual differences and to compare the interactive system against conventional museum visits.</p>
+        <p class="user-description">All participants first went through a preparation phase where they read the experiment instructions, signed the informed consent form, and provided basic demographic information. In the first intervention phase, Group 1 experienced a conventional museum visit while Group 2 used the experimental Web application to interact with exhibits and NPCs. Both groups then completed the first questionnaire (Questionnaire ①) to record baseline experience, understanding, and interaction feedback.</p>
+        <p class="user-description">During the crossover intervention, Group 1 switched to the Web application, and Group 2 switched to the conventional museum visit. All participants completed the second questionnaire (Questionnaire ②) to measure changes in experience and engagement.</p>
+        <p class="user-description">Fig.1 illustrates the crossover experiment design and participant flow.</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.1.png" alt="Fig.1 crossover experiment design and participant flow" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Fig.1 Crossover experiment design and participant flow.</p>
+        </div>
+
+        <p class="user-label">Participant Demographics and Familiarity</p>
+        <p class="user-description">The participants included 11 females, 13 males, and no non-binary individuals. Frequency of museum visits varied, with most participants visiting science or natural history museums regularly (1–2 times per year or more). Familiarity with AR and Web applications ranged from some understanding to very familiar.</p>
+        <p class="user-description">Table 1 summarizes participant demographics, museum visit frequency, preferred types of museums, and technology familiarity.</p>
+
+        <p class="user-label">Task Completion and Engagement</p>
+        <p class="user-description">The story completion rate was high, with 75% of participants (18 out of 24) successfully completing the story and reaching the ending. Twenty-one percent of participants collected most of the clues but did not finish, and 4% exited early. Participation across the four roles was balanced, with each role receiving 5–7 participants and average experience scores above 4.3 out of 5, indicating consistent engagement across roles.</p>
+        <p class="user-description">Fig.2 shows participant counts and average experience scores for each role.</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.2.png" alt="Fig.2 participant counts and average experience scores for each role" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Fig.2 Participant counts and average experience scores for each role.</p>
+        </div>
+        <p class="user-description">Fig.3 depicts the user completion rate of the story ending.</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.3.png" alt="Fig.3 user completion rate of the story ending" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Fig.3 User completion rate of the story ending.</p>
+        </div>
+
+        <p class="user-label">Comparative Experience: Conventional vs Interactive System</p>
+        <p class="user-description">Participants reported a noticeable improvement in overall experience when using the interactive system compared to conventional visits. Key metrics showed consistent gains across all dimensions, including immersion, information understanding, interaction interest, pleasure, and overall satisfaction.</p>
+        <p class="user-description">Fig.4 compares conventional visits and the interactive system across five experience metrics.</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.4.png" alt="Fig.4 comparison of conventional visits and the interactive system across experience metrics" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Fig.4 Comparison of conventional visits and the interactive system across five experience metrics.</p>
+        </div>
+
+        <p class="user-label">Key Findings and Insights</p>
+        <p class="user-description">The experiment demonstrated that the system’s process design was effective, achieving approximately 80% task completion and providing clear guidance that engaged participants effectively. Interactive storytelling significantly improved user experience, with higher immersion, better understanding, and stronger engagement than conventional museum visits. Participants also reported that the narrative-driven gameplay was memorable and enjoyable, while core functionalities such as NPC interaction, story reconstruction, and Web application guidance were positively received.</p>
+        <p class="user-description">Overall, the results indicate that the AR system enhances user engagement, supports interactive storytelling, and improves both the educational and recreational value of the museum experience.</p>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Footer -->
   <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
