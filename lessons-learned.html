@@ -25,7 +25,36 @@
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
     <!-- 页面特定的CSS -->
-    
+    <style>
+.lessons-learned-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
 
     <title>Lessons Learned | XJTLU Museum Project</title>
 
@@ -130,7 +159,28 @@
   
 
   <!-- Page Content -->
-  
+  <div class="container lessons-learned-page">
+  <section id="lessons-learned" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Lessons Learned</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">Insights gained from design, testing, and implementation.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">Lessons Learned</h3>
+        <p class="user-title">Key Insights from Design, Testing, and Implementation</p>
+
+        <p class="user-description">Several key lessons emerged from the project. First, balancing immersion and usability is critical; too many interactive options or complex branching can overwhelm users, while guided progression enhances engagement without reducing agency.</p>
+
+        <p class="user-description">Second, browser-based AR can deliver accessible immersive experiences, but device variability and lighting conditions require robust testing and fallback handling. State management is crucial; consistent tracking across sessions ensures coherent storytelling and prevents frustration.</p>
+
+        <p class="user-description">Third, early user feedback is invaluable. Observing interactions in realistic conditions highlighted usability issues, guided narrative pacing, and informed UI design. Finally, integrating analytics and real-time tracking enables continuous refinement, ensuring both engagement and system reliability.</p>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Footer -->
   <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
