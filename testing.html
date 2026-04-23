@@ -25,7 +25,36 @@
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
     <!-- 页面特定的CSS -->
-    
+    <style>
+.testing-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
 
     <title>Testing | XJTLU Museum Project</title>
 
@@ -130,7 +159,28 @@
   
 
   <!-- Page Content -->
-  
+  <div class="container testing-page">
+  <section id="testing" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">Testing</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">Comprehensive validation of reliability, usability, and engagement.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">Testing</h3>
+        <p class="user-title">Comprehensive Validation of System Reliability and Usability</p>
+
+        <p class="user-description">The system underwent comprehensive testing to ensure reliability, usability, and engagement. Each module?AR recognition, game logic, front-end interface, and backend services?was tested individually and in combination. Browser-based AR scanning was evaluated across multiple devices to confirm marker detection accuracy and responsiveness. User interaction flows were tested to ensure consistent story progression, appropriate branching outcomes, and error-free task completion.</p>
+
+        <p class="user-description">User testing sessions involved real participants completing storylines under controlled conditions. Metrics such as task completion rate, time to complete quests, and user-reported satisfaction were collected. Special attention was given to edge cases, such as rapid scanning, skipping dialogue, or re-scanning exhibits, to ensure the system handled unexpected inputs gracefully.</p>
+
+        <p class="user-description">Overall, testing confirmed that the system maintained stable performance, smooth AR interactions, and consistent state management across sessions. Issues identified during testing were logged and prioritized for iterative refinement, forming the basis for subsequent development improvements.</p>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Footer -->
   <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
