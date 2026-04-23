@@ -25,7 +25,36 @@
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
     <!-- 页面特定的CSS -->
-    
+    <style>
+.system-architecture-page {
+  padding: 40px 0 80px;
+}
+
+.user-name {
+  font-size: 1.6rem;
+  color: #6b442b;
+  margin-bottom: 0.35rem;
+}
+
+.user-title {
+  color: #a06b45;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.user-description,
+.user-label {
+  color: #4c372a;
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+
+.user-label {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+}
+</style>
 
     <title>System Architecture | XJTLU Museum Project</title>
 
@@ -130,7 +159,34 @@
   
 
   <!-- Page Content -->
-  
+  <div class="container system-architecture-page">
+  <section id="system-architecture" class="mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <h1 class="display-4">System Architecture</h1>
+      <div class="divider my-3"></div>
+      <p class="section-description">Architecture of the interactive AR museum storytelling system.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="user-name">System Architecture</h3>
+        <p class="user-title">A Modular Architecture for Interactive AR Museum Storytelling</p>
+
+        <p class="user-description">The system architecture of our interactive AR museum project is designed to support immersive storytelling while maintaining scalability and usability. At the foundation are <strong>exhibit assets</strong>, which include 3D models, textures, digital scans, and metadata for each artifact. These assets provide the visual and contextual content that the system presents to users and form the backbone for all interactive experiences.</p>
+        <p class="user-description">Above the assets layer is the <strong>narrative data and story rules module</strong>, which defines dialogue scripts, branching paths, quest triggers, and conditional logic. This layer enables dynamic story progression, allowing players? choices to influence the flow of the narrative and ensuring that each interaction is meaningful and contextually relevant.</p>
+        <p class="user-description">The <strong>Next.js web application</strong> serves as the core front-end framework, built with React, TypeScript, and Tailwind CSS. It handles routing, responsive layout, server-side rendering, and integrates <strong>Zustand state management</strong> to maintain consistent game states across multiple user sessions.</p>
+        <p class="user-description">For AR functionality, <strong>MindAR</strong> provides browser-based marker and image recognition, allowing exhibits to be scanned and recognized directly through the device camera without requiring additional hardware. This ensures accessibility and smooth interaction for museum visitors.</p>
+        <p class="user-description">The <strong>game logic engine</strong> manages real-time interactions, player choices, event processing, and branching outcomes, coordinating the flow of the narrative with player actions.</p>
+        <p class="user-description">Finally, <strong>backend services</strong> support data retrieval, storage, and integration with external platforms. <strong>Supabase</strong> is used to store player records and manage the leaderboard, providing real-time updates and persistent tracking of scores, completions, and rankings. Together, these components create a robust, modular, and scalable architecture that delivers an immersive, responsive, and interactive museum experience.</p>
+
+        <div class="text-center my-4">
+          <img src="static/images/Fig.5.png" alt="Fig.5 full system architecture and component flow" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Fig.5 Full system architecture and component flow, showing how exhibit assets, narrative rules, AR recognition, game logic, backend services, and leaderboard interact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
   <!-- Footer -->
   <footer class="pt-5 pb-5 footer py-5 text-white" style="background-color: #C66B4B; margin-top: 0;">
