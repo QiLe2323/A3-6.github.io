@@ -172,35 +172,17 @@
         <h3 class="user-name">Early Concepts</h3>
         <p class="user-title">Exploring Human-Centered Interactive Museum Experiences</p>
 
-        <p class="user-description">In the early stage of the project, multiple human-centered interaction concepts were explored under the theme “Museum Tales”. The goal was to transform traditional museum visits from passive observation into active, narrative-driven experiences.</p>
+        <p class="user-description">At the very beginning of the project, we envisioned a highly immersive AR museum experience in which visitors could step into the roles of ancient characters. Each player would interactively explore historical contexts, unlock story fragments, and engage with virtual digital humans within the museum environment. Scanning exhibits would reveal story clues, and players could gradually reconstruct narratives from their chosen character’s perspective, encouraging exploration and role-playing.</p>
 
-        <p class="user-label">1. Human-Centered Design Perspective</p>
-        <p class="user-description">Through preliminary analysis of museum user experiences, the following pain points were identified:</p>
-        <p class="user-description">Users lack engagement and primarily rely on reading exhibit panels.<br>Exhibits are disconnected, making it difficult to form a coherent story.<br>Younger audiences show lower interest in traditional display methods.<br>User behavior follows a “walk–look–walk” pattern, lacking exploration motivation.</p>
+        <p class="user-description">This concept also included collaborative interactions among players. Through QR code scanning or device collisions, users could influence each other’s progress, potentially unlocking new paths or triggering events that affected the story. This design aimed to add a dynamic social layer to the museum experience, allowing participants to share discoveries and indirectly interact through gameplay.</p>
 
-        <p class="user-description">Based on these findings, the design objectives were defined as follows:</p>
-        <p class="user-description">Transform users into story participants rather than observers.<br>Create a goal-oriented exploration mechanism.<br>Provide non-linear narrative experiences.<br>Enhance interactivity and immersion.</p>
+        <p class="user-description">However, these early ideas posed significant challenges. First, system complexity was extremely high. Each character required unique behavior logic, branching paths, and conditional triggers for clues, meaning the development team had to design multiple interactive routes for each character and ensure all possible player choices correctly triggered the corresponding events and endings. As the number of characters and story branches increased, managing game state became very complicated, and the backend needed to track each player’s progress, choices, and unlocked clues in real time to avoid logic errors or data conflicts.</p>
 
-        <p class="user-label">2. Initial Concept Directions</p>
-        <p class="user-label">(1) Role-Playing AR Museum Game</p>
-        <p class="user-description">Users choose a character (historical figure or museum role).<br>Movement within the museum triggers AR-based story events.<br>Different roles offer unique tasks and perspectives.</p>
-        <p class="user-description">Advantages: High immersion and strong sense of agency.<br>Challenges: Complex AR development, high equipment dependence, spatial adaptation issues.</p>
+        <p class="user-description">Second, player progress heavily depended on others’ actions. In multiplayer interaction modes, if some players did not act as expected or if there were insufficient participants to trigger specific events, other players might be forced to wait, causing interruptions or stalls. This dependence increased uncertainty and made it difficult for players to experience a smooth, coherent, and immersive journey. In a museum environment, where player distribution and movement are unpredictable, maintaining stable real-time collaboration was especially challenging.</p>
 
-        <p class="user-label">(2) Exhibit-Driven Storytelling System (Scan-Based)</p>
-        <p class="user-description">Users scan exhibits to trigger story fragments.<br>Each exhibit corresponds to a part of the narrative.<br>Users collect fragments to reconstruct the full story.</p>
-        <p class="user-description">Advantages: Strong exploration motivation, tightly linked to real exhibits.<br>Challenges: Lacks interactivity, may be perceived as information display.</p>
+        <p class="user-description">In addition, hardware and environmental requirements posed another major obstacle. The early concept relied on technologies like Bluetooth, NFC, or spatial tracking to enable device interactions or position detection. In real museum settings, these technologies were often subject to signal interference, device compatibility issues, or physical space constraints, making reliable operation difficult. Players’ inability to trigger events or interactions smoothly would significantly degrade the experience.</p>
 
-        <p class="user-label">(3) NPC Dialogue-Based Exploration</p>
-        <p class="user-description">Multiple NPCs are linked to each exhibit.<br>Users choose NPCs to obtain clues.<br>Different NPCs provide different perspectives.</p>
-        <p class="user-description">Advantages: Strong interactivity, multi-perspective narrative.<br>Challenges: Potential for redundant information, users may be uncertain whom to ask.</p>
-
-        <p class="user-label">(4) Multi-User Interaction (Scanning / Device Collision)</p>
-        <p class="user-description">Users can scan each other to exchange information.<br>Device collisions trigger additional interactions.</p>
-        <p class="user-description">Advantages: Increased social engagement, gamification.<br>Challenges: Complex implementation, potential instability.</p>
-
-        <p class="user-label">3. Early Concept Summary</p>
-        <p class="user-description">The final concept direction was defined as “Scan + NPC Dialogue + Multi-Ending Story”, because it:</p>
-        <p class="user-description">Is technically feasible.<br>Provides strong narrative capabilities.<br>Ensures high user engagement.<br>Offers scalability for future enhancements.</p>
+        <p class="user-description">Finally, testing and maintenance costs were very high. Multi-character, multi-condition, and multi-path interactions required the testing team to cover nearly all possible combinations to ensure no logic flaws or functional errors. At the same time, the backend system had to support frequent updates and data synchronization to accommodate real-time player actions; otherwise, progress loss or state conflicts could occur. This not only extended development time but also increased maintenance difficulty, making the early concept impractical to implement reliably within limited resources and time.</p>
       </div>
     </div>
   </section>
