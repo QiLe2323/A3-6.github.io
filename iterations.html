@@ -66,7 +66,7 @@
   border-radius: 22px;
   background: linear-gradient(180deg, #fff8f1 0%, #ffffff 100%);
   box-shadow: 0 18px 38px rgba(107, 68, 43, 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
 }
 
 .early-ui-card:hover {
@@ -96,6 +96,7 @@
   padding: 1.1rem 1.25rem 1.25rem;
 }
 
+.early-ui-caption h3,
 .early-ui-caption h4 {
   margin-bottom: 0.45rem;
   color: #6b442b;
@@ -125,6 +126,18 @@
 
 .early-ui-caption li + li {
   margin-top: 0.4rem;
+}
+
+.structure-image-wrap {
+  margin: 1rem auto 2.25rem;
+  text-align: center;
+}
+
+.structure-image-wrap img {
+  width: min(100%, 1200px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 @media (max-width: 767.98px) {
@@ -197,7 +210,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-ideation">
             <li><a class="dropdown-item" href="early-concepts.html"><i class="fas fa-seedling"></i> Early Concepts</a></li>
-            <li><a class="dropdown-item" href="design-alternatives.html"><i class="fas fa-random"></i> Design Alternatives</a></li>
+            <li><a class="dropdown-item" href="iterations.html"><i class="fas fa-sync-alt"></i> Iterations</a></li>
             <li><a class="dropdown-item" href="final-concept.html"><i class="fas fa-check-circle"></i> Final Concept</a></li>
           </ul>
         </li>
@@ -210,7 +223,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbar-technical">
             <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
             <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
-            <li><a class="dropdown-item" href="contributions.html"><i class="fas fa-code-branch"></i> Contributions</a></li>
             <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
           </ul>
         </li>
@@ -222,8 +234,6 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-reflection">
             <li><a class="dropdown-item" href="testing.html"><i class="fas fa-vial"></i> Testing</a></li>
-            <li><a class="dropdown-item" href="iterations.html"><i class="fas fa-sync-alt"></i> Iterations</a></li>
-            <li><a class="dropdown-item" href="lessons-learned.html"><i class="fas fa-book-open"></i> Lessons Learned</a></li>
             <li><a class="dropdown-item" href="future-work.html"><i class="fas fa-forward"></i> Future Work</a></li>
           </ul>
         </li>
@@ -247,14 +257,190 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="user-name">Iterations</h3>
-        <p class="user-title">Iterative Refinement of Usability, Engagement, and Immersion</p>
+        <h2 class="user-name">Iteration Concept Introduction</h2>
+        <p class="user-title">Systematic refinement of interaction logic and visual experience</p>
 
-        <p class="user-description">The development process was highly iterative, focusing on improving usability, engagement, and immersion. Early low-fidelity prototypes emphasized the core flow: scanning ? choosing a role ? interacting with NPCs ? collecting clues ? reconstructing the story. Feedback from internal tests informed adjustments to layout, navigation, and interaction clarity.</p>
+        <p class="user-description">In interaction design and interface development, iteration is a critical method to continuously optimize user experience, functional feasibility, and visual effectiveness. Iteration is not merely about modifying the interface; it is a systematic process of repeated design, testing, and refinement. Through multiple rounds of exploration and evaluation, the design gradually matures, stabilizes, and better meets user needs.</p>
 
-        <p class="user-description">Mid-fidelity iterations refined NPC logic, dialogue branching, and interactive feedback, including evaluating different NPC selection approaches. This stage allowed the team to balance cognitive load, guidance, and user freedom. High-fidelity iterations integrated full AR functionality, bilingual UI, and real-time leaderboard, while enhancing visual appeal through hand-drawn NPCs and responsive design.</p>
+        <p class="user-description">In this project, we categorize iteration into two core dimensions:</p>
 
-        <p class="user-description">Each iteration cycle incorporated user feedback, analytics, and observation, enabling incremental improvements. Adjustments focused on AR scanning reliability, narrative clarity, progress tracking, and leaderboard synchronization. This iterative approach ensured that both gameplay and system performance met user expectations.</p>
+        <p class="user-label">Interaction Structure Iteration</p>
+        <p class="user-description">Focuses on user operation flows, task progression logic, and story narrative coherence, ensuring that users perform actions naturally, navigate tasks smoothly, and experience a logically consistent story while exploring.</p>
+
+        <p class="user-label">UI / Visual Design Iteration</p>
+        <p class="user-description">Focuses on interface presentation, visual style, tactile perception, and emotional atmosphere, ensuring that the interface is not only aesthetically pleasing but also intuitive, easy to understand, immersive, and supports narrative engagement.</p>
+      </div>
+    </div>
+
+
+    <div class="early-ui-gallery interaction-structure-gallery" data-aos="fade-up" data-aos-delay="150">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10 text-center">
+          <h2 class="user-name">Interaction Structure Iteration</h2>
+          <p class="user-title">From functional validation to immersive story-driven interaction</p>
+          <p class="user-description">During the development of the Museum Tales AR system, we conducted multiple rounds of iterative exploration for each core interaction to enhance user immersion, usability, and narrative experience. Each interaction evolved from initial functional validation, through various design alternatives, to a final version integrating neumorphic style. This reflects the complete evolution of the system from prototype validation to story-driven, immersive experience.</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>Overview</h3>
+              <p class="caption-label">Throughout the iteration process, we focused on several key objectives:</p>
+              <ul>
+                <li><strong>User immersion:</strong> Enhance role identity experience in every interaction to provide a sense of authentic exploration.</li>
+                <li><strong>Interaction clarity:</strong> Ensure that information and actions are clear, reducing cognitive load.</li>
+                <li><strong>Story-driven logic:</strong> Interaction flows form a closed loop around exhibits, clues, and NPC conversations.</li>
+                <li><strong>Visual style and immersion:</strong> Neumorphic card design strengthens tactile perception and interface hierarchy.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-12">
+          <div class="structure-image-wrap">
+            <img src="static/images/structure_image.png" alt="Interaction structure iteration overview diagram">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>1. Role Selection</h3>
+              <p class="caption-label">Problems &amp; Requirements</p>
+              <ul>
+                <li>Early prototypes displayed roles as simple lists or text cards, resulting in flat visual experience.</li>
+                <li>User roles determine perspective, task clues, and story branches, requiring a balance between clarity and immersion.</li>
+                <li>New users need to quickly understand role characteristics while feeling a sense of immersion.</li>
+              </ul>
+              <p class="caption-label">Design Alternatives</p>
+              <ul>
+                <li><strong>Alternative 1: Text List.</strong> Pros: Simple, low development cost. Cons: Lacks visual appeal and role immersion.</li>
+                <li><strong>Alternative 2: Rectangular Card + Text Description.</strong> Pros: Clear separation, clickable. Cons: Flat visual presentation, limited interactive immersion.</li>
+                <li><strong>Alternative 3: Card + Icon + Micro Animations.</strong> Pros: More intuitive, role visually identifiable. Cons: Slightly higher development complexity and performance requirements for mobile.</li>
+                <li><strong>Alternative 4: Neumorphic Card Design (Final Choice).</strong> Cards with subtle embossing and rounded corners; buttons, icons, and cards feature soft raised effect. Clicking produces a slight concave feedback, enhancing tactile perception.</li>
+              </ul>
+              <p class="caption-label">Design Logic</p>
+              <p>Visual and tactile feedback gives users a sense of "real operation" when selecting roles, reinforcing role immersion.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>2. NPC Selection / Conversations</h3>
+              <p class="caption-label">Problems &amp; Requirements</p>
+              <ul>
+                <li>Early prototypes used simple button lists, which could overload or under-inform users, limiting exploration experience.</li>
+                <li>NPC interaction must balance story progression, user choice freedom, and task guidance.</li>
+              </ul>
+              <p class="caption-label">Design Alternatives</p>
+              <ul>
+                <li><strong>Alternative 1: All NPCs Mode.</strong> Pros: Maximum freedom, all clues accessible. Cons: Information overload, users may be uncertain which NPC to engage first.</li>
+                <li><strong>Alternative 2: Manual NPC Selection.</strong> Pros: Reduces information interference. Cons: Extra steps slow progression; novice or low-tech users may still feel confused.</li>
+                <li><strong>Alternative 3: Random NPC Assignment.</strong> Pros: Reduces cognitive load. Cons: Random NPCs may provide no useful clues, making experience inconsistent.</li>
+                <li><strong>Alternative 4: Role-Based NPC Paths.</strong> Pros: Increases replayability and personalization. Cons: Development complexity; requires testing to maintain narrative consistency.</li>
+                <li><strong>Alternative 5: Progressive Unlock.</strong> Pros: Guided experience, reduces cognitive load. Cons: Limits exploratory freedom.</li>
+              </ul>
+              <p class="caption-label">Final Choice: Neumorphic NPC Cards + Progressive Unlock</p>
+              <p>NPCs are illustrated as neumorphic cards; role identity affects accessible NPCs. Cards feature embossing, and clicks produce slight concave feedback. This combines gradual unlocking with role-based interaction, balancing freedom, clarity, and immersion.</p>
+              <p class="caption-label">Design Logic</p>
+              <p>Visualized characters and tactile interaction allow users to feel like communicating with real NPCs, while keeping clue acquisition smooth.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>3. Scan Exhibits</h3>
+              <p class="caption-label">Problems &amp; Requirements</p>
+              <ul>
+                <li>Early version relied on code input (E1-E9), lacking immersive experience.</li>
+                <li>Exhibit scanning needs close connection to story clues with intuitive feedback.</li>
+              </ul>
+              <p class="caption-label">Design Alternatives</p>
+              <ul>
+                <li><strong>Alternative 1: Code Input Simulation.</strong> Pros: Easy to implement. Cons: Weak immersion, limited interaction.</li>
+                <li><strong>Alternative 2: Static Exhibit Image + Keyword Tags.</strong> Pros: Visual, clear clue association. Cons: Still flat, interaction limited.</li>
+                <li><strong>Alternative 3: Visual Scan + Floating Keywords (Final Choice).</strong> Exhibits displayed with images and neumorphic cards; keywords float above images; click and collect produce slight concave feedback.</li>
+              </ul>
+              <p class="caption-label">Design Logic</p>
+              <p>Visual and tactile feedback reinforces user exploration, simulating "observing exhibits and extracting information."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>4. Home / Mission Hub</h3>
+              <p class="caption-label">Problems &amp; Requirements</p>
+              <ul>
+                <li>Early placeholder map pages lacked guidance; users did not know next steps.</li>
+                <li>Tasks and clues needed clear display with visual aesthetics and intuitive operation.</li>
+              </ul>
+              <p class="caption-label">Design Alternatives</p>
+              <ul>
+                <li><strong>Alternative 1: Placeholder Map.</strong> Pros: Simple, low cost. Cons: Low user experience value.</li>
+                <li><strong>Alternative 2: Linear Task List.</strong> Pros: All information visible at once. Cons: Dense, heavy reading load.</li>
+                <li><strong>Alternative 3: Modular Cards (Final Choice).</strong> Modules for Current Role, Activity Log, Clues, etc. Cards feature neumorphic embossing.</li>
+              </ul>
+              <p class="caption-label">Design Logic</p>
+              <p>Allows users to quickly see roles, tasks, and clues while enjoying soft visual aesthetics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>5. Profile &amp; Ending Screens</h3>
+              <p class="caption-label">Problems &amp; Requirements</p>
+              <ul>
+                <li>Early pages were tool-like, only showing scores and leaderboard.</li>
+                <li>Users want to review achievements while understanding story progression and clue sources.</li>
+              </ul>
+              <p class="caption-label">Design Alternatives</p>
+              <ul>
+                <li><strong>Alternative 1: Text List.</strong> Pros: Simple to implement. Cons: Visually flat, lacks immersion.</li>
+                <li><strong>Alternative 2: Card Layout.</strong> Pros: Clear visual hierarchy. Cons: Interaction could be further improved.</li>
+                <li><strong>Final Choice: Neumorphic Cards + Feedback Design.</strong> Cards with soft embossing and rounded corners show leaderboard, best results, recent runs, and unlocked clues.</li>
+              </ul>
+              <p class="caption-label">Design Logic</p>
+              <p>Combines visual and tactile feedback to give users a sense of accomplishment and narrative closure.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>6. Summary</h3>
+              <p>By exploring multiple design alternatives for key interactions, including Role Selection, NPC Interaction, Exhibit Scanning, Mission Hub, and Profile/Ending screens, we systematically analyzed trade-offs and selected solutions.</p>
+              <p class="caption-label">Final UI Features</p>
+              <ul>
+                <li>Neumorphic card design.</li>
+                <li>Progressive unlock and role-based paths.</li>
+                <li>Visual feedback and tactile interaction.</li>
+              </ul>
+              <p class="caption-label">Results</p>
+              <ul>
+                <li>Balanced freedom and clarity.</li>
+                <li>Enhanced immersion and story experience.</li>
+                <li>Reduced cognitive load and technical complexity.</li>
+              </ul>
+              <p>This process fully illustrates the evolution from early prototypes to the final immersive, story-driven, neumorphic UI.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -262,7 +448,14 @@
     <div class="early-ui-gallery" data-aos="fade-up" data-aos-delay="180">
       <div class="row justify-content-center mb-4">
         <div class="col-lg-10 text-center">
-          <h3 class="user-name">Early UI Iterations</h3>
+          <h2 class="user-name">UI / Visual Design Iteration</h2>
+          <p class="user-title">Interface evolution from early prototype screens to the final visual system</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10 text-center">
+          <h3 class="user-name">Early UI</h3>
           <p class="user-title">Visual exploration from interface structure to interaction clarity</p>
           <p class="user-description">These early UI screens document how the interface evolved across layout, role selection, AR guidance, clue collection, and feedback presentation. The gallery keeps different image sizes visually consistent while preserving each original design.</p>
         </div>
@@ -275,7 +468,7 @@
               <img src="static/images/earlyUI1.png" alt="Early UI iteration 1 showing the initial entry screen concept">
             </div>
             <div class="early-ui-caption">
-              <h4>Early UI 1: Local Single-Device Closed Loop</h4>
+              <h3>Early UI 1: Local Single-Device Closed Loop</h3>
               <p>This interface was designed as an early local prototype for testing the complete gameplay loop. After choosing an identity, players input simulated scan codes from E1 to E9 to obtain AR clues and continue questioning NPCs. Once the ending conditions are met, the system automatically moves to the story reconstruction page, and finally to the END page, where players can view the ending, score, and level.</p>
               <p class="caption-label">Strengths:</p>
               <ul>
@@ -302,7 +495,7 @@
               <img src="static/images/earlyUI2.png" alt="Early UI iteration 2 showing navigation and task flow exploration">
             </div>
             <div class="early-ui-caption">
-              <h4>Early UI 2: Role Selection</h4>
+              <h3>Early UI 2: Role Selection</h3>
               <p>This interface allows players to choose a character identity before starting the game. Each role is associated with different areas of focus and interaction tasks. For example, the History Archivist focuses on donation networks and collections, the Chinese Language Education Assistant emphasizes cross-cultural communication and handwriting, the School Newspaper Reporter pays attention to interviews and oral history, and the Museum Volunteer focuses on public education and exhibit interaction. After a role is selected, the system automatically determines the validity of later exhibit scans and NPC dialogues, enabling a more personalized story progression.</p>
               <p class="caption-label">Strengths:</p>
               <ul>
@@ -327,7 +520,7 @@
               <img src="static/images/earlyUI3.png" alt="Early UI iteration 3 showing role or character selection design">
             </div>
             <div class="early-ui-caption">
-              <h4>Early UI 3: Map Placeholder</h4>
+              <h3>Early UI 3: Map Placeholder</h3>
               <p>This interface functions as a placeholder for the map page in the early prototype. At this stage, the map area is intentionally left empty, serving as a reserved space for later integration of the real map and exploration nodes. Players can directly navigate to Scan or Chat through the bottom navigation bar, maintaining the continuity of gameplay while the map functionality is not yet implemented.</p>
               <p class="caption-label">Strengths:</p>
               <ul>
@@ -354,7 +547,7 @@
               <img src="static/images/earlyUI4.png" alt="Early UI iteration 4 showing AR scanning or interaction guidance">
             </div>
             <div class="early-ui-caption">
-              <h4>Early UI 4: Simulated Exhibit Scanning</h4>
+              <h3>Early UI 4: Simulated Exhibit Scanning</h3>
               <p>This interface represents the exhibit scanning stage in the early prototype. Players input simulated codes from E1 to E9 to obtain AR clues. The interface also includes a stub AR frame, which in the future will be replaced with real AR or QR code scanning. After entering an exhibit code, the system displays scanning results and relevant keywords, guiding players in exploring and following story leads.</p>
               <p class="caption-label">Strengths:</p>
               <ul>
@@ -382,7 +575,7 @@
               <img src="static/images/earlyUI5.png" alt="Early UI iteration 5 showing clue collection and progress feedback">
             </div>
             <div class="early-ui-caption">
-              <h4>Early UI 5: NPC Selection and Dialogue Guidance</h4>
+              <h3>Early UI 5: NPC Selection and Dialogue Guidance</h3>
               <p>This interface explores how players choose NPCs and continue the story after scanning exhibits. It allows users to talk with different NPCs, such as the History Archivist, British Exchange Student, and Security Guard. Before a valid exhibit is scanned, the interface still allows preliminary conversations, but these conversations only provide hints and do not immediately push the story forward. After the player scans a relevant exhibit, returning to the NPC page may trigger effective dialogue and unlock further clues.</p>
               <p class="caption-label">Strengths:</p>
               <ul>
@@ -410,7 +603,7 @@
               <img src="static/images/earlyUI6.png" alt="Early UI iteration 6 showing final early interface refinement">
             </div>
             <div class="early-ui-caption">
-              <h4>Early UI 6: Profile and Leaderboard</h4>
+              <h3>Early UI 6: Profile and Leaderboard</h3>
               <p>This interface explores how to present player records, identity information, and ranking results after gameplay. It allows users to view their anonymous nickname, selected role, best result, latest synchronization status, leaderboard ranking, and recent game records. The design supports both role-based ranking and overall ranking, helping players understand their progress after completing a story round.</p>
               <p class="caption-label">Strengths:</p>
               <ul>
@@ -433,6 +626,336 @@
         </div>
       </div>
     </div>
+
+
+
+
+    <div class="row justify-content-center mb-5 figma-iterations-section" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-10">
+        <h3 class="user-name text-center">Figma Iterations</h3>
+        <div class="row g-4 mt-3 text-center">
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/Low.png" alt="Low figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+            <p class="user-description mt-2 mb-0">Low figma</p>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/Mid-Low.png" alt="Mid-Low figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+            <p class="user-description mt-2 mb-0">Mid-Low figma</p>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/Mid-High.png" alt="Mid-High figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+            <p class="user-description mt-2 mb-0">Mid-High figma</p>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/High.png" alt="High figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+            <p class="user-description mt-2 mb-0">High figma</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="early-ui-gallery final-ui-gallery" data-aos="fade-up" data-aos-delay="220">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10 text-center">
+          <h3 class="user-name">Final UI</h3>
+          <p class="user-title">From functional prototype to story-driven AR museum experience</p>
+          <p class="user-description">Compared with the early prototype, the final version evolved from a local, function-verification-oriented closed-loop test interface into a complete, story-driven AR museum interactive system designed for real user experiences.</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>1. Overall Design Overview</h3>
+              <p class="caption-label">Visual Style</p>
+              <ul>
+                <li>The main color scheme changed from the early high-contrast black background with neon green highlights to a soft cream/light gray background with low-saturation green accents.</li>
+                <li>The visual atmosphere shifted from a "technical prototype feel" to a "gentle, immersive experience with cultural and narrative qualities."</li>
+                <li>Page layouts changed from early "linear information lists" to more hierarchical, card-based, and guided interface structures.</li>
+              </ul>
+              <p class="caption-label">Design Goals</p>
+              <p>Early UI focused on validating whether the workflow could run, while the final UI emphasizes narrative experience, role immersion, interaction guidance, aesthetic quality, and system integrity.</p>
+              <p class="caption-label">Neumorphic Style Features</p>
+              <ul>
+                <li>All interactive elements such as buttons, cards, input fields, and navigation bars use concave/embossed shadow effects, creating a soft tactile visual effect.</li>
+                <li>Backgrounds use cream/light gray, with subtle floating effects for elements to provide mild 3D depth without compromising softness.</li>
+                <li>Text and element colors use low-saturation green/gray to enhance softness while maintaining clear hierarchy.</li>
+                <li>The overall atmosphere is more aligned with museum cultural contexts, soft, modern, and immersive.</li>
+              </ul>
+              <p class="caption-label">Design Objectives</p>
+              <ul>
+                <li>Establish an immersive story experience.</li>
+                <li>Strengthen role immersion and task-driven logic.</li>
+                <li>Balance aesthetic appeal with usability, making user interactions intuitive and enjoyable.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/01_Start.png" alt="Final UI welcome page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.1 Welcome Page</h3>
+              <p class="caption-label">Page Content</p>
+              <ul>
+                <li>Central text: "Welcome to our story journey".</li>
+                <li>Minimalist layout with abundant whitespace.</li>
+                <li>Soft light-colored background, text in pale green/gray.</li>
+              </ul>
+              <p class="caption-label">Function</p>
+              <p>Serves as the emotional entry point of the system and sets a transition from the real world into a narrative exploration state.</p>
+              <p class="caption-label">Design Intent</p>
+              <ul>
+                <li>To create a sense of ritual before entering the experience.</li>
+                <li>To establish the system's thematic tone.</li>
+                <li>To emphasize "story journey" rather than "game" or "system," highlighting the narrative exploration experience.</li>
+              </ul>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>High whitespace to reduce cognitive load.</li>
+                <li>Minimal interactive elements to avoid distraction.</li>
+                <li>Soft font and light background for a calm, culturally resonant atmosphere.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/02_Role Selection.png" alt="Final UI role selection page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.2 Role Selection Page</h3>
+              <p class="caption-label">Page Content</p>
+              <p>Users select one of four roles: History Archivist, Global Buddy, Press Fellow, and Gallery Guide. Each role card includes a role name, brief responsibility description, iconic visual cue, and a uniform "Start Journey" button at the bottom.</p>
+              <p class="caption-label">Function</p>
+              <p>Serves as the crucial role assignment before entering the story system. Role choice determines perspective, tasks, and affects clue interpretation and story immersion.</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Encourages users to explore exhibits with purpose and identity, enhancing role immersion, task differentiation, and replay potential.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Card-based design with clear separation for each role.</li>
+                <li>Simple English naming for international accessibility.</li>
+                <li>Roles are understandable, user-friendly, and relatable.</li>
+                <li>Clear hierarchy: top labels - main title - role list - action button.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/03_Home.png" alt="Final UI home mission hub page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.3 Home / Mission Hub Page</h3>
+              <p class="caption-label">Page Content</p>
+              <p>The page includes "MISSION HUB / Pending Tasks", top tabs such as Guide / Wall, a hint section, Current Role, Activity Log, Why I'm Here, Clues Collected, and the bottom navigation bar.</p>
+              <p class="caption-label">Function</p>
+              <p>Serves as the task overview page and organizes information from "user has entered the system" to "what to do next."</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Unlike the early placeholder map page, the Home page becomes a meaningful mission dashboard integrating role status, current tasks, activity history, collected clues, and hints.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Information split into modules for clarity.</li>
+                <li>Task status, clue collection, and motivation are explicitly shown.</li>
+                <li>Supports task-driven and story-driven experience rather than just navigation.</li>
+                <li>Functions as a "control panel" for exploration.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/04_Scan.png" alt="Final UI scan exhibits page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.4 Scan Exhibits Page</h3>
+              <p class="caption-label">Page Content</p>
+              <p>The page includes "INVESTIGATION / Scan Exhibits", role and exhibit category tags, a large central exhibit image, floating keyword tags such as Variety, Shared Ground, and Rules, an exhibit description card, and bottom navigation.</p>
+              <p class="caption-label">Function</p>
+              <p>Connects real exhibits to story clues. Users collect keywords to inform NPC interactions and narrative resolution.</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Transforms scanning from simple E1-E9 input into a more immersive AR-like visual interface, enhancing immersion, exhibit-clue association, and visual comprehension.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Real exhibit images replace placeholders for authenticity.</li>
+                <li>Keywords visually overlaid for clue emphasis.</li>
+                <li>Description card explains exhibit meaning, reinforcing educational value.</li>
+                <li>Clearly visualizes the process: observe - extract - interpret.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/05_Chat.png" alt="Final UI conversations NPC page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.5 Conversations Page (NPC)</h3>
+              <p class="caption-label">Page Content</p>
+              <p>Displays three interactive characters: History Archivist, British Exchange Student, and Security Guard. Characters are illustrated centrally with the instruction "Tap different people to gather clues" and placeholder messaging when no valid conversation is available yet.</p>
+              <p class="caption-label">Function</p>
+              <p>Users pursue, verify, and advance the narrative based on scanned clues, converting exhibit information into narrative insights from character perspectives.</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Upgraded from a button-list interface in the early prototype to illustrated characters, making NPCs narrative agents rather than only functional options.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Character illustrations enhance recognition and affinity.</li>
+                <li>Visual identity matches roles for narrative credibility.</li>
+                <li>Tap interactions feel natural.</li>
+                <li>Friendly and story-driven atmosphere.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/06_Profile.png" alt="Final UI profile page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.6 Profile Page</h3>
+              <p class="caption-label">Page Content</p>
+              <p>Displays profile details, best results, leaderboard information for role-based and overall rankings, and recent runs.</p>
+              <p class="caption-label">Function</p>
+              <p>Provides feedback on performance and achievements, encouraging replay and role experimentation.</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Organized layout improves clarity, makes leaderboards and best results more prominent, and integrates feedback into the user experience.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Modular card layout.</li>
+                <li>Leaderboard tab enhances gamification.</li>
+                <li>Recent runs highlight ongoing engagement.</li>
+                <li>Lighter, visually comfortable design.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/08_Story Reconstruction.png" alt="Final UI clue confirmation page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.7 Clue Confirmation Page</h3>
+              <p class="caption-label">Page Content</p>
+              <p>The page centers on "Nice Work!" and presents a fill-in-the-blank sentence: "In the end, the boat model pulls this story back toward ______." Two keyword options, homesickness and rules, support final reasoning.</p>
+              <p class="caption-label">Function</p>
+              <p>Serves as the critical reasoning page where users make the final story inference based on collected clues.</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Emphasizes active reasoning instead of passive result delivery.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Minimalistic layout for focus.</li>
+                <li>Fill-in-the-blank interaction feels like a "story puzzle."</li>
+                <li>Simple options reduce complexity.</li>
+                <li>Positive feedback reinforces user satisfaction.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/07_End.png" alt="Final UI ending page">
+            </div>
+            <div class="early-ui-caption">
+              <h3>2.8 Ending Page</h3>
+              <p class="caption-label">Page Content</p>
+              <p>The page presents an ending rank, title such as "A Complete Volunteer Record," description text, corresponding role tag, unlocked clues from exhibits and conversations, and a top return button.</p>
+              <p class="caption-label">Function</p>
+              <p>Concludes the interaction flow and explains both the result achieved and the reason behind it.</p>
+              <p class="caption-label">Design Intent</p>
+              <p>Integrates achievement feedback, narrative summary, clue review, and role attribution, turning the ending into a reflective experience rather than just a score.</p>
+              <p class="caption-label">Design Features</p>
+              <ul>
+                <li>Emphasizes completion and unlock sensation.</li>
+                <li>Shows clue sources to reinforce logical closure.</li>
+                <li>Retains result and process for interpretability.</li>
+                <li>Suitable for educational or exhibition contexts.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-lg-10">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>3. Iteration Changes: From Early UI to Final UI</h3>
+              <p class="caption-label">3.1 Visual Style: from prototype-like to narrative and refined</p>
+              <ul>
+                <li>Early black background + neon green - final cream/light gray with low-saturation green.</li>
+                <li>Introduced neumorphic elements: soft embossed/concave buttons, cards, and input fields.</li>
+                <li>Created a more cultural, gentle, and immersive aesthetic.</li>
+              </ul>
+              <p class="caption-label">3.2 Information Architecture</p>
+              <ul>
+                <li>Linear text lists - structured, card-based modules.</li>
+                <li>Titles and labels add hierarchy and clarity.</li>
+              </ul>
+              <p class="caption-label">3.3 Role Design</p>
+              <p>Early functional labels evolved into immersive, internationalized role names, enhancing role-playing and identity.</p>
+              <p class="caption-label">3.4 Home Page</p>
+              <p>The placeholder map evolved into a real mission dashboard that displays role, clues, activity, and tasks.</p>
+              <p class="caption-label">3.5 Scan Page</p>
+              <p>The input-based simulation evolved into visual exhibit scanning with floating keywords and explanatory cards.</p>
+              <p class="caption-label">3.6 NPC Interaction</p>
+              <p>Buttons evolved into illustrated character interactions, improving immersion and narrative connection.</p>
+              <p class="caption-label">3.7 Profile & Ending</p>
+              <p>The profile was reorganized for clarity, while the ending page now integrates clues, achievements, and narrative context.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-lg-10">
+          <div class="card early-ui-card">
+            <div class="early-ui-caption">
+              <h3>4. Design Scheme and Rationale</h3>
+              <p class="caption-label">Core Goals</p>
+              <ul>
+                <li>Make museum exploration story-driven.</li>
+                <li>Support role-based interaction.</li>
+                <li>Combine usability with emotional experience.</li>
+              </ul>
+              <p class="caption-label">Design Principles</p>
+              <ul>
+                <li>Narrative-first: all pages, clues, and endings follow the story journey.</li>
+                <li>Clarity and hierarchy: users can quickly know identity, tasks, clues, and next steps.</li>
+                <li>Soft, museum-appropriate aesthetics.</li>
+                <li>Lightweight gamification: roles, clues, endings, and leaderboard.</li>
+              </ul>
+              <p class="caption-label">Interaction Flow</p>
+              <p>Welcome - Choose Role - Mission Hub - Scan Exhibits - Talk to NPCs - Infer Key Meaning - Unlock Ending - Review Profile / Rankings.</p>
+              <ul>
+                <li>Step responsibilities are clear.</li>
+                <li>User experience flows continuously.</li>
+                <li>The interaction creates a strong rhythm from entry to story completion.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </div>
 
@@ -441,10 +964,10 @@
   <div class="container">
     <div class="row mb-4">
       <div class="col-lg-6 col-xs-12">
-        <h4 class="mb-3" style="font-size:2.5rem;font-weight:bold;letter-spacing:2px;color:white;">XJTLU</h4>
+        <h4 class="mb-3" style="font-size:2.5rem;font-weight:bold;letter-spacing:2px;color:white;">XJTLU</h3>
       </div>
       <div class="col-lg-6 col-xs-12">
-        <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+        <h4 class="mt-lg-0 mt-sm-3">Links</h3>
         <ul class="m-2 p-2">
           <li><a href="index.html">Home</a></li>
           <li><a href="members.html">Team</a></li>
@@ -907,9 +1430,9 @@
               opacity: 1,
               y: 0,
               scale: 1,
-              duration: 0.6,
+              duration: 0.25,
               ease: "power2.out",
-              delay: index * 0.1,
+              delay: index * 0.015,
               scrollTrigger: {
                 trigger: element,
                 start: "top 85%",
