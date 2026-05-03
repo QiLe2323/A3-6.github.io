@@ -54,6 +54,84 @@
   margin-bottom: 0.45rem;
   font-weight: 700;
 }
+
+.early-ui-gallery {
+  margin-top: 3rem;
+}
+
+.early-ui-card {
+  height: 100%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fff8f1 0%, #ffffff 100%);
+  box-shadow: 0 18px 38px rgba(107, 68, 43, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.early-ui-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 46px rgba(107, 68, 43, 0.2);
+}
+
+.early-ui-image-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 430px;
+  padding: 18px;
+  background: radial-gradient(circle at top left, rgba(198, 107, 75, 0.14), transparent 36%), #f7eadf;
+}
+
+.early-ui-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(76, 55, 42, 0.12);
+}
+
+.early-ui-caption {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.early-ui-caption h4 {
+  margin-bottom: 0.45rem;
+  color: #6b442b;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.early-ui-caption p,
+.early-ui-caption li {
+  margin-bottom: 0;
+  color: #4c372a;
+  line-height: 1.6;
+  font-size: 0.94rem;
+}
+
+.early-ui-caption .caption-label {
+  margin-top: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: #6b442b;
+  font-weight: 700;
+}
+
+.early-ui-caption ul {
+  margin-bottom: 0;
+  padding-left: 1.15rem;
+}
+
+.early-ui-caption li + li {
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 767.98px) {
+  .early-ui-image-frame {
+    height: 320px;
+  }
+}
 </style>
 
     <title>Iterations | XJTLU Museum Project</title>
@@ -177,6 +255,182 @@
         <p class="user-description">Mid-fidelity iterations refined NPC logic, dialogue branching, and interactive feedback, including evaluating different NPC selection approaches. This stage allowed the team to balance cognitive load, guidance, and user freedom. High-fidelity iterations integrated full AR functionality, bilingual UI, and real-time leaderboard, while enhancing visual appeal through hand-drawn NPCs and responsive design.</p>
 
         <p class="user-description">Each iteration cycle incorporated user feedback, analytics, and observation, enabling incremental improvements. Adjustments focused on AR scanning reliability, narrative clarity, progress tracking, and leaderboard synchronization. This iterative approach ensured that both gameplay and system performance met user expectations.</p>
+      </div>
+    </div>
+
+
+    <div class="early-ui-gallery" data-aos="fade-up" data-aos-delay="180">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10 text-center">
+          <h3 class="user-name">Early UI Iterations</h3>
+          <p class="user-title">Visual exploration from interface structure to interaction clarity</p>
+          <p class="user-description">These early UI screens document how the interface evolved across layout, role selection, AR guidance, clue collection, and feedback presentation. The gallery keeps different image sizes visually consistent while preserving each original design.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/earlyUI1.png" alt="Early UI iteration 1 showing the initial entry screen concept">
+            </div>
+            <div class="early-ui-caption">
+              <h4>Early UI 1: Local Single-Device Closed Loop</h4>
+              <p>This interface was designed as an early local prototype for testing the complete gameplay loop. After choosing an identity, players input simulated scan codes from E1 to E9 to obtain AR clues and continue questioning NPCs. Once the ending conditions are met, the system automatically moves to the story reconstruction page, and finally to the END page, where players can view the ending, score, and level.</p>
+              <p class="caption-label">Strengths:</p>
+              <ul>
+                <li>The interface presents the full playable process, including identity selection, simulated scanning, NPC interaction, ending trigger, result viewing, and leaderboard synchronization, helping users understand the overall game flow.</li>
+                <li>The numbered steps clearly show the sequence of actions, making the logic of the experience easier to follow.</li>
+                <li>It supports repeated play under the same identity and updates cloud leaderboard records, adding replayability and a sense of competition.</li>
+                <li>The “Current Scope” section clearly explains the limitations of the prototype, such as the single-device closed loop, simulated scanning, and the fact that real WebAR or camera recognition had not yet been integrated. This helps set user expectations.</li>
+              </ul>
+              <p class="caption-label">Weaknesses:</p>
+              <ul>
+                <li>The page contains a large amount of text, requiring users to spend time reading before fully understanding the process, which may interrupt immersion.</li>
+                <li>The step descriptions are relatively long, and the visual hierarchy is limited, so important information may not stand out clearly enough.</li>
+                <li>The simulated scanning process is quite different from a real AR interaction, which may create a gap between prototype testing and the intended final experience.</li>
+                <li>The large light-green information blocks dominate the page visually and may lead to visual fatigue.</li>
+                <li>The interface is not fully optimized for mobile interaction, as users on longer screens may need to scroll considerably to view all the content.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/earlyUI2.png" alt="Early UI iteration 2 showing navigation and task flow exploration">
+            </div>
+            <div class="early-ui-caption">
+              <h4>Early UI 2: Role Selection</h4>
+              <p>This interface allows players to choose a character identity before starting the game. Each role is associated with different areas of focus and interaction tasks. For example, the History Archivist focuses on donation networks and collections, the Chinese Language Education Assistant emphasizes cross-cultural communication and handwriting, the School Newspaper Reporter pays attention to interviews and oral history, and the Museum Volunteer focuses on public education and exhibit interaction. After a role is selected, the system automatically determines the validity of later exhibit scans and NPC dialogues, enabling a more personalized story progression.</p>
+              <p class="caption-label">Strengths:</p>
+              <ul>
+                <li>The role selection is clear and intuitive, with both Chinese descriptions and English translations, making it easier for different users to understand.</li>
+                <li>The selected state provides immediate visual feedback, clearly highlighting the current role choice.</li>
+                <li>The interface includes clear guidance, informing players that they will enter the map page after confirmation and explaining the temporary data-saving mechanism, which helps reduce confusion.</li>
+              </ul>
+              <p class="caption-label">Weaknesses:</p>
+              <ul>
+                <li>The page contains a large amount of information, and the role cards occupy substantial space, resulting in limited visual hierarchy and making the lower instruction section easier to overlook.</li>
+                <li>There is no preview of how each selected role will affect later gameplay, so players may find it difficult to understand the practical differences between roles.</li>
+                <li>The color distinction is not strong enough, and unselected role cards have relatively weak visual contrast, which may reduce decision-making efficiency.</li>
+                <li>The mobile interaction is not fully optimized, as on long screens users may need to scroll significantly, and some important guidance information may be missed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/earlyUI3.png" alt="Early UI iteration 3 showing role or character selection design">
+            </div>
+            <div class="early-ui-caption">
+              <h4>Early UI 3: Map Placeholder</h4>
+              <p>This interface functions as a placeholder for the map page in the early prototype. At this stage, the map area is intentionally left empty, serving as a reserved space for later integration of the real map and exploration nodes. Players can directly navigate to Scan or Chat through the bottom navigation bar, maintaining the continuity of gameplay while the map functionality is not yet implemented.</p>
+              <p class="caption-label">Strengths:</p>
+              <ul>
+                <li>Clearly communicates that the map area is reserved, helping users understand the current scope of the prototype and setting expectations for future updates.</li>
+                <li>Bottom navigation provides direct access to Scan, Chat, and Profile, maintaining smooth interaction flow even without the map.</li>
+                <li>Role-specific information is displayed in a compact card, showing the selected identity and reinforcing continuity from previous stages.</li>
+                <li>Minimizes visual clutter by keeping the map placeholder simple, avoiding overwhelming users with incomplete map elements.</li>
+              </ul>
+              <p class="caption-label">Weaknesses:</p>
+              <ul>
+                <li>The lack of visual feedback for exploration progress may reduce player immersion, as the placeholder does not provide cues for collected information or completed tasks.</li>
+                <li>Players cannot preview exploration nodes or planned map interactions, making it harder to anticipate game dynamics.</li>
+                <li>Interaction feels static and less engaging, as the central map area is empty and does not support visual storytelling.</li>
+                <li>Color contrast between the placeholder card and background is moderate but may not be sufficient to draw attention to important role information for all users.</li>
+                <li>Limited guidance is provided for first-time users regarding what actions to take next, which may cause minor confusion in navigation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/earlyUI4.png" alt="Early UI iteration 4 showing AR scanning or interaction guidance">
+            </div>
+            <div class="early-ui-caption">
+              <h4>Early UI 4: Simulated Exhibit Scanning</h4>
+              <p>This interface represents the exhibit scanning stage in the early prototype. Players input simulated codes from E1 to E9 to obtain AR clues. The interface also includes a stub AR frame, which in the future will be replaced with real AR or QR code scanning. After entering an exhibit code, the system displays scanning results and relevant keywords, guiding players in exploring and following story leads.</p>
+              <p class="caption-label">Strengths:</p>
+              <ul>
+                <li>Clear instructions guide players to input exhibit codes and submit them, ensuring the intended flow of the prototype is maintained.</li>
+                <li>The stub AR frame visually represents the future AR interaction, helping users understand where scanning and recognition will occur.</li>
+                <li>A dedicated section lists all available scannable exhibits (E1–E9), making it easy for players to see their options and track progress.</li>
+                <li>The interface integrates smoothly with the bottom navigation bar, allowing players to switch between Home, Scan, Chat, and Profile without losing context.</li>
+                <li>Provides feedback immediately after submitting a code (keywords and fuzzy words), reinforcing the collection and progress system.</li>
+              </ul>
+              <p class="caption-label">Weaknesses:</p>
+              <ul>
+                <li>The simulated input system is not immersive, which may reduce player engagement compared to real AR interactions.</li>
+                <li>The interface is text-heavy, and players may need to read instructions carefully, potentially breaking immersion.</li>
+                <li>The AR stub frame lacks interactivity and does not reflect real scanning behaviors, so users cannot experience visual or spatial cues that the final version would provide.</li>
+                <li>Visual hierarchy is limited; the scanning input, AR frame, and exhibit list occupy similar visual weight, making it harder to focus on the next action.</li>
+                <li>The design may feel static, with limited immediate feedback for scanned items beyond displaying keywords, which could lessen the sense of exploration.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/earlyUI5.png" alt="Early UI iteration 5 showing clue collection and progress feedback">
+            </div>
+            <div class="early-ui-caption">
+              <h4>Early UI 5: NPC Selection and Dialogue Guidance</h4>
+              <p>This interface explores how players choose NPCs and continue the story after scanning exhibits. It allows users to talk with different NPCs, such as the History Archivist, British Exchange Student, and Security Guard. Before a valid exhibit is scanned, the interface still allows preliminary conversations, but these conversations only provide hints and do not immediately push the story forward. After the player scans a relevant exhibit, returning to the NPC page may trigger effective dialogue and unlock further clues.</p>
+              <p class="caption-label">Strengths:</p>
+              <ul>
+                <li>The interface clearly explains the relationship between exhibit scanning and NPC dialogue, helping users understand that story progression depends on valid clues.</li>
+                <li>Different NPC cards make the interaction structure easy to follow and give users a sense of choice.</li>
+                <li>The “unscanned exhibit” reminder prevents confusion by telling players why the plot cannot progress yet.</li>
+                <li>The collected clue section provides feedback on current progress without leaving the dialogue page, supporting continuity in the experience.</li>
+                <li>The bottom navigation keeps the main flow accessible, allowing users to move between Home, Scan, Chat, and Profile easily.</li>
+              </ul>
+              <p class="caption-label">Weaknesses:</p>
+              <ul>
+                <li>The page is text-heavy, and the repeated explanations under each NPC card may make the interface feel crowded.</li>
+                <li>The distinction between “ordinary response” and “effective dialogue” is explained in words, but not strongly visualized, so users may still feel uncertain about whether they are making progress.</li>
+                <li>Since conversations can happen before scanning, players may misunderstand why dialogue does not advance the story.</li>
+                <li>NPC cards are visually similar, which may make the characters feel less distinctive and reduce emotional engagement.</li>
+                <li>The clue progress section is placed near the bottom, so users may need to scroll to check their current progress, which can interrupt the flow of interaction.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card early-ui-card">
+            <div class="early-ui-image-frame">
+              <img src="static/images/earlyUI6.png" alt="Early UI iteration 6 showing final early interface refinement">
+            </div>
+            <div class="early-ui-caption">
+              <h4>Early UI 6: Profile and Leaderboard</h4>
+              <p>This interface explores how to present player records, identity information, and ranking results after gameplay. It allows users to view their anonymous nickname, selected role, best result, latest synchronization status, leaderboard ranking, and recent game records. The design supports both role-based ranking and overall ranking, helping players understand their progress after completing a story round.</p>
+              <p class="caption-label">Strengths:</p>
+              <ul>
+                <li>The interface clearly separates personal information, leaderboard results, and recent records into different cards, making the profile structure easy to understand.</li>
+                <li>The anonymous player system protects privacy while still allowing users to participate in rankings.</li>
+                <li>The role-based leaderboard matches the identity selection mechanism, encouraging players to replay the game with different roles.</li>
+                <li>Displaying score level, ending title, and completion time gives users a quick summary of their performance.</li>
+                <li>The recent records section prepares space for replay history, supporting long-term engagement and comparison.</li>
+              </ul>
+              <p class="caption-label">Weaknesses:</p>
+              <ul>
+                <li>The leaderboard currently shows very limited data, so the competitive function may feel underdeveloped in the early prototype.</li>
+                <li>The difference between the role leaderboard and the overall leaderboard may not be immediately clear to first-time users.</li>
+                <li>The personal information section is mostly static and does not provide enough visual feedback on progress or achievements.</li>
+                <li>The recent records section is only described with placeholder text, which weakens the sense of completion.</li>
+                <li>The interface focuses more on results than reflection, so it does not explain why the player received a certain score or how they could improve in the next round.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
