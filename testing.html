@@ -21,10 +21,10 @@
     <!-- Custom CSS -->
     <link href="static/style.css" rel="stylesheet">
     
-    <!-- 下拉导航栏样式 -->
+    <!-- ????????-->
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
-    <!-- 页面特定的CSS -->
+    <!-- ?????CSS -->
     <style>
 .testing-page {
   padding: 40px 0 80px;
@@ -60,9 +60,9 @@
 
 </head>
 <body>
-  <!-- 全局装饰元素已移至home页面 -->
+  <!-- ?????????home?? -->
 
-  <!-- 滚动提示箭头 -->
+  <!-- ?????? -->
   <div class="scroll-indicator" id="scrollIndicator">
     <div class="progress-ring"></div>
     <div class="arrow bounce"></div>
@@ -133,6 +133,7 @@
             <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
             <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
             <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
+            <li><a class="dropdown-item" href="ai-use.html"><i class="fas fa-robot"></i> AI Use</a></li>
           </ul>
         </li>
 
@@ -161,19 +162,130 @@
     <div class="section-header text-center mb-5" data-aos="fade-up">
       <h1 class="display-4">User Testing</h1>
       <div class="divider my-3"></div>
-      <p class="section-description">Comprehensive validation of reliability, usability, and engagement.</p>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
         <h3 class="user-name">User Testing</h3>
-        <p class="user-title">Comprehensive Validation of System Reliability and Usability</p>
+        <p class="user-description">To evaluate the usability, immersion, and storytelling experience of the Museum Tales Web prototype, we invited 24 participants to take part in user testing. The purpose of the testing was not simply to check whether the website could run successfully, but to observe whether users could understand the complete experience flow, including role selection, the Mission Hub, exhibit scanning, NPC dialogue, clue collection, story reconstruction, ending unlocking, and the Profile / Ranking page. At the same time, we also wanted to understand whether this Web-based interactive experience could encourage users to participate in the story more actively compared with a regular museum visit.</p>
 
-        <p class="user-description">The system underwent comprehensive testing to ensure reliability, usability, and engagement. Each module?AR recognition, game logic, front-end interface, and backend services?was tested individually and in combination. Browser-based AR scanning was evaluated across multiple devices to confirm marker detection accuracy and responsiveness. User interaction flows were tested to ensure consistent story progression, appropriate branching outcomes, and error-free task completion.</p>
+        <p class="user-label">Testing Method</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.1.png" alt="Fig.1 user testing design and procedure" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+        </div>
+        <p class="user-description">Before the testing started, participants first read the information sheet, signed the consent form, and provided basic demographic details. Among the participants, there were 11 female participants and 13 male participants, with no non-binary participants. Most participants had some museum visiting experience. Specifically, 15 participants visited museums 1&ndash;2 times per year, 6 participants visited museums once every few years, and a smaller number visited museums more than three times per year. This suggests that the participants were not completely unfamiliar with museum experiences and were able to compare traditional museum visits with the Web-based interactive experience.</p>
+        <p class="user-description">In terms of technology familiarity, participants were generally more familiar with Web app interaction than AR. For AR, 10 participants had heard of it but did not really understand it, 7 had some understanding, 5 were familiar with it, and 2 were very familiar with it. In comparison, more participants showed a medium or high level of familiarity with Web app interaction. This indicates that our user group was relatively comfortable with web-based interaction, but their understanding of AR scanning and augmented reality still varied. Therefore, the testing also helped us observe whether users with lower AR familiarity could understand the scanning and clue-triggering mechanism smoothly.</p>
+        <p class="user-description">The testing adopted a grouped and comparative structure. The 24 participants were divided into two groups, with 12 participants in each group. Group 1 first experienced a regular museum visit and then used the Web App. Group 2 first used the Web App and then experienced a regular museum visit. After each stage, participants completed a questionnaire. This design helped reduce the influence of experience order on the results and allowed us to compare the Web prototype and traditional museum visiting experience more clearly.</p>
+        <p class="user-description">During the Web prototype testing, participants were asked to complete the following main tasks:</p>
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">Choose a role
+&rarr; Enter the Mission Hub
+&rarr; Scan exhibits or simulated exhibit pages
+&rarr; Collect clues
+&rarr; Talk to NPCs
+&rarr; Reconstruct the story
+&rarr; Unlock the ending
+&rarr; Check Profile / Ranking</pre>
+        <p class="user-description">During the testing process, we observed whether users knew what to do next, whether they understood the relationship between scanning, clues, and NPC dialogue, and whether they could successfully complete the story ending. We also recorded their feedback on usability, immersion, storytelling, visual design, and the overall experience.</p>
+        <p class="user-description">To support the evaluation more systematically, we used several questionnaire-based measures, including MES, MMGS, and SUS. MES was used to compare the museum experience across three conditions: our interactive system, an audio guide system, and a normal museum visit. MMGS was used to evaluate the digital and mobile museum guidance experience of our system, including usability, learnability, control, and interaction quality. SUS was used to measure the overall usability of the Web prototype.</p>
 
-        <p class="user-description">User testing sessions involved real participants completing storylines under controlled conditions. Metrics such as task completion rate, time to complete quests, and user-reported satisfaction were collected. Special attention was given to edge cases, such as rapid scanning, skipping dialogue, or re-scanning exhibits, to ensure the system handled unexpected inputs gracefully.</p>
+        <div class="table-responsive my-4">
+          <table class="table" style="background:#fffaf5;border:1px solid rgba(140, 90, 60, 0.15);border-radius:14px;overflow:hidden;">
+            <thead style="background:rgba(140, 90, 60, 0.08);">
+              <tr>
+                <th scope="col" style="color:#6b442b; font-weight:800;">Evaluation Measure</th>
+                <th scope="col" style="color:#6b442b; font-weight:800;">Purpose</th>
+                <th scope="col" style="color:#6b442b; font-weight:800;">What It Evaluates</th>
+                <th scope="col" style="color:#6b442b; font-weight:800;">Why It Was Used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:#4c372a;"><strong>MES &ndash; Museum Experience Scale</strong></td>
+                <td style="color:#4c372a;">To compare different museum experience modes</td>
+                <td style="color:#4c372a;">Engagement, knowledge learning, meaningful experience, emotional connection</td>
+                <td style="color:#4c372a;">To understand whether Museum Tales provides a richer experience than audio guide or normal visit</td>
+              </tr>
+              <tr>
+                <td style="color:#4c372a;"><strong>MMGS &ndash; Mobile Museum Guide Scale</strong></td>
+                <td style="color:#4c372a;">To evaluate the mobile / digital museum guide experience</td>
+                <td style="color:#4c372a;">General usability, learnability &amp; control, interaction quality</td>
+                <td style="color:#4c372a;">To check whether users could understand and control the Web-based experience</td>
+              </tr>
+              <tr>
+                <td style="color:#4c372a;"><strong>SUS &ndash; System Usability Scale</strong></td>
+                <td style="color:#4c372a;">To measure overall system usability</td>
+                <td style="color:#4c372a;">Ease of use, confidence, consistency, complexity</td>
+                <td style="color:#4c372a;">To evaluate whether the Web prototype was usable and acceptable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <p class="user-description">Overall, testing confirmed that the system maintained stable performance, smooth AR interactions, and consistent state management across sessions. Issues identified during testing were logged and prioritized for iterative refinement, forming the basis for subsequent development improvements.</p>
+        <p class="user-description">The SUS score of Museum Tales was 73.4, suggesting that the prototype reached an acceptable and generally positive usability level, while still leaving space for improvement in guidance, AR feedback, and interaction clarity.</p>
+
+        <p class="user-label">Evaluation Results</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.6.png" alt="Fig.6 evaluation results" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+        </div>
+        <p class="user-description">The MES results showed that Museum Tales performed strongly in several museum experience dimensions. In terms of engagement, our system received the highest score, with a mean score of 4.45, compared with 3.82 for the audio guide and 3.38 for the normal visit. This suggests that the role-based and interactive story structure helped users become more actively involved in the museum experience.</p>
+        <p class="user-description">For knowledge learning, the audio guide received a slightly higher score (4.02) than our system (3.95), while the normal visit scored 3.55. This result is understandable because audio guides are usually designed to deliver structured information clearly and directly. However, our system still performed close to the audio guide while also providing stronger interaction and narrative engagement.</p>
+        <p class="user-description">For meaningful experiences, our system scored 4.12, higher than the audio guide (3.65) and the normal visit (3.57). This indicates that users did not only find the system entertaining, but also felt that the story, clues, and role-based exploration helped them connect with the museum content in a more meaningful way.</p>
+        <p class="user-description">For emotional connections, our system also scored the highest, with a mean score of 3.81, compared with 3.39 for the audio guide and 3.05 for the normal visit. This shows that the interactive storytelling structure helped users form a stronger emotional connection with the museum experience than passive reading or listening.</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.7.png" alt="Fig.7 MMGS and SUS results" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+        </div>
+        <p class="user-description">The MMGS results further supported the usability and interaction quality of our system. The system received a mean score of 3.69 for general usability, 3.82 for learnability and control, and 3.76 for interaction quality. These results suggest that most participants were able to understand and use the Web prototype, although there was still room to improve guidance and reduce confusion in some interaction stages.</p>
+        <div class="p-4 my-4" style="background:#fffaf5;border:1px solid rgba(140, 90, 60, 0.15);border-radius:16px;box-shadow:0 10px 28px rgba(90,62,43,0.10);">
+          <div class="d-flex flex-wrap align-items-center justify-content-between" style="gap: 12px;">
+            <div>
+              <div style="font-weight:700; color:#6b442b; letter-spacing:0.4px;">SUS Score</div>
+              <div style="color:#4c372a;">System Usability Scale</div>
+            </div>
+            <div style="font-size:2.5rem; font-weight:800; color:#8C5A3C; line-height:1;">73.4</div>
+          </div>
+          <div class="mt-3" style="color:#4c372a; line-height:1.7;">Acceptable and generally positive usability level.</div>
+        </div>
+
+        <p class="user-description">The SUS score of the system was 73.4, which indicates an acceptable and generally positive level of usability. This result suggests that users could complete the main tasks and navigate the prototype successfully, but the system was not yet perfect. The score also reflects what we observed during testing: the core flow worked, but some parts, such as AR scanning feedback, task guidance, and the connection between clues and NPC dialogue, still needed to be clearer.</p>
+        <p class="user-description">The comparison between the three experience types also showed that our interactive system performed well in immersion, interaction interest, pleasure, and overall satisfaction. Compared with the conventional visit and the voice guide system, Museum Tales created a more active and game-like museum experience. Users were not only receiving information, but also making choices, collecting clues, talking to characters, and completing the story.</p>
+
+        <div class="text-center my-4">
+          <img src="static/images/Fig.4.png" alt="Fig.4 comparison results" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+        </div>
+        <p class="user-label">Positive Feedback</p>
+        <p class="user-description">Overall, users responded positively to the story-based experience of Museum Tales. Many participants felt that role selection gave them a clearer identity and purpose before entering the experience. They were no longer just ordinary visitors, but explored the exhibits from the perspective of a specific role. This made the museum visit feel more like a task-driven story experience rather than simply browsing exhibit information.</p>
+        <p class="user-description">NPC dialogue was also one of the parts that received positive feedback. Compared with reading explanatory text in a traditional museum, NPC dialogue made users feel that they were interacting with characters in the story. Some users felt that this made the exhibit information easier to understand and made the visiting experience more contextual. Especially when clues were connected with NPC dialogue, users felt that they were gradually getting closer to the truth of the story instead of passively receiving information.</p>
+        <p class="user-description">The clue collection mechanism also strengthened users&rsquo; sense of progress. Users could see which clues or keywords they had already collected, which helped them better understand where they were in the story. According to the testing results, 18 participants successfully completed the story and reached the ending, accounting for 75% of all participants. This shows that most users were able to understand the main flow of the system and complete the full experience from exploration to ending.</p>
+        <div class="text-center my-4">
+          <img src="static/images/Fig.3.png" alt="Fig.3 completion status" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+        </div>
+        <p class="user-description">In terms of completion status, 5 participants collected most of the clues but did not complete the final ending, accounting for 20.8%. Although these users did not fully complete the story, they were usually close to the ending and showed a willingness to continue collecting clues and finishing the task. Only 1 participant exited early, accounting for 4.2%. This suggests that the overall flow was achievable for most users, although a small number of users still dropped out because the process felt slightly long or the guidance was not clear enough.</p>
+
+        <div class="text-center my-4">
+          <img src="static/images/Fig.2.png" alt="Fig.2 role experience" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+        </div>
+        <p class="user-description">For the role experience, the number of participants across the four roles was relatively balanced. Role A had 7 participants, with an average experience score of 4.43; Role B had 6 participants, with an average score of 4.50; Role C had 5 participants, with an average score of 4.39; and Role D had 6 participants, with an average score of 4.31. Overall, all scores remained at a relatively high level, suggesting that there was no major imbalance in the experience across different roles. Role B received the highest average score, which may indicate that its storyline or task design was more engaging for users. However, Role D received a slightly lower score, which suggests that the story appeal and task clarity of different roles could be further improved in future iterations.</p>
+        <p class="user-description">The ending and leaderboard also made the experience feel more complete. After completing the story, users could view their ending, score, level, and ranking. This gave the whole experience a clear closing point. Compared with a regular museum visit, where users often leave without direct feedback, the ending page of Museum Tales gave users a sense of completion and achievement. It also increased their motivation to replay the experience or try another role.</p>
+
+        <p class="user-label">Problems Found</p>
+        <p class="user-description">Although the overall feedback was positive, the testing also revealed several issues.</p>
+        <p class="user-description">First, some users were initially unclear about the relationship between scanning, clues, and NPC dialogue. They understood that they needed to scan exhibits and that they could talk to NPCs, but they did not immediately understand that &ldquo;the clues obtained through scanning would affect NPC dialogue and story reconstruction.&rdquo; This shows that although the system had a complete logic, the relationship between different actions still needed clearer guidance for first-time users.</p>
+        <p class="user-description">Second, some users expected the scanning function to feel closer to a real AR camera interaction. Although the current prototype already demonstrated the connection between exhibits and digital content through MindAR or simulated scanning, some users still wanted to see clearer camera recognition feedback, such as a successful scanning animation, a recognition frame, AR content appearing on screen, or a stronger sense of spatial interaction. This indicates that the current version was able to prove the functional logic, but the AR immersion could still be improved.</p>
+        <p class="user-description">Third, a small number of users felt that the process was slightly long. To complete the story, users needed to go through role selection, the task page, scanning, clue collection, NPC dialogue, and story reconstruction. For users who enjoy exploration, this process increased engagement. However, for users with less patience or lower technology familiarity, the process could feel slightly complex. This also explains why 5 users were close to completing the experience but did not reach the final ending, and why 1 user exited early.</p>
+        <p class="user-description">Fourth, some pages still needed clearer visual guidance. In particular, on the Mission Hub and NPC pages, users sometimes had to pause and judge where they should click next, or whether their current clues were enough to enter the next stage. This shows that although the interface was clearer than the early version, task status, button prompts, and progress feedback still needed to be strengthened.</p>
+        <p class="user-description">Finally, users with lower AR familiarity needed simpler instructions. Since many participants had only heard of AR but did not really understand how it worked, some of them could feel confused if the system entered scanning or clue-triggering too directly. Future versions should include more intuitive guidance on the scanning page to reduce the learning cost for first-time users.</p>
+
+        <p class="user-label">Improvements</p>
+        <p class="user-description">Based on the user testing results, we summarised several directions for further improvement.</p>
+        <p class="user-description">First, the Mission Hub needs to provide stronger task guidance. It should not only display the current role, clues, and activity records, but also clearly tell users &ldquo;what to do next.&rdquo; For example, more visible task status, a progress indicator, and a next-action button could be added to help users quickly understand their current stage.</p>
+        <p class="user-description">Second, clue feedback needs to be more obvious. After users scan an exhibit, the system should clearly show &ldquo;what clue has been obtained,&rdquo; &ldquo;what this clue can be used for,&rdquo; and &ldquo;whether the conditions for entering story reconstruction have been met.&rdquo; This would reduce users&rsquo; confusion about the relationship between scanning and NPC logic.</p>
+        <p class="user-description">Third, the NPC page can be further improved. NPC states could be made clearer, such as showing labels like &ldquo;available conversation,&rdquo; &ldquo;need more clues,&rdquo; or &ldquo;new clue unlocked.&rdquo; This would help users understand more directly why some conversations can move the story forward while others cannot yet trigger key content.</p>
+        <p class="user-description">Fourth, the Ending page should continue to display and strengthen the explanation of clue sources. The testing showed that users liked seeing their results and completion status. Therefore, the ending page should not only show the score and level, but also explain why users received that ending and which exhibit clues and NPC dialogues influenced the final result. This can strengthen the story closure and make users feel that their actions were meaningful.</p>
+        <p class="user-description">Finally, AR scanning needs to feel more realistic. In the future, clearer camera-based recognition feedback could be added, such as a scanning frame, successful recognition prompt, floating keyword animation, or AR overlay. This would help users better understand the connection between real exhibits and the digital story.</p>
+
+        <p class="user-label">Summary</p>
+        <p class="user-description">Overall, the user testing showed that the core experience of Museum Tales is feasible. Most users were able to complete the full flow from role selection to ending unlocking, and they felt that role-playing, NPC dialogue, clue collection, and the leaderboard made the museum visit more active and story-driven. According to the testing data, 75% of users successfully completed the story and reached the ending, and the average experience scores of all four roles remained relatively high. This suggests that the system has good overall usability and appeal.</p>
+        <p class="user-description">At the same time, the testing reminded us that a Web AR storytelling experience should not only focus on whether functions exist, but also on whether users can clearly understand the meaning of each step. Future improvements should focus on task guidance, clue feedback, NPC status prompts, and the realism of AR scanning. Through these improvements, Museum Tales can further develop from a working Web prototype into a more mature interactive storytelling experience suitable for real museum contexts.</p>
       </div>
     </div>
   </section>
@@ -201,7 +313,7 @@
     <hr />
     <div class="row mt-4">
       <div class="col">
-        <p class="mb-0"><small>© 2025 XJTLU Museum Project. All rights reserved.</small></p>
+        <p class="mb-0"><small>&copy; 2025 XJTLU Museum Project. All rights reserved.</small></p>
       </div>
     </div>
   </div>
@@ -210,22 +322,22 @@
   <!-- Bootstrap Bundle with Popper -->
   <script src="static/bootstrap.bundle.min.js"></script>
   
-  <!-- 下拉导航栏增强脚本 -->
+  <!-- ??????????-->
   <script src="static/dropdown-nav.js"></script>
   
-  <!-- GSAP 动画库 -->
+  <!-- GSAP ????-->
   <script src="static/gsap.min.js"></script>
   <script src="static/ScrollTrigger.min.js"></script>
   <script src="static/ScrollToPlugin.min.js"></script>
   
 
   
-  <!-- 页面特定的脚本 -->
+  <!-- ????????-->
   
   
-  <!-- GSAP统一动效管理脚本 -->
+  <!-- GSAP???????? -->
   <script>
-    // 注册GSAP插件
+    // ??GSAP??
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     
     class GSAPAnimationManager {
@@ -250,7 +362,7 @@
       detectPageSections() {
         this.sections = [];
         
-        // 检测所有有效的sections
+        // ???????sections
         const commonSelectors = [
           'section',
           '.hero-section',
@@ -278,7 +390,7 @@
           });
         });
         
-        // 按DOM顺序排序
+        // ?DOM????
         this.sections = allSections.sort((a, b) => {
           return a.element.compareDocumentPosition(b.element) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
         });
@@ -316,14 +428,14 @@
       }
       
       setupNavbarAnimations() {
-        // 导航栏滚动紧凑效果
+        // ??????????
         ScrollTrigger.create({
           trigger: "body",
           start: "top -50",
           end: "bottom bottom",
           onUpdate: self => {
             if (self.direction === 1 && self.progress > 0.05) {
-              // 向下滚动，紧凑导航栏
+              // ??????????
               gsap.to(this.navbar, {
                 paddingTop: "0.5rem",
                 paddingBottom: "0.5rem",
@@ -342,7 +454,7 @@
                 ease: "power2.out"
               });
             } else if (self.progress <= 0.05) {
-              // 回到顶部，恢复正常大小
+              // ????????????
               gsap.to(this.navbar, {
                 paddingTop: "",
                 paddingBottom: "",
@@ -364,7 +476,7 @@
           }
         });
 
-        // 为每个section创建导航栏主题切换
+        // ???section??????????
         this.sections.forEach((section, index) => {
           ScrollTrigger.create({
             trigger: section.element,
@@ -379,7 +491,7 @@
       animateNavbarTheme(theme) {
         if (this.currentTheme === theme) return;
         
-        // 移除所有主题类
+        // ???????
         this.navbar.classList.remove(
           'theme-default', 
           'theme-transparent', 
@@ -388,10 +500,10 @@
           'theme-accent'
         );
         
-        // 添加新主题类
+        // ??????
         this.navbar.classList.add(`theme-${theme}`);
         
-        // GSAP动画切换背景和文字颜色
+        // GSAP????????????
         const themeConfig = this.getThemeConfig(theme);
         
         gsap.to(this.navbar, {
@@ -441,21 +553,21 @@
         const arrow = this.scrollIndicator.querySelector('.arrow');
         const progressRing = this.scrollIndicator.querySelector('.progress-ring');
         
-        // 初始状态：隐藏
+        // ???????
         gsap.set(this.scrollIndicator, { 
           opacity: 0, 
           y: 20, 
           pointerEvents: 'none' 
         });
         
-        // 滚动显示/隐藏逻辑
+        // ????/????
         ScrollTrigger.create({
           trigger: "body",
           start: "top -100",
           end: "bottom bottom",
           onUpdate: self => {
             if (self.progress > 0.1) {
-              // 显示指示器
+              // ??????
               gsap.to(this.scrollIndicator, {
                 opacity: 1,
                 y: 0,
@@ -464,7 +576,7 @@
                 ease: "back.out(1.7)"
               });
             } else {
-              // 隐藏指示器
+              // ??????
               gsap.to(this.scrollIndicator, {
                 opacity: 0,
                 y: 20,
@@ -474,17 +586,17 @@
               });
             }
             
-            // 更新进度环
+            // ??????
             const degrees = self.progress * 360;
             progressRing.style.setProperty('--progress', `${degrees}deg`);
             
-            // 判断是否到达底部
+            // ????????
             const isNearBottom = self.progress > 0.9;
             this.updateScrollIndicatorMode(isNearBottom);
           }
         });
         
-        // 箭头弹跳动画
+        // ??????
         this.arrowBounceAnimation = gsap.to(arrow, {
           y: 4,
           duration: 1,
@@ -493,7 +605,7 @@
           repeat: -1
         });
         
-        // 点击事件
+        // ????
         this.scrollIndicator.addEventListener('click', () => {
           this.handleScrollIndicatorClick();
         });
@@ -503,7 +615,7 @@
         const arrow = this.scrollIndicator.querySelector('.arrow');
         
         if (isBackToTop && !this.scrollIndicator.classList.contains('back-to-top')) {
-          // 切换到回到顶部模式
+          // ??????????
           this.scrollIndicator.classList.add('back-to-top');
           this.arrowBounceAnimation.pause();
           
@@ -514,7 +626,7 @@
           });
           
         } else if (!isBackToTop && this.scrollIndicator.classList.contains('back-to-top')) {
-          // 切换到下一节模式
+          // ?????????
           this.scrollIndicator.classList.remove('back-to-top');
           this.arrowBounceAnimation.play();
           
@@ -528,14 +640,14 @@
       
       handleScrollIndicatorClick() {
         if (this.scrollIndicator.classList.contains('back-to-top')) {
-          // 回到顶部
+          // ????
           gsap.to(window, {
             duration: 0.1,
             scrollTo: { y: 0 },
             ease: "power2.inOut"
           });
         } else {
-          // 滚动到下一个section
+          // ??????section
           const currentSection = this.getCurrentSection();
           const nextSection = this.getNextSection(currentSection);
           
@@ -581,7 +693,7 @@
       }
       
       setupHoverAnimations() {
-        // 滚动指示器hover效果
+        // ?????hover??
         if (this.scrollIndicator) {
           this.scrollIndicator.addEventListener('mouseenter', () => {
             gsap.to(this.scrollIndicator, {
@@ -612,7 +724,7 @@
           });
         }
         
-        // 导航链接hover效果
+        // ????hover??
         const navLinks = document.querySelectorAll('.nav-link, .navbar-brand');
         navLinks.forEach(link => {
           link.addEventListener('mouseenter', () => {
@@ -634,7 +746,7 @@
       }
       
       setupSectionAnimations() {
-        // 为页面元素添加滚动触发动画
+        // ??????????????
         const animateElements = document.querySelectorAll(
           '.card, .flip-card, .feature-card, .team-banner, .advisor-card'
         );
@@ -663,7 +775,7 @@
           );
         });
         
-        // 分子和立方体动画优化
+        // ??????????
         const molecules = document.querySelectorAll('.molecule');
         molecules.forEach(molecule => {
           gsap.set(molecule, { opacity: 0.3 });
@@ -685,12 +797,12 @@
       
     }
     
-    // 页面加载完成后初始化
+    // ??????????
     document.addEventListener('DOMContentLoaded', () => {
-      // 初始化GSAP动画管理器
+      // ???GSAP??????
       new GSAPAnimationManager();
       
-      // 平滑滚动支持
+      // ??????
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -705,7 +817,7 @@
         });
       });
       
-      // 页面加载动画
+      // ??????
       gsap.from("body", {
         opacity: 0,
         duration: 0.5,
