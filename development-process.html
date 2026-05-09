@@ -133,6 +133,7 @@
             <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
             <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
             <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
+            <li><a class="dropdown-item" href="ai-use.html"><i class="fas fa-robot"></i> AI Use</a></li>
           </ul>
         </li>
 
@@ -161,19 +162,81 @@
     <div class="section-header text-center mb-5" data-aos="fade-up">
       <h1 class="display-4">Development Process</h1>
       <div class="divider my-3"></div>
-      <p class="section-description">An iterative process for building the interactive AR museum system.</p>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
         <h3 class="user-name">Development Process</h3>
-        <p class="user-title">Iterative Development of the Interactive AR Museum System</p>
 
-        <p class="user-description">The development of the system followed a structured, iterative approach. Initially, the <strong>exhibit assets and narrative rules</strong> were integrated to ensure that the content and storylines were consistent, historically accurate, and prepared for interactive branching paths. Dialogue scripts and conditional triggers were carefully validated to avoid logical inconsistencies during gameplay.</p>
-        <p class="user-description">The <strong>Next.js web application</strong> was developed in parallel to provide a stable and responsive front-end platform. It integrated routing, server-side rendering, and front-end state management with Zustand. Key UI features, such as a bilingual interface, progress tracking, and responsive layouts for mobile devices, were implemented to enhance accessibility and usability.</p>
-        <p class="user-description"><strong>AR functionality</strong> was then incorporated using MindAR, allowing exhibits to be scanned via browser-based recognition. The <strong>game logic engine</strong> was developed to manage branching storylines, handle real-time player decisions, and coordinate events across multiple modules.</p>
-        <p class="user-description">Backend services were designed to ensure <strong>persistent storage and real-time synchronization</strong>. Supabase was integrated to manage player accounts, store scores, and update the leaderboard instantly. API endpoints were tested for reliability and performance, ensuring seamless communication between the front-end and backend.</p>
-        <p class="user-description">Finally, <strong>testing and iterative refinement</strong> were conducted at multiple levels. Each module—exhibit recognition, game logic, front-end UI, and backend services—was tested individually and within the integrated system. User testing verified smooth interaction, consistent AR tracking, clear instructions, and appropriate challenge levels. Adjustments were made to improve performance, reduce latency, and optimize engagement for different device types.</p>
+        <p class="user-description">The development process of Museum Tales followed an iterative path from concept design to a working Web prototype. We did not build the final system directly at the beginning. Instead, we first tested whether the core interaction loop could work, then gradually improved the interface, interaction logic, visual design, and technical implementation.</p>
+
+        <p class="user-label">Stage 1: Concept Development</p>
+        <p class="user-description">The first stage focused on defining the project direction. Our initial goal was to use AR and interactive storytelling to make the museum visit more engaging. We wanted users to do more than simply read exhibit descriptions. Therefore, we developed the idea of letting users choose a role, scan exhibits, collect clues, interact with NPCs, and reconstruct a story.</p>
+        <p class="user-description">At this stage, we mainly focused on the experience logic. We asked questions such as: What does the user do first? How does scanning connect to the story? Why would users talk to NPCs? How can the ending feel meaningful? These questions helped us define the basic structure of the system before moving into interface and technical development.</p>
+
+        <p class="user-label">Stage 2: Early Functional Prototype</p>
+        <p class="user-description">The second stage was to create an early functional prototype. This version was mainly used to test whether the full gameplay loop could run. At this stage, some functions were simplified. For example, instead of real AR recognition, users could input simulated exhibit codes such as E1 to E9. These codes represented different exhibits and triggered corresponding clues or story fragments.</p>
+
+        <p class="user-label">Scanning Method Decision</p>
+        <p class="user-title">Scanning Method Decision</p>
+        <p class="user-description">During the early prototype stage, we also compared different scanning approaches. This helped us decide how to balance technical feasibility, stability, and immersion in the current prototype.</p>
+        <p class="user-title">Scanning Interaction Decision.</p>
+
+        <p class="user-description">During the implementation stage, we also considered the difference between QR code scanning and AR-based physical exhibit recognition. In this project, scanning is not designed as a simple QR code interaction. Although QR codes are stable and easy to implement, they create a weaker sense of immersion because users interact with an external code rather than the museum object itself.</p>
+
+        <p class="user-description">Museum Tales instead uses AR-based recognition of physical exhibits or cultural postcards. This means that users scan the visual appearance of the exhibit or postcard itself, and the system then unlocks related clues, NPC dialogue, and story content. This approach is more technically demanding, but it better supports the project’s goal of transforming museum objects into story triggers.</p>
+
+        <div class="table-responsive my-4">
+          <table class="table" style="background:#fffaf5;border:1px solid rgba(140, 90, 60, 0.15);border-radius:14px;overflow:hidden;">
+            <thead style="background:rgba(140, 90, 60, 0.08);">
+              <tr>
+                <th scope="col" style="color:#6b442b; font-weight:800;">Scanning Method</th>
+                <th scope="col" style="color:#6b442b; font-weight:800;">Strengths</th>
+                <th scope="col" style="color:#6b442b; font-weight:800;">Limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:#4c372a;"><strong>QR Code Scanning</strong></td>
+                <td style="color:#4c372a;">Stable, easy to implement, accurate in recognition, and commonly used for quickly linking users to digital content</td>
+                <td style="color:#4c372a;">Less immersive, because users scan an external code rather than interacting directly with the exhibit or postcard itself</td>
+              </tr>
+              <tr>
+                <td style="color:#4c372a;"><strong>AR Physical Exhibit / Postcard Recognition</strong></td>
+                <td style="color:#4c372a;">More natural and closer to a real museum AR experience, because users scan the visual appearance of the exhibit or cultural postcard itself</td>
+                <td style="color:#4c372a;">More technically demanding, as it depends on lighting, camera angle, image quality, visual features, and recognition stability</td>
+              </tr>
+              <tr>
+                <td style="color:#4c372a;"><strong>Museum Tales Approach</strong></td>
+                <td style="color:#4c372a;">Uses AR recognition to connect physical exhibits or cultural postcards with story clues, NPC dialogue, and narrative progression</td>
+                <td style="color:#4c372a;">Requires careful preparation of recognisable exhibit/postcard images and clear scanning feedback so users understand when content has been unlocked</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="user-description">The early prototype included identity selection, simulated scanning, NPC dialogue, clue collection, ending conditions, and a basic result page. Although the interface was still simple and text-heavy, it was useful because it allowed us to check the basic logic of the system. We could see whether users could move from role selection to scanning, from scanning to NPC interaction, and finally to story reconstruction and ending.</p>
+        <p class="user-description">This stage was important because it showed that the project should not start with visual polishing only. The core system logic needed to work first.</p>
+
+        <p class="user-label">Stage 3: Figma Iteration</p>
+        <p class="user-description">After validating the basic flow, we moved into Figma design iteration. The interface evolved from low-fidelity wireframes to mid-fidelity and high-fidelity designs. During this process, we refined the role selection page, Mission Hub, scanning page, NPC page, Profile page, and Ending page.</p>
+        <p class="user-description">The focus of this stage was to improve clarity and immersion. Early screens were too text-heavy, so we redesigned the interface with clearer hierarchy, cards, tabs, buttons, and visual cues. We also changed the visual direction from a more technical black-and-neon style to a softer cream, light-gray, and muted green design. This made the interface feel more suitable for a museum storytelling experience.</p>
+        <p class="user-description">Figma helped us test layout and visual structure before implementation. It also allowed us to compare different UI options and decide which elements should be kept in the final Web version.</p>
+
+        <p class="user-label">Stage 4: Web UI Development</p>
+        <p class="user-description">The fourth stage was to translate the Figma design into a working web interface. We used Next.js, React, TypeScript, and Tailwind CSS to build the main pages and interactive components.</p>
+        <p class="user-description">The Web UI included the Welcome page, Role Selection page, Mission Hub, Scan Exhibits page, NPC Conversation page, Story Reconstruction page, Ending page, and Profile / Ranking page. Each page was built as part of the complete user journey rather than as an isolated screen.</p>
+        <p class="user-description">During this stage, we paid attention to both visual consistency and interaction usability. Components such as role cards, clue cards, NPC interaction panels, navigation bars, and result cards were designed to be reusable. This helped keep the interface consistent and made the development process more manageable.</p>
+
+        <p class="user-label">Stage 5: Interaction Logic Development</p>
+        <p class="user-description">After the main pages were built, we implemented the interaction logic behind the interface. This included role state, scanned exhibit state, clue collection, NPC interaction conditions, story reconstruction logic, ending generation, and ranking records.</p>
+        <p class="user-description">For example, when a user selects a role, the system stores that identity and uses it to shape later tasks and narrative context. When the user scans an exhibit or postcard, the system unlocks related clue keywords. These clues then affect what the user can understand or use during NPC dialogue and the final story reconstruction stage.</p>
+        <p class="user-description">The ending system uses the user’s progress and story completion state to generate a result, including ending title, score, level, and unlocked clue summary. The profile and ranking system then records this result and displays it as part of the user’s achievement.</p>
+        <p class="user-description">This stage was challenging because the experience needed to feel like one connected story, not a collection of separate pages. Therefore, the logic between role, scan, clue, NPC, reconstruction, and ending had to be carefully connected.</p>
+
+        <p class="user-label">Stage 6: Refinement</p>
+        <p class="user-description">The final stage focused on refinement. After building the prototype, we reviewed the user flow, page clarity, interaction feedback, and visual hierarchy. Some parts of the system were adjusted because they were too text-heavy or not clear enough for first-time users.</p>
+        <p class="user-description">We improved the Mission Hub so that users could better understand their current tasks and progress. We made clue feedback more visible after scanning. We also refined the NPC page so that characters felt more like part of the story rather than simple buttons. The final visual style was adjusted to be softer, cleaner, and more consistent with the museum context.</p>
+        <p class="user-description">This stage helped the prototype become more complete and usable. It also made the final result feel closer to an actual interactive museum experience.</p>
       </div>
     </div>
   </section>
