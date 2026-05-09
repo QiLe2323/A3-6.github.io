@@ -40,7 +40,4 @@ The workflow will publish:
 - the `static/` directory
 
 ## Notes
-
-- Flask is no longer required
-- Jinja template rendering is no longer used
 - The site can be hosted on any static hosting platform
