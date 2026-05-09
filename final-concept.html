@@ -119,7 +119,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-ideation">
             <li><a class="dropdown-item" href="early-concepts.html"><i class="fas fa-seedling"></i> Early Concepts</a></li>
-            <li><a class="dropdown-item" href="design-alternatives.html"><i class="fas fa-random"></i> Design Alternatives</a></li>
+            <li><a class="dropdown-item" href="iterations.html"><i class="fas fa-sync-alt"></i> Iterations</a></li>
             <li><a class="dropdown-item" href="final-concept.html"><i class="fas fa-check-circle"></i> Final Concept</a></li>
           </ul>
         </li>
@@ -132,7 +132,6 @@
           <ul class="dropdown-menu" aria-labelledby="navbar-technical">
             <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
             <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
-            <li><a class="dropdown-item" href="contributions.html"><i class="fas fa-code-branch"></i> Contributions</a></li>
             <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
           </ul>
         </li>
@@ -143,10 +142,8 @@
             <i class="fas fa-chart-line"></i><span class="nav-label">Reflection</span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-reflection">
-            <li><a class="dropdown-item" href="testing.html"><i class="fas fa-vial"></i> Testing</a></li>
-            <li><a class="dropdown-item" href="iterations.html"><i class="fas fa-sync-alt"></i> Iterations</a></li>
-            <li><a class="dropdown-item" href="lessons-learned.html"><i class="fas fa-book-open"></i> Lessons Learned</a></li>
-            <li><a class="dropdown-item" href="future-work.html"><i class="fas fa-forward"></i> Future Work</a></li>
+            <li><a class="dropdown-item" href="testing.html"><i class="fas fa-vial"></i> User Testing</a></li>
+            <li><a class="dropdown-item" href="future-work.html"><i class="fas fa-forward"></i> Reflection &amp; Future Work</a></li>
           </ul>
         </li>
 
@@ -164,39 +161,106 @@
     <div class="section-header text-center mb-5" data-aos="fade-up">
       <h1 class="display-4">Final Concept</h1>
       <div class="divider my-3"></div>
-      <p class="section-description">The final system is a story-driven museum exploration game.</p>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="user-name">Final Concept</h3>
-        <p class="user-title">A Story-Driven Museum Exploration Game</p>
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100" id="final-concept-content">
+        <h2 class="user-name">1. Final Concept Overview</h2>
+        <p class="user-description">The final concept of <strong>Museum Tales</strong> is a Web AR-based interactive storytelling experience designed for the Xi’an Jiaotong-Liverpool University Museum. Instead of presenting the museum as a passive space for viewing exhibits and reading information, the project transforms the visit into an active narrative journey where users take on a role, explore exhibits, talk to virtual characters, collect clues, reconstruct a story, and unlock a personalised ending.</p>
+        <p class="user-description">Compared with the early concept, the final version is no longer just an AR information display tool. It combines <strong>role-playing, exhibit scanning, NPC dialogue, clue collection, story reconstruction, and leaderboard feedback</strong> into one complete museum experience. The final concept aims to make museum learning more immersive, guided, playful, and emotionally engaging.</p>
 
-        <p class="user-description">Building on insights from early concepts and alternative designs, we adopted the “Matched NPC” scheme. In this approach, each exhibit is linked to a single NPC, and players interact only with the matched character to obtain clues. This simplifies the user flow while ensuring the story remains coherent and immersive. Players can independently choose their identity, scan exhibit postcards to trigger NPC dialogue, and progressively reconstruct the narrative.</p>
+        <hr>
+        <h2 class="user-name">2. Final User Flow</h2>
+        <p class="user-description">The final user journey follows a clear story-driven structure:</p>
+        <p class="user-description"><strong>Welcome → Choose Role → Mission Hub → Scan Exhibits → Talk to NPCs → Reconstruct Story → Unlock Ending → Check Profile / Ranking</strong></p>
+        <p class="user-description">The experience begins with a welcome page that introduces users to the story journey. Users then choose a role, which gives them a specific identity and perspective within the museum narrative. After entering the Mission Hub, users can check their current role, pending tasks, collected clues, and activity progress.</p>
+        <p class="user-description">Next, users scan exhibits or cultural postcards to unlock related story fragments and clue keywords. These clues guide them to interact with NPCs, where they can ask questions and gather more narrative information. Once enough clues have been collected, users enter the story reconstruction stage, where they need to interpret the clues and complete the hidden story. Finally, the system presents the user’s ending, score, level, and unlocked clues. Users can also check their ranking and review their records in the Profile page.</p>
 
-        <p class="user-description">After completing the story, players can view their ending, score, and level. By entering a nickname, results are synced to the cloud, and the leaderboard updates in real time. The system allows the same identity and ending to be replayed, maintaining engagement and interactivity while avoiding the technical and social dependencies that complicated early designs. Players can enjoy a consistent, controllable experience even without the presence of other participants.</p>
+        <hr>
+        <h2 class="user-name">3. Core Experience Features</h2>
+        <p class="user-label">Role-based Exploration</p>
+        <p class="user-description">Users begin the experience by selecting an identity, such as a museum-related role or story participant. This role shapes how users understand the exhibits, tasks, and clues. Instead of acting as ordinary visitors, users enter the museum with a purpose and perspective, which strengthens immersion and encourages replay.</p>
+        <p class="user-label">AR Exhibit Scanning</p>
+        <p class="user-description">The scanning function connects physical museum objects or cultural postcards with digital story content. By scanning an exhibit, users unlock related clues, keywords, or story fragments. This creates a direct connection between the real museum space and the digital narrative experience.</p>
+        <p class="user-label">NPC Dialogue</p>
+        <p class="user-description">NPCs act as narrative guides and information sources. Users can talk to virtual characters to understand the meaning behind exhibits, verify clues, and move the story forward. Compared with static text descriptions, NPC dialogue makes the experience feel more interactive, personal, and story-driven.</p>
+        <p class="user-label">Clue Collection</p>
+        <p class="user-description">Clues are collected through exhibit scanning and NPC conversations. They help users gradually understand the hidden narrative behind the museum objects. The clue system gives users a sense of progress and encourages them to explore different parts of the experience.</p>
+        <p class="user-label">Story Reconstruction</p>
+        <p class="user-description">The story reconstruction stage changes the experience from passive information receiving to active reasoning. Users need to use the clues they have collected to infer the key meaning of the story. This makes the final task more meaningful and helps users reflect on the relationship between exhibits, characters, and narrative context.</p>
+        <p class="user-label">Ending and Leaderboard</p>
+        <p class="user-description">After completing the story reconstruction, users unlock a personalised ending, score, and level. The leaderboard and profile system allow users to compare results, review recent records, and replay the experience with different roles. This adds lightweight gamification and increases long-term engagement.</p>
 
-        <p class="user-description">The interface underwent a structured iterative design process. In the low-fidelity stage, we focused on defining the core flow: scan → choose role → interact with NPC → collect clues → reconstruct story, prioritizing structure and the user journey. The mid-fidelity stage refined NPC logic and interaction schemes, confirming that the “Matched NPC” approach was the most effective. The high-fidelity stage implemented full AR interaction, including visual cues, multiple endings, and replayability, and used hand-drawn NPCs to enhance visual appeal. Through these iterations, we created an AR museum experience that balances immersion, exploration, clarity, and usability.</p>
+        <hr>
+        <h2 class="user-name">4. Final Visual System</h2>
+        <p class="user-description">The final visual system uses a soft, light, and museum-friendly design style. Compared with the early black-and-neon prototype, the final interface adopts a cream and light-gray background with low-saturation green accents. This creates a calmer and more approachable atmosphere that better matches the cultural and narrative context of the museum.</p>
+        <p class="user-description">The interface uses a <strong>neumorphic visual style</strong>, including rounded cards, soft shadows, subtle raised effects, and concave button feedback. This gives the interface a gentle tactile feeling while keeping the overall design modern and clean. Card-based layouts are used throughout the system to organise roles, tasks, clues, conversations, results, and rankings clearly.</p>
+        <p class="user-description">The final visual system aims to balance usability and immersion. It reduces the reading pressure of earlier text-heavy interfaces, improves visual hierarchy, and helps users understand where they are in the story journey.</p>
 
-        <p class="user-label">Figma Iterations</p>
-        <div class="row g-4 mt-3 text-center">
+        <hr>
+        <h2 class="user-name">5. How the Concept Turns Museum Visiting into a Story Experience</h2>
+        <p class="user-description">Museum Tales transforms the museum visit from passive observation into active storytelling. In a traditional museum visit, users often read descriptions, look at objects, and move through the space without a strong personal connection to the exhibits. In this project, users are not only viewers; they become participants in a narrative.</p>
+        <p class="user-description">By choosing a role, users enter the story from a specific perspective. By scanning exhibits, they uncover fragments of the narrative. By talking to NPCs, they interpret these fragments through character-based dialogue. By reconstructing the story, they actively connect clues and form their own understanding of the hidden meaning behind the exhibits.</p>
+        <p class="user-description">This structure turns each exhibit into part of a larger narrative system. The museum is no longer only a place for displaying objects, but becomes a space for exploration, questioning, discovery, and story-making.</p>
+
+        <hr>
+        <h2 class="user-name">6. Final User Experience</h2>
+        <p class="user-description">The final user experience is designed to be clear, guided, and immersive. Users first enter the experience through a simple welcome page, which sets the emotional tone of the story journey. They then select a role, giving them a sense of identity and purpose.</p>
+        <p class="user-description">After entering the Mission Hub, users can understand their current task and progress. They scan exhibits or postcards to collect clues, then talk to NPCs to gain further information. The system gradually guides users from exploration to interpretation. Once users have enough clues, they complete the story reconstruction task and unlock their ending.</p>
+        <p class="user-description">The final experience forms a complete loop:</p>
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:16px;color:#4c372a;white-space:pre-wrap;">Enter the story → Choose identity → Explore exhibits → Collect clues → Talk to characters → Reconstruct meaning → Unlock ending → Review result</pre>
+        <div class="row g-4 my-4 text-center">
           <div class="col-md-6 col-xl-3">
-            <img src="static/images/Low.png" alt="Low figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
-            <p class="user-description mt-2 mb-0">Low figma</p>
+            <img src="static/images/01_Start.png" alt="Start page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
           </div>
           <div class="col-md-6 col-xl-3">
-            <img src="static/images/Mid-Low.png" alt="Mid-Low figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
-            <p class="user-description mt-2 mb-0">Mid-Low figma</p>
+            <img src="static/images/02_Role Selection.png" alt="Role selection page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
           </div>
           <div class="col-md-6 col-xl-3">
-            <img src="static/images/Mid-High.png" alt="Mid-High figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
-            <p class="user-description mt-2 mb-0">Mid-High figma</p>
+            <img src="static/images/03_Home.png" alt="Home page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
           </div>
           <div class="col-md-6 col-xl-3">
-            <img src="static/images/High.png" alt="High figma" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
-            <p class="user-description mt-2 mb-0">High figma</p>
+            <img src="static/images/04_Scan.png" alt="Scan page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/05_Chat.png" alt="Chat page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/06_Profile.png" alt="Profile page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/07_End.png" alt="End page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <img src="static/images/08_Story Reconstruction.png" alt="Story reconstruction page" class="img-fluid rounded shadow-sm" style="width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
           </div>
         </div>
+        <p class="user-description">This loop makes the interaction easy to follow while still allowing users to feel like they are actively discovering the story.</p>
+
+        <hr>
+        <h2 class="user-name">7. Problems Solved from the Early Concepts</h2>
+        <p class="user-description">The final concept directly responds to several problems identified in the early design stage.</p>
+        <p class="user-description">First, the early concept risked becoming a simple AR information display system. The final version solves this by adding role-playing, NPC dialogue, clue reasoning, and story reconstruction, making the experience more interactive and narrative-driven.</p>
+        <p class="user-description">Second, early interaction ideas could cause information overload, especially when users were given too many NPCs, clues, or instructions at once. The final concept uses guided task progression, Mission Hub organisation, and clue-based interaction to help users understand what to do next.</p>
+        <p class="user-description">Third, the early UI was more technical and prototype-like, with heavy text blocks and less emotional atmosphere. The final visual system uses softer colours, card-based layouts, and neumorphic design to create a more polished, approachable, and museum-appropriate interface.</p>
+        <p class="user-description">Fourth, the early experience lacked strong replay motivation. The final version introduces endings, scores, levels, rankings, and profile records, encouraging users to replay the experience with different roles or improve their results.</p>
+
+        <hr>
+        <h2 class="user-name">8. Final Design Principles</h2>
+        <p class="user-description">The final concept is guided by four main design principles.</p>
+        <p class="user-label">Narrative-first Interaction</p>
+        <p class="user-description">Every major interaction supports the story journey. Role selection, scanning, NPC dialogue, clue collection, reconstruction, and endings are all connected to the narrative rather than existing as separate functions.</p>
+        <p class="user-label">Guided Exploration</p>
+        <p class="user-description">The system gives users enough freedom to explore, but also provides clear guidance through the Mission Hub, clue system, NPC interaction logic, and task progression. This helps reduce confusion and keeps the experience smooth.</p>
+        <p class="user-label">Role-based Immersion</p>
+        <p class="user-description">Users are encouraged to experience the museum through a chosen identity. This makes the visit more personal and gives users a stronger reason to engage with exhibits, clues, and characters.</p>
+        <p class="user-label">Soft and Accessible Visual Experience</p>
+        <p class="user-description">The final interface uses a light colour palette, clear hierarchy, card-based structure, and neumorphic visual style. This makes the system easier to understand, more comfortable to use, and more suitable for a museum storytelling context.</p>
+
+        <hr>
+        <h2 class="user-name">Final Summary</h2>
+        <p class="user-description">Overall, the final concept of Museum Tales creates a complete Web AR museum storytelling experience. It connects physical exhibits with digital interaction, transforms visitors into story participants, and combines education, exploration, narrative, and gamification. Through role-based exploration, AR scanning, NPC dialogue, clue reconstruction, and leaderboard feedback, the project turns museum visiting into an immersive and replayable story journey.</p>
+        <!-- FINAL_CONCEPT_CONTENT_END -->
       </div>
     </div>
   </section>
@@ -217,7 +281,7 @@
           <li><a href="target-users.html">User Research</a></li>
           <li><a href="early-concepts.html">Ideation</a></li>
           <li><a href="system-architecture.html">Technical Implementation</a></li>
-          <li><a href="testing.html">Reflection</a></li>
+          <li><a href="testing.html">User Testing</a></li>
         </ul>
       </div>
     </div>
