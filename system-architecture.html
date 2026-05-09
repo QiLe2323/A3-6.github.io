@@ -133,6 +133,7 @@
             <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
             <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
             <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
+            <li><a class="dropdown-item" href="ai-use.html"><i class="fas fa-robot"></i> AI Use</a></li>
           </ul>
         </li>
 
@@ -161,25 +162,57 @@
     <div class="section-header text-center mb-5" data-aos="fade-up">
       <h1 class="display-4">System Architecture</h1>
       <div class="divider my-3"></div>
-      <p class="section-description">Architecture of the interactive AR museum storytelling system.</p>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
         <h3 class="user-name">System Architecture</h3>
-        <p class="user-title">A Modular Architecture for Interactive AR Museum Storytelling</p>
 
-        <p class="user-description">The system architecture of our interactive AR museum project is designed to support immersive storytelling while maintaining scalability and usability. At the foundation are <strong>exhibit assets</strong>, which include 3D models, textures, digital scans, and metadata for each artifact. These assets provide the visual and contextual content that the system presents to users and form the backbone for all interactive experiences.</p>
-        <p class="user-description">Above the assets layer is the <strong>narrative data and story rules module</strong>, which defines dialogue scripts, branching paths, quest triggers, and conditional logic. This layer enables dynamic story progression, allowing players? choices to influence the flow of the narrative and ensuring that each interaction is meaningful and contextually relevant.</p>
-        <p class="user-description">The <strong>Next.js web application</strong> serves as the core front-end framework, built with React, TypeScript, and Tailwind CSS. It handles routing, responsive layout, server-side rendering, and integrates <strong>Zustand state management</strong> to maintain consistent game states across multiple user sessions.</p>
-        <p class="user-description">For AR functionality, <strong>MindAR</strong> provides browser-based marker and image recognition, allowing exhibits to be scanned and recognized directly through the device camera without requiring additional hardware. This ensures accessibility and smooth interaction for museum visitors.</p>
-        <p class="user-description">The <strong>game logic engine</strong> manages real-time interactions, player choices, event processing, and branching outcomes, coordinating the flow of the narrative with player actions.</p>
-        <p class="user-description">Finally, <strong>backend services</strong> support data retrieval, storage, and integration with external platforms. <strong>Supabase</strong> is used to store player records and manage the leaderboard, providing real-time updates and persistent tracking of scores, completions, and rankings. Together, these components create a robust, modular, and scalable architecture that delivers an immersive, responsive, and interactive museum experience.</p>
+        <p class="user-description">Museum Tales was implemented as a web-based interactive museum storytelling prototype with Web AR features. The system was designed to connect physical museum exhibits, digital story content, user interactions, and player records into one continuous experience. Instead of building a static information website, we aimed to create a playable prototype where users could choose a role, explore exhibits, collect clues, talk to NPCs, reconstruct the story, and receive an ending and ranking result.</p>
 
         <div class="text-center my-4">
           <img src="static/images/Fig.5.png" alt="Fig.5 full system architecture and component flow" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
-          <p class="user-description mt-2 mb-0">Fig.5 Full system architecture and component flow, showing how exhibit assets, narrative rules, AR recognition, game logic, backend services, and leaderboard interact.</p>
+          <p class="user-description mt-2 mb-0">Fig.5 Full system architecture and component flow.</p>
         </div>
+
+        <p class="user-description">The overall system architecture includes several connected layers: exhibit assets, narrative data and story rules, the Next.js web application, MindAR recognition, the game logic engine, API services, and the Supabase leaderboard database.</p>
+
+        <p class="user-description">The first layer is the Exhibit Assets. This includes digital museum materials such as exhibit images, descriptions, possible 3D assets, textures, and cultural postcard content. These assets provide the visual and educational foundation of the experience. They allow the digital system to remain connected to real museum objects rather than becoming a separate fictional game.</p>
+
+        <p class="user-description">The second layer is Narrative Data and Story Rules. This part contains the dialogue scripts, clue keywords, role-based paths, quest triggers, and ending conditions. For example, different scanned exhibits can unlock different clues, and these clues influence what the user can understand during NPC conversations or story reconstruction. This layer is important because the project is not only about visual interaction, but also about maintaining a coherent story logic.</p>
+
+        <p class="user-description">The core interface is built as a Next.js Web App, using React, TypeScript, and Tailwind CSS. Next.js was used to structure the main pages and routing, while React components helped us divide the interface into reusable parts, such as role cards, clue cards, NPC cards, navigation bars, and result panels. Tailwind CSS supported fast UI styling and helped keep the visual system consistent across pages. Zustand was used for state management, allowing the system to store and update the user’s selected role, collected clues, current progress, and interaction status during the experience.</p>
+
+        <p class="user-description">The MindAR Recognition layer supports browser-based AR scanning. In the prototype, this function connects real or simulated exhibit/postcard scanning with digital clue unlocking. When a user scans a valid marker or exhibit image, the system can trigger the corresponding story fragment, keyword, or clue. This makes the experience closer to a real museum interaction, where users discover digital content through physical objects.</p>
+
+        <p class="user-description">The Game Logic Engine manages the internal interaction rules. It controls how role selection affects later tasks, how scanning unlocks clues, how NPC conversations respond to collected information, and when users can enter the story reconstruction stage. It also manages score, level, ending conditions, and basic event processing. This logic is what turns the system from a set of separate pages into a connected story experience.</p>
+
+        <p class="user-description">The API Services layer works as the interface between the front-end system and data storage. It supports data retrieval, storage, and communication between the web app and external services. In this project, it is mainly connected to player records, ranking data, and result synchronization.</p>
+
+        <p class="user-description">Finally, Supabase is used as the leaderboard and player record database. It stores player-related information such as nickname, selected role, ending result, score, level, and recent run data. This allows the Profile and Ranking pages to show user achievements and encourages replay through comparison and competition.</p>
+
+        <p class="user-description">Overall, the system follows this interaction flow:</p>
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">User
+ ↓
+Web UI
+ ↓
+Role Selection
+ ↓
+Mission Hub
+ ↓
+Scan Exhibits / Postcards
+ ↓
+Clue Collection
+ ↓
+NPC Dialogue
+ ↓
+Story Reconstruction
+ ↓
+Ending / Score / Level
+ ↓
+Profile / Ranking</pre>
+
+        <p class="user-description">This architecture helped us connect the museum content, story structure, AR interaction, and player progress into one playable prototype. Although the system is still a prototype rather than a fully deployed museum product, it demonstrates how a Web AR storytelling experience can technically support role-based exploration and interactive museum learning.</p>
       </div>
     </div>
   </section>
