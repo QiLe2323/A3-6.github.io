@@ -213,6 +213,115 @@ Ending / Score / Level
 Profile / Ranking</pre>
 
         <p class="user-description">This architecture helped us connect the museum content, story structure, AR interaction, and player progress into one playable prototype. Although the system is still a prototype rather than a fully deployed museum product, it demonstrates how a Web AR storytelling experience can technically support role-based exploration and interactive museum learning.</p>
+
+        <hr class="ai-rule" />
+
+        <h2 class="user-name" style="font-size:1.4rem; margin-top: 28px;">Data Handling Evidence</h2>
+
+        <p class="user-description">This section presents how the project handles gameplay data across the frontend interface, local game state, API routes, and the cloud database. The data handling structure supports a complete game loop, from role selection and exhibit scanning to story reconstruction, ending generation, and leaderboard display.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">1. Local State Management: Zustand</p>
+
+        <p class="user-description">The frontend gameplay state is managed with Zustand. It stores the current player role, scanned exhibits, collected clues, dialogue history, unlocked endings, and submitted reconstruction results. This allows the app to track the player's progress across different pages without requiring a user login.</p>
+
+        <p class="user-description">Key gameplay states include:</p>
+
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">selectedRole
+scannedExhibits
+collectedClueIds
+eventHistory
+viewedEndingStoryIds
+submittedStories</pre>
+
+        <p class="user-description">Key state actions include:</p>
+
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">selectRole()
+scanExhibit()
+submitStory()
+resetRun()</pre>
+
+        <p class="user-description">Through this local state structure, the system can remember what the player has already scanned, which clues have been collected, and whether the player has reached the conditions for story reconstruction.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">2. Persistent Data Storage: Supabase</p>
+
+        <p class="user-description">Supabase is used to store persistent leaderboard and player record data. Unlike Zustand, which only manages the current gameplay session, Supabase stores data that needs to remain available after the game ends.</p>
+
+        <div class="text-center my-4">
+          <img src="static/images/Supabase.png" alt="Supabase database evidence" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Supabase project and database evidence.</p>
+        </div>
+
+        <p class="user-description">The database mainly includes two tables:</p>
+
+        <p class="user-label" style="font-weight:600;">Players Table</p>
+
+        <div class="text-center my-4">
+          <img src="static/images/players.png" alt="Supabase players table" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Supabase <code>players</code> table evidence.</p>
+        </div>
+
+        <p class="user-description">The <code>players</code> table stores anonymous player information, including nickname and creation time. This allows users to submit their names for leaderboard ranking without requiring a formal account system.</p>
+
+        <p class="user-label" style="font-weight:600;">Runs Table</p>
+
+        <div class="text-center my-4">
+          <img src="static/images/runs.png" alt="Supabase runs table" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
+          <p class="user-description mt-2 mb-0">Supabase <code>runs</code> table evidence.</p>
+        </div>
+
+        <p class="user-description">The <code>runs</code> table stores each completed game run. Each record includes the player ID, selected role, story ending, score, grade, duration, collected clue IDs, and scanned exhibit IDs. This table is used to generate leaderboard results and record each player's completed story experience.</p>
+
+        <p class="user-description">Before placing these screenshots in the portfolio, sensitive information should be hidden, including the Supabase project ID, browser address bar, API keys, service role key, and full UUID values.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">3. API Flow</p>
+
+        <p class="user-description">Next.js API routes are used to connect the frontend pages with Supabase. The Ending page submits player and run data, while the Profile page retrieves leaderboard results from the database.</p>
+
+        <p class="user-description">The data flow is structured as follows:</p>
+
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">Ending Page
+   |
+   | submit nickname
+   v
+/api/player/init
+   |
+   v
+Supabase players table</pre>
+
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">Ending Page
+   |
+   | submit completed run
+   v
+/api/run/submit
+   |
+   v
+Supabase runs table</pre>
+
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">Profile Page
+   |
+   | fetch leaderboard
+   v
+/api/leaderboard
+   |
+   v
+Supabase runs + players
+   |
+   v
+Leaderboard UI</pre>
+
+        <p class="user-description">This API structure separates the user interface from database operations. It also makes the system more maintainable, because player creation, run submission, and leaderboard retrieval are handled through independent backend routes.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">Summary</p>
+
+        <p class="user-description">The project uses a layered data handling structure. Zustand manages temporary gameplay state on the frontend, browser storage keeps short-term player and run information across page navigation, Supabase stores persistent player and leaderboard records, and Next.js API routes connect the interface with the database. Together, these components support a complete and functional gameplay data flow from scanning to ranking.</p>
       </div>
     </div>
   </section>
