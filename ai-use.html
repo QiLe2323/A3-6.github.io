@@ -85,7 +85,7 @@
 }
 </style>
 
-    <title>AI Use | XJTLU Museum Project</title>
+    <title>Technical Reflection | XJTLU Museum Project</title>
 
 </head>
 <body>
@@ -162,7 +162,7 @@
             <li><a class="dropdown-item" href="system-architecture.html"><i class="fas fa-sitemap"></i> System Architecture</a></li>
             <li><a class="dropdown-item" href="development-process.html"><i class="fas fa-tools"></i> Development Process</a></li>
             <li><a class="dropdown-item" href="results.html"><i class="fas fa-chart-line"></i> Results</a></li>
-            <li><a class="dropdown-item" href="ai-use.html"><i class="fas fa-robot"></i> AI Use</a></li>
+            <li><a class="dropdown-item" href="ai-use.html"><i class="fas fa-robot"></i> Technical Reflection</a></li>
           </ul>
         </li>
 
@@ -189,7 +189,7 @@
   <div class="container ai-use-page">
   <section id="ai-use" class="mb-5">
     <div class="section-header text-center mb-5" data-aos="fade-up">
-      <h1 class="display-4">AI Use</h1>
+      <h1 class="display-4">Technical Reflection</h1>
       <div class="divider my-3"></div>
     </div>
 
@@ -269,6 +269,44 @@
         <p class="user-description">However, the AI-generated code was not always reliable or project-specific. Sometimes it produced generic code that worked in isolation but did not connect well with our existing pages. Sometimes it ignored edge cases, such as page refresh, repeated scanning, unclear user progress, or incomplete clue conditions. Because of this, we had to carefully test and revise the AI-generated code instead of using it directly.</p>
 
         <p class="user-description">The most important lesson is that AI can support prototyping, but it cannot replace design judgement. In Museum Tales, the technical implementation was closely connected to user experience and storytelling. Therefore, we needed to decide how each function supported the museum narrative, not just whether the code could run. Vibe coding helped us build faster, but the final system still depended on human testing, debugging, narrative design, and interface refinement.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">Prompts Used to Generate the Core Logic</p>
+
+        <p class="user-description">The main prompts used for AI-assisted coding were focused on two core parts of the Museum Tales system: role selection/state management and clue collection/story progression logic. For the role selection function, the prompt asked AI to create a React / Next.js component where users could choose one of four roles before entering the Mission Hub, and where the selected role could later influence scanning, NPC dialogue, clue collection, and ending generation. For the clue collection logic, the prompt asked AI to design JavaScript / TypeScript logic that could connect scanned exhibits with clue keywords, store collected clues, display progress in the Mission Hub, and determine whether users could enter the story reconstruction stage.</p>
+
+        <p class="user-description">These prompts were not used to produce final code directly. Instead, they were used to generate initial logic ideas and component structures. The AI output helped us understand how the system could be organised, but the actual implementation still required manual revision, debugging, and integration with our own project structure.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">Verification Against User Requirements</p>
+
+        <p class="user-description">We verified the AI-generated code by comparing it with the user requirements and the intended Museum Tales interaction flow. The system needed to support a clear role-based journey, stable navigation between pages, clue collection after scanning exhibits or postcards, NPC dialogue based on collected clues, and a final reconstruction stage that reflected user progress.</p>
+
+        <p class="user-description">To check whether the code met these requirements, we tested the prototype manually through different user flows. For example, we checked whether the selected role remained available after moving from the Role Selection page to the Mission Hub and NPC dialogue pages. We also tested whether scanned exhibits correctly unlocked clues, whether repeated scanning caused duplicate clues, and whether users could enter the story reconstruction stage before collecting enough relevant clues. When the AI-generated code failed to support these cases, we modified the logic manually.</p>
+
+        <p class="user-description">We also verified the interface from a user experience perspective. Since Museum Tales is designed for museum visitors with different levels of technical confidence, the interaction needed to be understandable, stable, and easy to follow. Therefore, we checked button states, visual feedback, progress indicators, and page transitions to make sure the system supported the intended user journey rather than simply functioning at a technical level.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">Ethical Considerations of AI-Generated Code</p>
+
+        <p class="user-description">There were also several ethical considerations when using AI-generated code. First, we needed to make sure that the AI-assisted implementation did not reduce accessibility. Some AI-generated interface drafts used generic layouts, unclear button states, or visual feedback that might not be easy for all users to understand. Therefore, we manually adjusted the interface to make the role selection, clue progress, and navigation clearer. We also considered users with lower technical confidence, such as older visitors or first-time museum app users, by keeping the interaction flow simple and guided.</p>
+
+        <p class="user-description">Second, we considered possible bias in AI-generated narrative content. AI sometimes produced generic role descriptions or story elements that did not reflect the specific cultural and institutional context of the Xi’an Jiaotong-Liverpool University Museum. To avoid misleading or inappropriate content, we rewrote the role descriptions, clue meanings, and narrative logic ourselves. This ensured that the final design remained connected to the museum context and did not rely only on AI-generated assumptions.</p>
+
+        <p class="user-description">Third, we treated AI-generated code as a support tool rather than as an unquestioned source. Since AI can produce incorrect, incomplete, or insecure code, we reviewed and tested the generated output before using it in the prototype. We also avoided presenting AI-generated work as fully original human-written code without explanation. By documenting the tools, prompts, and revision process, we aimed to use AI transparently and responsibly in the portfolio.</p>
+
+        <hr class="ai-rule" />
+
+        <p class="user-label">Reference List</p>
+
+        <div class="code-like">[1] Cursor, accessed on 2026-05-10, available at https://cursor.com. Used for AI-assisted vibe coding, generating initial React / Next.js component structures, exploring state management logic, and supporting debugging during the Museum Tales prototype development.
+
+[2] GPT-5.4, accessed on 2026-05-10, available through ChatGPT / OpenAI at https://chatgpt.com. Used for generating initial coding logic, refining technical reflection writing, explaining implementation structures, and supporting the documentation of AI-assisted development.
+
+[3] Gemini Nano Banana 2.2, accessed on 2026-05-10, available through Google Gemini at https://gemini.google.com. Used for refining hand-drawn UI drafts, generating visual interface ideas, and supporting early-stage visual exploration for the Museum Tales prototype.</div>
       </div>
     </div>
   </section>
