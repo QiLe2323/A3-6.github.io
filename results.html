@@ -25,8 +25,10 @@
     <link href="static/dropdown-nav.css" rel="stylesheet">
 
     <!-- 页面特定的CSS -->
+    
+
     <style>
-.system-architecture-page {
+.results-page {
   padding: 40px 0 80px;
 }
 
@@ -56,7 +58,7 @@
 }
 </style>
 
-    <title>System Architecture | XJTLU Museum Project</title>
+    <title>Results | XJTLU Museum Project</title>
 
 </head>
 <body>
@@ -157,62 +159,54 @@
   
 
   <!-- Page Content -->
-  <div class="container system-architecture-page">
-  <section id="system-architecture" class="mb-5">
+  <div class="container results-page">
+  <section id="results" class="mb-5">
     <div class="section-header text-center mb-5" data-aos="fade-up">
-      <h1 class="display-4">System Architecture</h1>
+      <h1 class="display-4">Results</h1>
       <div class="divider my-3"></div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="user-name">System Architecture</h3>
+        <h3 class="user-name">Results</h3>
 
-        <p class="user-description">Museum Tales was implemented as a web-based interactive museum storytelling prototype with Web AR features. The system was designed to connect physical museum exhibits, digital story content, user interactions, and player records into one continuous experience. Instead of building a static information website, we aimed to create a playable prototype where users could choose a role, explore exhibits, collect clues, talk to NPCs, reconstruct the story, and receive an ending and ranking result.</p>
+        <p class="user-description">The final result of Museum Tales is a playable Web-based museum storytelling prototype. It demonstrates the complete user journey from entering the system to completing the story and viewing personal results.</p>
 
-        <div class="text-center my-4">
-          <img src="static/images/Fig.5.png" alt="Fig.5 full system architecture and component flow" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid rgba(140, 90, 60, 0.15); background: #fffaf5;">
-          <p class="user-description mt-2 mb-0">Fig.5 Full system architecture and component flow.</p>
-        </div>
+        <p class="user-description">The final prototype includes the following main pages:</p>
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">Welcome
+→ Choose Role
+→ Mission Hub
+→ Scan Exhibits
+→ Talk to NPCs
+→ Reconstruct Story
+→ Unlock Ending
+→ Check Profile / Ranking</pre>
 
-        <p class="user-description">The overall system architecture includes several connected layers: exhibit assets, narrative data and story rules, the Next.js web application, MindAR recognition, the game logic engine, API services, and the Supabase leaderboard database.</p>
+        <p class="user-description">The Welcome page introduces the story journey and sets the tone of the experience. The Role Selection page allows users to choose an identity before entering the story. The selected role gives users a clearer perspective and helps make the museum visit more personal.</p>
 
-        <p class="user-description">The first layer is the Exhibit Assets. This includes digital museum materials such as exhibit images, descriptions, possible 3D assets, textures, and cultural postcard content. These assets provide the visual and educational foundation of the experience. They allow the digital system to remain connected to real museum objects rather than becoming a separate fictional game.</p>
+        <p class="user-description">The Mission Hub works as the central task page. It shows the user’s current role, pending tasks, activity records, and collected clues. This page helps users understand what they should do next and prevents the experience from feeling confusing.</p>
 
-        <p class="user-description">The second layer is Narrative Data and Story Rules. This part contains the dialogue scripts, clue keywords, role-based paths, quest triggers, and ending conditions. For example, different scanned exhibits can unlock different clues, and these clues influence what the user can understand during NPC conversations or story reconstruction. This layer is important because the project is not only about visual interaction, but also about maintaining a coherent story logic.</p>
+        <p class="user-description">The Scan Exhibits page connects museum exhibits or cultural postcards with digital story content. Through AR recognition or simulated scanning, users can unlock clue keywords and story fragments. This feature demonstrates how physical museum objects can become entry points into a digital narrative.</p>
 
-        <p class="user-description">The core interface is built as a Next.js Web App, using React, TypeScript, and Tailwind CSS. Next.js was used to structure the main pages and routing, while React components helped us divide the interface into reusable parts, such as role cards, clue cards, NPC cards, navigation bars, and result panels. Tailwind CSS supported fast UI styling and helped keep the visual system consistent across pages. Zustand was used for state management, allowing the system to store and update the user’s selected role, collected clues, current progress, and interaction status during the experience.</p>
+        <p class="user-description">The NPC Conversation page allows users to interact with virtual characters. NPCs help users interpret clues, understand exhibit stories, and move the narrative forward. This changes museum information from static text into a more conversational and interactive form.</p>
 
-        <p class="user-description">The MindAR Recognition layer supports browser-based AR scanning. In the prototype, this function connects real or simulated exhibit/postcard scanning with digital clue unlocking. When a user scans a valid marker or exhibit image, the system can trigger the corresponding story fragment, keyword, or clue. This makes the experience closer to a real museum interaction, where users discover digital content through physical objects.</p>
+        <p class="user-description">The Story Reconstruction page requires users to use their collected clues to complete the hidden story. This is an important part of the final experience because it makes users actively think about the relationship between exhibits, clues, and characters.</p>
 
-        <p class="user-description">The Game Logic Engine manages the internal interaction rules. It controls how role selection affects later tasks, how scanning unlocks clues, how NPC conversations respond to collected information, and when users can enter the story reconstruction stage. It also manages score, level, ending conditions, and basic event processing. This logic is what turns the system from a set of separate pages into a connected story experience.</p>
+        <p class="user-description">The Ending page presents the final result, including the ending title, score, level, and unlocked clues. This gives users a sense of completion and explains why they reached that result. The Profile / Ranking page records the user’s performance and supports leaderboard comparison, making the experience more replayable.</p>
 
-        <p class="user-description">The API Services layer works as the interface between the front-end system and data storage. It supports data retrieval, storage, and communication between the web app and external services. In this project, it is mainly connected to player records, ranking data, and result synchronization.</p>
+        <p class="user-description">In terms of functionality, the final prototype successfully implements:</p>
+        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">Role selection
+Exhibit / postcard scanning or simulated scanning
+Clue unlocking and collection
+NPC dialogue interaction
+Story reconstruction
+Ending, score, and level generation
+Profile and ranking display
+Player record storage through Supabase</pre>
 
-        <p class="user-description">Finally, Supabase is used as the leaderboard and player record database. It stores player-related information such as nickname, selected role, ending result, score, level, and recent run data. This allows the Profile and Ranking pages to show user achievements and encourages replay through comparison and competition.</p>
+        <p class="user-description">The result shows that Museum Tales is not only a visual concept or static interface design. It is a working interactive prototype that demonstrates how Web AR, role-playing, clue collection, NPC dialogue, and lightweight gamification can be combined to create a more engaging museum experience.</p>
 
-        <p class="user-description">Overall, the system follows this interaction flow:</p>
-        <pre style="background:#fffaf5;border:1px solid rgba(140,90,60,0.15);border-radius:12px;padding:18px;color:#4c372a;white-space:pre-wrap;line-height:1.7;">User
- ↓
-Web UI
- ↓
-Role Selection
- ↓
-Mission Hub
- ↓
-Scan Exhibits / Postcards
- ↓
-Clue Collection
- ↓
-NPC Dialogue
- ↓
-Story Reconstruction
- ↓
-Ending / Score / Level
- ↓
-Profile / Ranking</pre>
-
-        <p class="user-description">This architecture helped us connect the museum content, story structure, AR interaction, and player progress into one playable prototype. Although the system is still a prototype rather than a fully deployed museum product, it demonstrates how a Web AR storytelling experience can technically support role-based exploration and interactive museum learning.</p>
+        <p class="user-description">At the same time, the project remains honest about its current stage. The prototype focuses on proving the core experience and interaction logic. Some parts, such as real-world AR recognition accuracy, richer NPC dialogue, and large-scale museum deployment, could still be further developed in the future. However, the final implementation successfully shows how a traditional museum visit can be transformed into a guided, interactive, and story-driven digital experience.</p>
       </div>
     </div>
   </section>
