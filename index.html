@@ -130,6 +130,45 @@
   <!-- Page Content -->
   <style>
 
+/* How to Play — exhibit display grid */
+.display-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.display-item {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(140, 90, 60, 0.14);
+    background: #fffaf5;
+    box-shadow: 0 10px 24px rgba(90, 62, 43, 0.10);
+    transform: translateZ(0);
+}
+
+.display-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.display-item:hover img {
+    transform: scale(1.04);
+}
+
+@media (max-width: 992px) {
+    .display-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .display-item img { height: 180px; }
+}
+
+@media (max-width: 576px) {
+    .display-grid { grid-template-columns: 1fr; }
+    .display-item img { height: 200px; }
+}
+
+
 /* 恢复下拉菜单箭头 */
 .dropdown-toggle::after {
     content: "" !important;
@@ -816,7 +855,7 @@
             <a href="https://museum-tales.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: #6A3DE8; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px;">https://museum-tales.vercel.app/</a>
           </p>
           <p class="lead the-gap-paragraph" style="font-size: 1.2rem; line-height: 1.6; font-weight: 700; margin: 0 0 0.6rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal; color: #8C5A3C;">
-            Please turn on your VPN and then open the link.
+            Please turn on your VPN and then open the link. <span style="font-weight: 700;">Bilingual system, English by default.</span>
           </p>
           <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
             Users begin by choosing a role identity. After entering the museum experience, they can scan exhibits or exhibit-themed postcards. The system then guides them to an NPC dialogue page, where they can choose one virtual character to talk to and freely ask questions to discover clues.
@@ -857,6 +896,21 @@
         <h1 class="display-4" style="color: #8C5A3C; margin-bottom: 1.5rem;">How to Play</h1>
         <div class="text-center" style="margin: 0 auto 1.5rem; max-width: 550px;">
           <img src="static/images/How.png" alt="How to play flow" style="width: 100%; height: auto; border-radius: 16px; object-fit: contain; box-shadow: 0 10px 28px rgba(90, 62, 43, 0.12); border: 1px solid rgba(140, 90, 60, 0.12);">
+        </div>
+
+        <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0 0 1.25rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
+          Games require scanning one or more exhibits. Scanning different exhibits unlocks different clues. For example, scanning the Yue Ware Celadon Elephant from the Mingzhou Kiln and the Chess Set leads to one ending, while scanning the Handwritten Celebration Calligraphy unlocks another ending.
+        </p>
+
+        <div class="display-grid" style="margin: 0 0 2.5rem;">
+          <div class="display-item"><img src="static/images/display1.jpg" alt="Display 1"></div>
+          <div class="display-item"><img src="static/images/display2.jpg" alt="Display 2"></div>
+          <div class="display-item"><img src="static/images/display3.jpg" alt="Display 3"></div>
+          <div class="display-item"><img src="static/images/display4.jpg" alt="Display 4"></div>
+          <div class="display-item"><img src="static/images/display5.jpg" alt="Display 5"></div>
+          <div class="display-item"><img src="static/images/display6.jpg" alt="Display 6"></div>
+          <div class="display-item"><img src="static/images/display7.jpg" alt="Display 7"></div>
+          <div class="display-item"><img src="static/images/display8.jpg" alt="Display 8"></div>
         </div>
         <h1 class="display-4" style="color: #8C5A3C; margin: 2.5rem 0 1.5rem;">Why Role-Playing?</h1>
         <p class="lead the-gap-paragraph" style="font-size: 1.8rem; line-height: 1.6; color: #2F2F2F; font-weight: 400; margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif; letter-spacing: normal;">
